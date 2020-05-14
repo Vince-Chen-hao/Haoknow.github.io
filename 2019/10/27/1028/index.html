@@ -3,27 +3,28 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | Vince Blog</title>
+  <title>CSS_區塊元素與行內元素 | Vince Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="前端文教學文" />
+  <meta name="keywords" content="CSS" />
   
   
   
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="區塊元素(block) 在新的一行開始 若沒有定義該元素長寬，則會100%佔滿所在空間 例：會佔滿整個區塊(整行) css語法：display:block;  12345678區塊元素常見包括div、p、h1~h6、ul、ol、li、dl、dt、dd、form、table、hr、blockquote 、address、menu、pre.....等等      行內元素(inline) 不一定會在新">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/05/13/hello-world/index.html">
+<meta property="og:title" content="CSS_區塊元素與行內元素">
+<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2019/10/27/1028/index.html">
 <meta property="og:site_name" content="Vince Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="區塊元素(block) 在新的一行開始 若沒有定義該元素長寬，則會100%佔滿所在空間 例：會佔滿整個區塊(整行) css語法：display:block;  12345678區塊元素常見包括div、p、h1~h6、ul、ol、li、dl、dt、dd、form、table、hr、blockquote 、address、menu、pre.....等等      行內元素(inline) 不一定會在新">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-05-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-13T08:22:34.618Z">
+<meta property="og:image" content="https://i.imgur.com/A0HbxdZ.png">
+<meta property="article:published_time" content="2019-10-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-13T10:39:50.646Z">
 <meta property="article:author" content="Vince">
-<meta property="article:tag" content="前端文">
-<meta property="article:tag" content="教學文">
+<meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/A0HbxdZ.png">
   
     <link rel="alternate" href="/atom.xml" title="Vince Blog" type="application/atom+xml">
   
@@ -110,7 +111,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-hello-world" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-1028" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -118,7 +119,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Hello World
+      CSS_區塊元素與行內元素
     </h1>
   
 
@@ -127,7 +128,7 @@
     <div class="article-meta">
       
 	<a href="" class="article-date">
-	  <time datetime="2020-05-12T16:00:00.000Z" itemprop="datePublished">五月 13, 2020</time>
+	  <time datetime="2019-10-26T16:00:00.000Z" itemprop="datePublished">十月 27, 2019</time>
 	</a>
 
        
@@ -139,19 +140,33 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h4 id="區塊元素-block"><a href="#區塊元素-block" class="headerlink" title="區塊元素(block)"></a>區塊元素(block)</h4><ul>
+<li>在新的一行開始</li>
+<li>若沒有定義該元素長寬，則會100%佔滿所在空間</li>
+<li>例：<div>會佔滿整個區塊(整行)</li>
+<li>css語法：display:block;</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">區塊元素常見包括</span><br><span class="line">div、p、h1~h6、</span><br><span class="line">ul、ol、li、</span><br><span class="line">dl、dt、dd、</span><br><span class="line">form、table、hr、</span><br><span class="line">blockquote 、</span><br><span class="line">address、menu、pre.....等等</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/A0HbxdZ.png" alt=""> </p>
+<h4 id="行內元素-inline"><a href="#行內元素-inline" class="headerlink" title="行內元素(inline)"></a>行內元素(inline)</h4><ul>
+<li>不一定會在新的一行開始</li>
+<li>該元素佔有的空間為其內容本身(文字或圖片)之長寬</li>
+<li>無法重新自定義長寬</li>
+<li>可能其他元素並排(視空間寬度而定)</li>
+<li>例：span會接續前方元素，不會換行</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">行內元素常見包括</span><br><span class="line">span、em、i、b、</span><br><span class="line">strong、a、img、input、</span><br><span class="line">br、select、textarea、q、bdo、</span><br><span class="line">sub、sup</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+
+<h4 id="空元素特點"><a href="#空元素特點" class="headerlink" title="空元素特點"></a>空元素特點</h4><p>1.没有内容的 HTML 元素被稱為空元素。空元素是在開始標籤中關閉的。<br>2.由於HTML元素的内容是開始標籤与结束標籤之间的内容。<br>  而某些HTML元素具有空内容。那些含有空内容的HTML元素，就是空元素。<br>3.單標籤，只有開始標籤，没有结束標籤</p>
+<p>空元素常見包括</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;br&gt; &lt;hr&gt; &lt;img&gt; &lt;input&gt; &lt;link&gt; &lt;meta&gt;</span><br><span class="line">&lt;area&gt; &lt;base&gt; &lt;col&gt; &lt;<span class="built_in">command</span>&gt; &lt;embed&gt; &lt;param&gt; &lt;<span class="built_in">source</span>&gt; &lt;track&gt; &lt;wbr&gt;</span><br><span class="line">...等等</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://medium.com/@small2883/%E5%8D%80%E5%A1%8A%E5%85%83%E7%B4%A0-%E8%A1%8C%E5%85%A7%E5%85%83%E7%B4%A0-%E7%A9%BA%E5%85%83%E7%B4%A0%E7%89%B9%E9%BB%9E%E5%88%86%E5%88%A5%E6%9C%89%E5%93%AA%E4%BA%9B-19f8c05f16f6" target="_blank" rel="noopener">參考連結</a></p>
 
       
     </div>
@@ -159,7 +174,7 @@
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E5%89%8D%E7%AB%AF%E6%96%87/" rel="tag">前端文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E6%95%99%E5%AD%B8%E6%96%87/" rel="tag">教學文</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/CSS/" rel="tag">CSS</a></li></ul>
 
       
         
@@ -194,10 +209,19 @@
     
 <nav id="article-nav">
   
+    <a href="../1027/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSS_絕對/相對定位
+        
+      </div>
+    </a>
   
-    <a href="../../12/0513/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="../1029/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JS- scope chain</div>
+      <div class="article-nav-title">CSS_遮罩層overlay效果</div>
     </a>
   
 </nav>
@@ -211,7 +235,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目錄</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#區塊元素-block"><span class="nav-number">1.</span> <span class="nav-text">區塊元素(block)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行內元素-inline"><span class="nav-number">2.</span> <span class="nav-text">行內元素(inline)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空元素特點"><span class="nav-number">3.</span> <span class="nav-text">空元素特點</span></a></li></ol>
     
     </div>
   </aside>

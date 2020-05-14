@@ -3,27 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | Vince Blog</title>
+  <title>JavaScript_解析BOM與DOM | Vince Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="前端文教學文" />
+  <meta name="keywords" content="JavaScript" />
   
   
   
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="什麼是BOM？瀏覽器物件模型（Browser Object Model,BOM）是瀏覽器提供的附加對象，用於處理 document 以外的所有内容，主要處理瀏覽器窗口和框架，不过通常瀏覽器特定的 JavaScript 也會被看作 BOM 的一部分。區別：BOM 描述了與瀏覽器進行交互的方法和接口，DOM 描述了處理網頁内容的方法和接口。  window 物件包含属性：document、naviga">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/05/13/hello-world/index.html">
+<meta property="og:title" content="JavaScript_解析BOM與DOM">
+<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2019/11/20/1120_2/index.html">
 <meta property="og:site_name" content="Vince Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="什麼是BOM？瀏覽器物件模型（Browser Object Model,BOM）是瀏覽器提供的附加對象，用於處理 document 以外的所有内容，主要處理瀏覽器窗口和框架，不过通常瀏覽器特定的 JavaScript 也會被看作 BOM 的一部分。區別：BOM 描述了與瀏覽器進行交互的方法和接口，DOM 描述了處理網頁内容的方法和接口。  window 物件包含属性：document、naviga">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-05-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-13T08:22:34.618Z">
+<meta property="og:image" content="https://i.imgur.com/y6ohu8g.png">
+<meta property="og:image" content="https://i.imgur.com/01xXBTU.jpg">
+<meta property="article:published_time" content="2019-11-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-14T04:08:08.904Z">
 <meta property="article:author" content="Vince">
-<meta property="article:tag" content="前端文">
-<meta property="article:tag" content="教學文">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/y6ohu8g.png">
   
     <link rel="alternate" href="/atom.xml" title="Vince Blog" type="application/atom+xml">
   
@@ -110,7 +112,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-hello-world" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-1120_2" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -118,7 +120,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Hello World
+      JavaScript_解析BOM與DOM
     </h1>
   
 
@@ -127,7 +129,7 @@
     <div class="article-meta">
       
 	<a href="" class="article-date">
-	  <time datetime="2020-05-12T16:00:00.000Z" itemprop="datePublished">五月 13, 2020</time>
+	  <time datetime="2019-11-19T16:00:00.000Z" itemprop="datePublished">十一月 20, 2019</time>
 	</a>
 
        
@@ -139,19 +141,27 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h4 id="什麼是BOM？"><a href="#什麼是BOM？" class="headerlink" title="什麼是BOM？"></a>什麼是BOM？</h4><p>瀏覽器物件模型（Browser Object Model,BOM）是瀏覽器提供的附加對象，用於處理 document 以外的所有内容，主要處理瀏覽器窗口和框架，不过通常瀏覽器特定的 JavaScript 也會被看作 BOM 的一部分。<br>區別：BOM 描述了與瀏覽器進行交互的方法和接口，DOM 描述了處理網頁内容的方法和接口。</p>
+<ul>
+<li>window 物件包含属性：document、navigator、frames、history、location、screen</li>
+<li>document 根節點包含子節點：forms、location、anchors、images、links</li>
+</ul>
+<p><img src="https://i.imgur.com/y6ohu8g.png" alt=""></p>
+<h4 id="什麼是DOM-Document-Object-Model-？"><a href="#什麼是DOM-Document-Object-Model-？" class="headerlink" title="什麼是DOM(Document Object Model)？"></a>什麼是DOM(Document Object Model)？</h4><p>檔案物件模型（Document Object Model, DOM）是瀏覽器的執行規範，提供了結構化的標準方法，將網頁的程式碼及其他程式語言結合起來。開發人員即可以通過文件中物件的屬性、方法和事件來掌控、操縱和建立動態的網頁元素。</p>
+<p>每個 DOM 的基礎建置在一個(D)文件上（也就是以 document 作為根基），而由 document 中的每個(O)物件作為出一個個節點，最後由這一個個節點，組成為一個 DOM Tree。</p>
+<ul>
+<li>D：（文件）瀏覽器當前載入的 document</li>
+<li>O：（物件）將 document 中的所有元素視為物件，可以調用其屬性、方法</li>
+<li>M：（模型）所有的物件在該結構中都是節點，這些眾多節點組成一個樹狀結構</li>
+</ul>
+<p><img src="https://i.imgur.com/01xXBTU.jpg" alt=""></p>
+<p>DOM 節點有:</p>
+<ul>
+<li>元素節點：上圖中html、body、p標籤皆是元素節點。</li>
+<li>文本節點:向用户展示的内容，如li…/li中的 JavaScript、DOM、CSS 等文本。</li>
+<li>屬性節點:標籤中的屬性，如a標籤中的連結屬性href=”<a href="http://www.yahoo.com&quot;。" target="_blank" rel="noopener">http://www.yahoo.com&quot;。</a></li>
+</ul>
+<h5 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h5><p>用 DOM API 可以輕鬆地删除、添加和替換節點。<br>| DOM 操作 |说明 |<br>| ————- |:————-:|<br>|creatElement(element) |創建一个新的元素節點|<br>|creatTextNode() |創建一个包含給定文本的新文本節點|<br>|appendChild() |指定節點的最後一個節點列表後添加一个新的子節點|<br>|insertBefore() |將一個給定節點节点插入到一个給定元素節點的給定子節點的前面|<br>|removeChild() |从一个给定元素中删除子节点|<br>|replaceChild() |把一个给定父元素里的一个子节点替换为另外一个节点|</p>
 
       
     </div>
@@ -159,7 +169,7 @@
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E5%89%8D%E7%AB%AF%E6%96%87/" rel="tag">前端文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E6%95%99%E5%AD%B8%E6%96%87/" rel="tag">教學文</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
 
       
         
@@ -194,10 +204,19 @@
     
 <nav id="article-nav">
   
+    <a href="../1120/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript_宣告事件的三種方式
+        
+      </div>
+    </a>
   
-    <a href="../../12/0513/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="../../15/1115/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JS- scope chain</div>
+      <div class="article-nav-title">Bootstrap_navbar導覽頁面</div>
     </a>
   
 </nav>
@@ -211,7 +230,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目錄</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什麼是BOM？"><span class="nav-number">1.</span> <span class="nav-text">什麼是BOM？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什麼是DOM-Document-Object-Model-？"><span class="nav-number">2.</span> <span class="nav-text">什麼是DOM(Document Object Model)？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DOM-操作"><span class="nav-number">2.1.</span> <span class="nav-text">DOM 操作</span></a></li></ol></li></ol>
     
     </div>
   </aside>

@@ -3,26 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | Vince Blog</title>
+  <title>Vue_修飾符 | Vince Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="前端文教學文" />
+  <meta name="keywords" content="JavaScript" />
   
   
   
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="事件修飾符常用：v-on:click只需在後方新增prevent語法(防止防止頁面上移) 1&lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;btn btn-info&quot; v-on:click.prevent&#x3D;&quot;reversetext&quot;&gt;  按鍵修飾符 v-on &#x3D;&#x3D; @原寫法：v-on:click&#x3D;”函數”修飾寫法：@click&#x3D;”函數”  v-blid &#x3D;&#x3D;:原寫法：v-blid:href&#x3D;”l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/05/13/hello-world/index.html">
+<meta property="og:title" content="Vue_修飾符">
+<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/01/08/0108/index.html">
 <meta property="og:site_name" content="Vince Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="事件修飾符常用：v-on:click只需在後方新增prevent語法(防止防止頁面上移) 1&lt;a href&#x3D;&quot;#&quot; class&#x3D;&quot;btn btn-info&quot; v-on:click.prevent&#x3D;&quot;reversetext&quot;&gt;  按鍵修飾符 v-on &#x3D;&#x3D; @原寫法：v-on:click&#x3D;”函數”修飾寫法：@click&#x3D;”函數”  v-blid &#x3D;&#x3D;:原寫法：v-blid:href&#x3D;”l">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-05-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-13T08:22:34.618Z">
+<meta property="article:published_time" content="2020-01-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-14T07:27:42.051Z">
 <meta property="article:author" content="Vince">
-<meta property="article:tag" content="前端文">
-<meta property="article:tag" content="教學文">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Vince Blog" type="application/atom+xml">
@@ -110,7 +109,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-hello-world" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-0108" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -118,7 +117,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Hello World
+      Vue_修飾符
     </h1>
   
 
@@ -127,7 +126,7 @@
     <div class="article-meta">
       
 	<a href="" class="article-date">
-	  <time datetime="2020-05-12T16:00:00.000Z" itemprop="datePublished">五月 13, 2020</time>
+	  <time datetime="2020-01-07T16:00:00.000Z" itemprop="datePublished">一月 8, 2020</time>
 	</a>
 
        
@@ -139,19 +138,23 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h4 id="事件修飾符"><a href="#事件修飾符" class="headerlink" title="事件修飾符"></a>事件修飾符</h4><p>常用：v-on:click只需在後方新增prevent語法(防止防止頁面上移)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"#"</span> class=<span class="string">"btn btn-info"</span> v-on:click.prevent=<span class="string">"reversetext"</span>&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h4 id="按鍵修飾符"><a href="#按鍵修飾符" class="headerlink" title="按鍵修飾符"></a>按鍵修飾符</h4><ul>
+<li><p>v-on == @<br>原寫法：v-on:click=”函數”<br>修飾寫法：@click=”函數”</p>
+</li>
+<li><p>v-blid ==:<br>原寫法：v-blid:href=”link”<br>修飾寫法：:href=”link”</p>
+</li>
+</ul>
+<h4 id="Modifiers-修飾符"><a href="#Modifiers-修飾符" class="headerlink" title="Modifiers 修飾符"></a>Modifiers 修飾符</h4><p>.lazy<br>原本雙向綁定的更新方式是以 input 事件監聽，亦即資料變動即更新，但使用.lazy會改用 change 事件監聽，event trigger 才更新。<br>此時若要新增一個屬性用來計算總共有多少隻家禽，如下：</p>
+<h4 id="number修飾符"><a href="#number修飾符" class="headerlink" title="number修飾符"></a>number修飾符</h4><p>將字串轉為數字，在後方加入number即可將輸入的字串轉為數字</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="built_in">type</span> =<span class="string">"number"</span> class=<span class="string">"form-control"</span> v-model.number=<span class="string">"age"</span>&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h4 id="trim緊貼文字"><a href="#trim緊貼文字" class="headerlink" title="trim緊貼文字"></a>trim緊貼文字</h4><p>當輸入文字夾雜著空格時，使用trim便可以刪去空格，文字便可以相連</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="built_in">type</span> =<span class="string">"text"</span> class=<span class="string">"form-control"</span> v-model.trim=<span class="string">"age"</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
     </div>
@@ -159,7 +162,7 @@
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E5%89%8D%E7%AB%AF%E6%96%87/" rel="tag">前端文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E6%95%99%E5%AD%B8%E6%96%87/" rel="tag">教學文</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
 
       
         
@@ -194,10 +197,19 @@
     
 <nav id="article-nav">
   
+    <a href="../../12/0121/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Git_基本建置指令
+        
+      </div>
+    </a>
   
-    <a href="../../12/0513/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="../../../../2019/12/28/1228/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JS- scope chain</div>
+      <div class="article-nav-title">Bootstrap：滾動監聽Scrollspy(實作)</div>
     </a>
   
 </nav>
@@ -211,7 +223,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目錄</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件修飾符"><span class="nav-number">1.</span> <span class="nav-text">事件修飾符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按鍵修飾符"><span class="nav-number">2.</span> <span class="nav-text">按鍵修飾符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Modifiers-修飾符"><span class="nav-number">3.</span> <span class="nav-text">Modifiers 修飾符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#number修飾符"><span class="nav-number">4.</span> <span class="nav-text">number修飾符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#trim緊貼文字"><span class="nav-number">5.</span> <span class="nav-text">trim緊貼文字</span></a></li></ol>
     
     </div>
   </aside>

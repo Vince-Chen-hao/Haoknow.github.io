@@ -3,27 +3,28 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | Vince Blog</title>
+  <title>Vue_ MVVM架構說明 | Vince Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="前端文教學文" />
+  <meta name="keywords" content="Vue" />
   
   
   
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="MVVM 是Model-View-ViewModel 的縮寫，它是一種基於前端開發的架構模式，其核心是提供對View 和View Model 的雙向數據綁定，這使得View Model的狀態改變可以自動傳遞給View，這就是所謂的數據雙向綁定。注意Vue非MVVM框架，但MVVM概念影響Vue.js的運作。 MVVM 圖解 透過ViewModel將view及model做串連綁定，因此透過在view">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/05/13/hello-world/index.html">
+<meta property="og:title" content="Vue_ MVVM架構說明">
+<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/05/12/0116/index.html">
 <meta property="og:site_name" content="Vince Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="MVVM 是Model-View-ViewModel 的縮寫，它是一種基於前端開發的架構模式，其核心是提供對View 和View Model 的雙向數據綁定，這使得View Model的狀態改變可以自動傳遞給View，這就是所謂的數據雙向綁定。注意Vue非MVVM框架，但MVVM概念影響Vue.js的運作。 MVVM 圖解 透過ViewModel將view及model做串連綁定，因此透過在view">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-05-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-13T08:22:34.618Z">
+<meta property="og:image" content="https://i.imgur.com/XXk7MDf.png">
+<meta property="article:published_time" content="2020-05-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-14T08:46:21.341Z">
 <meta property="article:author" content="Vince">
-<meta property="article:tag" content="前端文">
-<meta property="article:tag" content="教學文">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/XXk7MDf.png">
   
     <link rel="alternate" href="/atom.xml" title="Vince Blog" type="application/atom+xml">
   
@@ -110,7 +111,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-hello-world" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-0116" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -118,7 +119,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Hello World
+      Vue_ MVVM架構說明
     </h1>
   
 
@@ -127,7 +128,7 @@
     <div class="article-meta">
       
 	<a href="" class="article-date">
-	  <time datetime="2020-05-12T16:00:00.000Z" itemprop="datePublished">五月 13, 2020</time>
+	  <time datetime="2020-05-11T16:00:00.000Z" itemprop="datePublished">五月 12, 2020</time>
 	</a>
 
        
@@ -139,19 +140,14 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>MVVM 是Model-View-ViewModel 的縮寫，它是一種基於前端開發的架構模式，其核心是提供對View 和View Model 的雙向數據綁定，這使得View Model的狀態改變可以自動傳遞給View，這就是所謂的數據雙向綁定。注意Vue非MVVM框架，但MVVM概念影響Vue.js的運作。</p>
+<h4 id="MVVM-圖解"><a href="#MVVM-圖解" class="headerlink" title="MVVM 圖解"></a>MVVM 圖解</h4><p><img src="https://i.imgur.com/XXk7MDf.png" alt=""></p>
+<p>透過ViewModel將view及model做串連綁定，因此透過在view的變更，後端的資料也會同步更新數值，相較於jQ需寫程式碼去重新匯入view及改變資料的狀態，較為多工，並且需操作畫面上的dom元素，</p>
+<p>而Vue是以資料狀態操作畫面</p>
+<ul>
+<li>透過DOM裡面的監聽event來控制/影響View Model，然後去修改Model中的資料內容;</li>
+<li>當Model中的資料變更，會讓View Model知道，再去修改相對應DOM中的內容</li>
+</ul>
 
       
     </div>
@@ -159,7 +155,7 @@
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E5%89%8D%E7%AB%AF%E6%96%87/" rel="tag">前端文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E6%95%99%E5%AD%B8%E6%96%87/" rel="tag">教學文</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Vue/" rel="tag">Vue</a></li></ul>
 
       
         
@@ -194,10 +190,19 @@
     
 <nav id="article-nav">
   
+    <a href="../0513/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JS- scope chain
+        
+      </div>
+    </a>
   
-    <a href="../../12/0513/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="../../../02/03/0203/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JS- scope chain</div>
+      <div class="article-nav-title">ES6_let、const變數</div>
     </a>
   
 </nav>
@@ -211,7 +216,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目錄</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#MVVM-圖解"><span class="nav-number">1.</span> <span class="nav-text">MVVM 圖解</span></a></li></ol>
     
     </div>
   </aside>

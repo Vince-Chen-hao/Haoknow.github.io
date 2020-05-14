@@ -3,27 +3,28 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | Vince Blog</title>
+  <title>Bootstrap：滾動監聽Scrollspy(實作) | Vince Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="前端文教學文" />
+  <meta name="keywords" content="Bootstrap" />
   
   
   
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="滾動監聽（Scrollspy）插件，即自動更新導航插件，會根據滾動條的位置自動更新對應的導航目標。其基本的實現是隨著您的滾動，基於滾動條的位置嚮導航欄添加.active class。 使用方法向頂部導航添加滾動監聽行為： 通過data屬性：向您想要監聽的元素（通常是body）添加data-spy&#x3D;“scroll”。然後添加帶有Bootstrap .nav組件的父元素的ID或class的屬性data">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/05/13/hello-world/index.html">
+<meta property="og:title" content="Bootstrap：滾動監聽Scrollspy(實作)">
+<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2019/12/28/1228/index.html">
 <meta property="og:site_name" content="Vince Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="滾動監聽（Scrollspy）插件，即自動更新導航插件，會根據滾動條的位置自動更新對應的導航目標。其基本的實現是隨著您的滾動，基於滾動條的位置嚮導航欄添加.active class。 使用方法向頂部導航添加滾動監聽行為： 通過data屬性：向您想要監聽的元素（通常是body）添加data-spy&#x3D;“scroll”。然後添加帶有Bootstrap .nav組件的父元素的ID或class的屬性data">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2020-05-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-13T08:22:34.618Z">
+<meta property="og:image" content="https://vince-chen-hao.github.io/images/Scrollspy.png">
+<meta property="article:published_time" content="2019-12-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-14T07:08:03.304Z">
 <meta property="article:author" content="Vince">
-<meta property="article:tag" content="前端文">
-<meta property="article:tag" content="教學文">
+<meta property="article:tag" content="Bootstrap">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vince-chen-hao.github.io/images/Scrollspy.png">
   
     <link rel="alternate" href="/atom.xml" title="Vince Blog" type="application/atom+xml">
   
@@ -110,7 +111,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-hello-world" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-1228" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -118,7 +119,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Hello World
+      Bootstrap：滾動監聽Scrollspy(實作)
     </h1>
   
 
@@ -127,7 +128,7 @@
     <div class="article-meta">
       
 	<a href="" class="article-date">
-	  <time datetime="2020-05-12T16:00:00.000Z" itemprop="datePublished">五月 13, 2020</time>
+	  <time datetime="2019-12-27T16:00:00.000Z" itemprop="datePublished">十二月 28, 2019</time>
 	</a>
 
        
@@ -139,19 +140,16 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <p>滾動監聽（Scrollspy）插件，即自動更新導航插件，會根據滾動條的位置自動更新對應的導航目標。其基本的實現是隨著您的滾動，基於滾動條的位置嚮導航欄添加.active class。</p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>向頂部導航添加滾動監聽行為：</p>
+<p>通過data屬性：向您想要監聽的元素（通常是body）添加data-spy=“scroll”。然後添加帶有Bootstrap .nav組件的父元素的ID或class的屬性data-target。為了它能正常工作，您必須確保頁面主體中有匹配所要監聽鏈接的ID的元素存在。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;body data-spy =“ scroll” data-target =“main-nav”&gt;</span><br><span class="line">...</span><br><span class="line">&lt;div class =“ navbar-example”&gt;</span><br><span class="line">    &lt;ul class =“ nav nav-tabs”&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/ ul&gt;</span><br><span class="line">&lt;/ div&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/ body&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>通過JavaScript：您可以通過JavaScript調用滾動監聽，選取要監聽的元素，然後調用.scrollspy()函數：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//Init Scrollspy</span><br><span class="line">$(<span class="string">'body'</span>).scrollspy(&#123; target:<span class="string">'#main-nav'</span>&#125;);</span><br><span class="line"></span><br><span class="line">//Smooth Scrolling</span><br><span class="line">$(<span class="string">'#main-nav a'</span>).on(<span class="string">'click'</span>,<span class="keyword">function</span>(event)&#123;</span><br><span class="line">    <span class="keyword">if</span>(this.hash !==<span class="string">""</span>)&#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">        const <span class="built_in">hash</span> = this.hash;</span><br><span class="line">        $(<span class="string">'html,body'</span>).animate(&#123;</span><br><span class="line">            scrollTop: $(<span class="built_in">hash</span>).offset().top</span><br><span class="line">        &#125;, 700, <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            window.location.hash = <span class="built_in">hash</span>;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h4 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h4><p>Nav監聽: <a href="https://vince-chen-hao.github.io/BS_OnePage/">一頁式官網</a></p>
+<p><img src="/images/Scrollspy.png" alt=""></p>
 
       
     </div>
@@ -159,7 +157,7 @@
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E5%89%8D%E7%AB%AF%E6%96%87/" rel="tag">前端文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E6%95%99%E5%AD%B8%E6%96%87/" rel="tag">教學文</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
 
       
         
@@ -194,10 +192,19 @@
     
 <nav id="article-nav">
   
+    <a href="../../../../2020/01/08/0108/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Vue_修飾符
+        
+      </div>
+    </a>
   
-    <a href="../../12/0513/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="../../22/1222/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JS- scope chain</div>
+      <div class="article-nav-title">JavaScript_定義全域環境</div>
     </a>
   
 </nav>
@@ -211,7 +218,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目錄</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用方法"><span class="nav-number">1.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#實作"><span class="nav-number">2.</span> <span class="nav-text">實作</span></a></li></ol>
     
     </div>
   </aside>
