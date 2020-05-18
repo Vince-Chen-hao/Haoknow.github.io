@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript- 三種Ajax串接方式 | Vince Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="JavaScript" />
+  
+  
+  
+  
+  <meta name="description" content="第一種：XMLHttpRequest其一老式做法 ── XMLHttpRequest格式：‘get’(讀取資料)、‘post’(傳送資料至該資料庫) 1234567var xhr &#x3D; new XMLHttpRequest();xhr.open(&#39;get&#39;,&#39;URL&#39;,true);xhr.send(null); &#x2F;&#x2F;傳送資料（若上面使用&#39;get&#39;，則此欄填寫空值 null ）xhr.onload &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript- 三種Ajax串接方式">
+<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2019/12/25/1225/index.html">
+<meta property="og:site_name" content="Vince Blog">
+<meta property="og:description" content="第一種：XMLHttpRequest其一老式做法 ── XMLHttpRequest格式：‘get’(讀取資料)、‘post’(傳送資料至該資料庫) 1234567var xhr &#x3D; new XMLHttpRequest();xhr.open(&#39;get&#39;,&#39;URL&#39;,true);xhr.send(null); &#x2F;&#x2F;傳送資料（若上面使用&#39;get&#39;，則此欄填寫空值 null ）xhr.onload &#x3D;">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2019-12-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-15T11:58:10.808Z">
+<meta property="article:author" content="Vince">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Vince Blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="../../../../css/style.css">
+
+
+  
+<script src="../../../../js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Vince Blog" rel="home"> Vince Blog </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../index.html">首頁</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../archives">彙整</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../categories">分類</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../tags">標籤</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="../../../../about">關于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-1225" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      JavaScript- 三種Ajax串接方式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="" class="article-date">
+	  <time datetime="2019-12-24T16:00:00.000Z" itemprop="datePublished">十二月 25, 2019</time>
+	</a>
+
+       
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第一種：XMLHttpRequest"><a href="#第一種：XMLHttpRequest" class="headerlink" title="第一種：XMLHttpRequest"></a>第一種：XMLHttpRequest</h3><p>其一老式做法 ── XMLHttpRequest<br>格式：‘get’(讀取資料)、‘post’(傳送資料至該資料庫)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'get'</span>,<span class="string">'URL'</span>,<span class="literal">true</span>);</span><br><span class="line">xhr.send(null); //傳送資料（若上面使用<span class="string">'get'</span>，則此欄填寫空值 null ）</span><br><span class="line">xhr.onload = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    data = JSON.parse(xhr.responseText);</span><br><span class="line">    console.log(`已經載入 api `)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中第五行執行的 data = JSON.parse(xhr.responseText)需要提醒一下，因為 JSON 雖然本身是“陣列包物件”的格式，但資料在傳輸的時候必須轉換成 string(字串)，所以我們在接收到了傳送來的「字串」時，就必須使用 JSON.parse 將其轉換回原本的格式</p>
+<h4 id="console可得知的串接狀態"><a href="#console可得知的串接狀態" class="headerlink" title="console可得知的串接狀態"></a>console可得知的串接狀態</h4><h5 id="xmlHttp5個狀態："><a href="#xmlHttp5個狀態：" class="headerlink" title="xmlHttp5個狀態："></a>xmlHttp5個狀態：</h5><p>var state = xmlHttp.readyState;//可能是0、1、2、3、4</p>
+<ul>
+<li>0狀態：剛創建，還沒有調用open()方法;</li>
+<li>1狀態：請求開始：調用了open()方法，但還沒有調用send()方法</li>
+<li>2狀態：調用完了send()方法了；</li>
+<li>3狀態：服務器已經開始響應，但不表示響應結束了！</li>
+<li>4狀態：服務器響應結束！（通常我們只關心這個狀態！！！）</li>
+</ul>
+<h5 id="得到服務器響應的狀態碼："><a href="#得到服務器響應的狀態碼：" class="headerlink" title="得到服務器響應的狀態碼："></a>得到服務器響應的狀態碼：</h5><p>var status = xmlHttp.status;//例如為200、404、500</p>
+<h3 id="第二種：jQuery-原語法"><a href="#第二種：jQuery-原語法" class="headerlink" title="第二種：jQuery- 原語法"></a>第二種：jQuery- 原語法</h3><p>請參考: <a href="https://www.youtube.com/watch?v=OtIOxstrhzY" target="_blank" rel="noopener">jQuery串接影片</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">  url: <span class="string">'https://randomuser.me/api/'</span>,</span><br><span class="line">  dataType: <span class="string">'json'</span>,</span><br><span class="line">  success: <span class="keyword">function</span>(data) &#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">    // 取得的遠端資料</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三種：jQuery-Fetch語法"><a href="#第三種：jQuery-Fetch語法" class="headerlink" title="第三種：jQuery- Fetch語法"></a>第三種：jQuery- Fetch語法</h3><p>Fetch與 $.ajax 不同點在於：</p>
+<ul>
+<li>fetch 會使用 ES6 的 Promise 作回應</li>
+<li>then 作為下一步</li>
+<li>catch 作為錯誤回應 (404, 500…)</li>
+<li>回傳的為 ReadableStream 物件，需要使用不同資料類型使用對應方法，才能正確取得資料物件。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'https://randomuser.me/api/'</span>, &#123;&#125;)</span><br><span class="line">  .<span class="keyword">then</span>((response) =&gt; &#123;</span><br><span class="line">    // 這裡會得到一個 ReadableStream 的物件</span><br><span class="line">    console.log(response);</span><br><span class="line">    // 可以透過 blob(), json(), text() 轉成可用的資訊</span><br><span class="line">    <span class="built_in">return</span> response.json(); </span><br><span class="line">  &#125;).<span class="keyword">then</span>((jsonData) =&gt; &#123;</span><br><span class="line">    console.log(jsonData);</span><br><span class="line">  &#125;).catch((err) =&gt; &#123;</span><br><span class="line">    console.log(<span class="string">'錯誤:'</span>, err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="觀念解析"><a href="#觀念解析" class="headerlink" title="觀念解析"></a>觀念解析</h3><h5 id="true-預設值-非同步"><a href="#true-預設值-非同步" class="headerlink" title="true(預設值) 非同步"></a>true(預設值) 非同步</h5><p>使用非同步的設定時，我們的程式碼不會等到資料回傳回來，就會開始執行後續程式碼，因為有時候我們撈取的 JSON 檔是一大筆資料，那等我們等一大筆筆資料抓完才去執行後續動作，網頁就會在載入完成之前都卡在那邊，無形中就會浪費許多時間成本，因此若要執行非同步，則需另設定一組函式來判定onload狀態，當onload完成後即可取得資料。</p>
+<h5 id="false-同步"><a href="#false-同步" class="headerlink" title="false 同步"></a>false 同步</h5><p>會等資料回傳(接收)完畢，才繼續往下跑</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../../26/1226/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript- JSON公開資料
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../24/1224/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript- AJAX執行概念</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目錄</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一種：XMLHttpRequest"><span class="nav-number">1.</span> <span class="nav-text">第一種：XMLHttpRequest</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#console可得知的串接狀態"><span class="nav-number">1.1.</span> <span class="nav-text">console可得知的串接狀態</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#xmlHttp5個狀態："><span class="nav-number">1.1.1.</span> <span class="nav-text">xmlHttp5個狀態：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#得到服務器響應的狀態碼："><span class="nav-number">1.1.2.</span> <span class="nav-text">得到服務器響應的狀態碼：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二種：jQuery-原語法"><span class="nav-number">2.</span> <span class="nav-text">第二種：jQuery- 原語法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三種：jQuery-Fetch語法"><span class="nav-number">3.</span> <span class="nav-text">第三種：jQuery- Fetch語法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#觀念解析"><span class="nav-number">4.</span> <span class="nav-text">觀念解析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#true-預設值-非同步"><span class="nav-number">4.0.1.</span> <span class="nav-text">true(預設值) 非同步</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#false-同步"><span class="nav-number">4.0.2.</span> <span class="nav-text">false 同步</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="../../../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../../../archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="../../../../categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="../../../../tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="../../../../about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 Vince Blog All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    // 
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.css">
+
+  
+<script src="../../../../fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="../../../../js/script.js"></script>
+
+
+<script src="../../../../js/bootstrap.js"></script>
+
+
+<script src="../../../../js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

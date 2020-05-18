@@ -104,7 +104,7 @@
         
           <section id="main">
   
-    <article id="post-1120_2"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-1219"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -112,7 +112,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/11/20/1120_2/">JavaScript_解析BOM與DOM</a>
+      <a class="article-title" href="../../2019/12/19/1219/">Bootstrap_影片彈出視窗(實作)</a>
     </h1>
   
 
@@ -120,8 +120,8 @@
     
     <div class="article-meta">
       
-	<a href="../../2019/11/20/1120_2/" class="article-date">
-	  <time datetime="2019-11-19T16:00:00.000Z" itemprop="datePublished">十一月 20, 2019</time>
+	<a href="../../2019/12/19/1219/" class="article-date">
+	  <time datetime="2019-12-18T16:00:00.000Z" itemprop="datePublished">十二月 19, 2019</time>
 	</a>
 
        
@@ -129,27 +129,78 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="什麼是BOM？"><a href="#什麼是BOM？" class="headerlink" title="什麼是BOM？"></a>什麼是BOM？</h4><p>瀏覽器物件模型（Browser Object Model,BOM）是瀏覽器提供的附加對象，用於處理 document 以外的所有内容，主要處理瀏覽器窗口和框架，不过通常瀏覽器特定的 JavaScript 也會被看作 BOM 的一部分。<br>區別：BOM 描述了與瀏覽器進行交互的方法和接口，DOM 描述了處理網頁内容的方法和接口。</p>
+        <h4 id="目的：點擊影片後顯示彈出視窗，並自動播放影片內容"><a href="#目的：點擊影片後顯示彈出視窗，並自動播放影片內容" class="headerlink" title="目的：點擊影片後顯示彈出視窗，並自動播放影片內容"></a>目的：點擊影片後顯示彈出視窗，並自動播放影片內容</h4><p><img src="https://i.imgur.com/eDBfZuu.png" alt=""></p>
 <ul>
-<li>window 物件包含属性：document、navigator、frames、history、location、screen</li>
-<li>document 根節點包含子節點：forms、location、anchors、images、links</li>
+<li>設置HTML樣板</li>
 </ul>
-<p><img src="https://i.imgur.com/y6ohu8g.png" alt=""></p>
-<h4 id="什麼是DOM-Document-Object-Model-？"><a href="#什麼是DOM-Document-Object-Model-？" class="headerlink" title="什麼是DOM(Document Object Model)？"></a>什麼是DOM(Document Object Model)？</h4><p>檔案物件模型（Document Object Model, DOM）是瀏覽器的執行規範，提供了結構化的標準方法，將網頁的程式碼及其他程式語言結合起來。開發人員即可以通過文件中物件的屬性、方法和事件來掌控、操縱和建立動態的網頁元素。</p>
-<p>每個 DOM 的基礎建置在一個(D)文件上（也就是以 document 作為根基），而由 document 中的每個(O)物件作為出一個個節點，最後由這一個個節點，組成為一個 DOM Tree。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  &lt;!-- VIDEO PLAY --&gt;</span><br><span class="line">&lt;section id=<span class="string">"video-play"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"dark-overlay"</span>&gt; </span><br><span class="line">    &lt;div class=<span class="string">"container p-5"</span>&gt; </span><br><span class="line">    &lt;div class=<span class="string">"row"</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">"col"</span>&gt;</span><br><span class="line">          &lt;a href=<span class="string">"#"</span> class=<span class="string">"video"</span> data-video=<span class="string">"https://www.youtube.com/embed/SjJ08V166uU"</span> data-toggle=<span class="string">"modal"</span> data-target=<span class="string">"#videoModal"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"fas fa-play fa-3x"</span>&gt;&lt;/i&gt;&lt;!--data-toggle 通常會伴隨一個icon，告知系統在點擊後會觸發另一個行動 --&gt;</span><br><span class="line">          &lt;/a&gt;</span><br><span class="line">          &lt;h1&gt;Watch Our Publicity Film&lt;/h1&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>D：（文件）瀏覽器當前載入的 document</li>
-<li>O：（物件）將 document 中的所有元素視為物件，可以調用其屬性、方法</li>
-<li>M：（模型）所有的物件在該結構中都是節點，這些眾多節點組成一個樹狀結構</li>
+<li>點擊後開啟Modal互動視窗</li>
 </ul>
-<p><img src="https://i.imgur.com/01xXBTU.jpg" alt=""></p>
-<p>DOM 節點有:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- VIDEO MODAL --&gt;</span><br><span class="line">&lt;div class=<span class="string">"modal fade"</span> id=<span class="string">"videoModal"</span>&gt; &lt;!--點擊後淡化原視窗背景顏色 --&gt;</span><br><span class="line">  &lt;div class=<span class="string">"modal-dialog"</span>&gt;&lt;!-- 影片左右置中進行--&gt;</span><br><span class="line">    &lt;div class=<span class="string">"modal-content"</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">"modal-body"</span>&gt;</span><br><span class="line">        &lt;button class=<span class="string">"close"</span> data-dismiss=<span class="string">"modal"</span>&gt;&lt;!--關閉鈕 --&gt;</span><br><span class="line">          &lt;span&gt;&amp;<span class="built_in">times</span>;&lt;/span&gt;</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">        &lt;iframe src=<span class="string">""</span> frameborder=<span class="string">"0"</span> height=<span class="string">"350"</span> width=<span class="string">"100%"</span> allowfullscreen&gt;&lt;/iframe&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>元素節點：上圖中html、body、p標籤皆是元素節點。</li>
-<li>文本節點:向用户展示的内容，如li…/li中的 JavaScript、DOM、CSS 等文本。</li>
-<li>屬性節點:標籤中的屬性，如a標籤中的連結屬性href=”<a href="http://www.yahoo.com&quot;。" target="_blank" rel="noopener">http://www.yahoo.com&quot;。</a></li>
+<li>套用JQ影片播放語法</li>
 </ul>
-<h5 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h5><p>用 DOM API 可以輕鬆地删除、添加和替換節點。<br>| DOM 操作 |说明 |<br>| ————- |:————-:|<br>|creatElement(element) |創建一个新的元素節點|<br>|creatTextNode() |創建一个包含給定文本的新文本節點|<br>|appendChild() |指定節點的最後一個節點列表後添加一个新的子節點|<br>|insertBefore() |將一個給定節點节点插入到一个給定元素節點的給定子節點的前面|<br>|removeChild() |从一个给定元素中删除子节点|<br>|replaceChild() |把一个给定父元素里的一个子节点替换为另外一个节点|</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Video Play</span><br><span class="line">$(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  // Auto play modal video</span><br><span class="line">  $(<span class="string">".video"</span>).click(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    var theModal = $(this).data(<span class="string">"target"</span>),</span><br><span class="line">      videoSRC = $(this).attr(<span class="string">"data-video"</span>),</span><br><span class="line">      videoSRCauto = videoSRC + <span class="string">"?modestbranding=1&amp;rel=0&amp;controls=0&amp;showinfo=0&amp;html5=1&amp;autoplay=1"</span>;</span><br><span class="line">    $(theModal + <span class="string">' iframe'</span>).attr(<span class="string">'src'</span>, videoSRCauto);</span><br><span class="line">    $(theModal + <span class="string">' button.close'</span>).click(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      $(theModal + <span class="string">' iframe'</span>).attr(<span class="string">'src'</span>, videoSRC);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="實作成品"><a href="#實作成品" class="headerlink" title="實作成品"></a>實作成品</h4><p>彈出式影片: <a href="https://vince-chen-hao.github.io/BS_NewsChannel/index.html">運動頻道</a></p>
+<p><img src="https://i.imgur.com/vhpe9O4.png" alt=""></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-1218"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2019/12/18/1218/">JavaScript_動態型別</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2019/12/18/1218/" class="article-date">
+	  <time datetime="2019-12-17T16:00:00.000Z" itemprop="datePublished">十二月 18, 2019</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="動態型別"><a href="#動態型別" class="headerlink" title="動態型別"></a>動態型別</h4><p>在JavaScript中，不需要宣告變數的型別，因為JavaScript是使用「動態型別」在處理變數。<br>僅需要宣告變數(type)，不需要告訴JavaScript變數的型別(type)，它會在執行程式時，自動判別變數的型別，而且一個變數在不同時候可能擁有不同型別。</p>
+<h4 id="JavaScript的六種純值-primitive"><a href="#JavaScript的六種純值-primitive" class="headerlink" title="JavaScript的六種純值(primitive)"></a>JavaScript的六種純值(primitive)</h4><p>純值是一種資料型別，代表基本型別，只是一個值，而非物件。</p>
+<h5 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h5><p>JavaScript給所有變數的初始值，變數會一直處於undefined，直到程式碼執行到設定變數的值</p>
+<h5 id="null"><a href="#null" class="headerlink" title="null"></a>null</h5><p>表示不存在，可以在程式宣告時，給與該變數的值為null，用以表示該變數沒有值。</p>
+<h5 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h5><p>表示對或錯，用true或false表示值</p>
+<h5 id="Number-數值"><a href="#Number-數值" class="headerlink" title="Number(數值)"></a>Number(數值)</h5><p>在JavaScript中的數值皆為浮點數，不像其他程式語言還會細分整數或其他浮點數等，所以在JavaScript中也可以直接把他假裝為整數。</p>
+<h5 id="String-字串"><a href="#String-字串" class="headerlink" title="String(字串)"></a>String(字串)</h5><p>由一連串字符所組成，可以單引號或雙引號表示</p>
+<h5 id="Symbal-符號"><a href="#Symbal-符號" class="headerlink" title="Symbal(符號)"></a>Symbal(符號)</h5><p>這是新的型別，被用在ES6中，尚未被全部的瀏覽器支援</p>
+<h5 id="強制型轉-Coercion"><a href="#強制型轉-Coercion" class="headerlink" title="強制型轉(Coercion)"></a>強制型轉(Coercion)</h5><p>JavaScript引擎自動將1轉換為字串’1’，才繼續做相加運算，自動避免出錯</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = 8 + <span class="string">'7'</span>;</span><br><span class="line">console.log(a);//87</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -169,7 +220,7 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-1115"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-1215"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -177,7 +228,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/11/15/1115/">Bootstrap_navbar導覽頁面</a>
+      <a class="article-title" href="../../2019/12/15/1215/">JavaScript_物件傳參考特性</a>
     </h1>
   
 
@@ -185,8 +236,8 @@
     
     <div class="article-meta">
       
-	<a href="../../2019/11/15/1115/" class="article-date">
-	  <time datetime="2019-11-14T16:00:00.000Z" itemprop="datePublished">十一月 15, 2019</time>
+	<a href="../../2019/12/15/1215/" class="article-date">
+	  <time datetime="2019-12-14T16:00:00.000Z" itemprop="datePublished">十二月 15, 2019</time>
 	</a>
 
        
@@ -194,31 +245,18 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="navbar導覽使用方式"><a href="#navbar導覽使用方式" class="headerlink" title="navbar導覽使用方式"></a>navbar導覽使用方式</h2><ul>
-<li>nav外層使用<div class=”container”></div>包住時，Navbar導覽列放置在頁面中央或內容的中間，若沒有設定container，導覽列預設的內容寬度是浮動，並自動佔滿水平寬度</li>
-<li>透過navbar-expand定義在何種尺寸，menu項目的呈現會改為「漢堡折疊」樣式效果</li>
-<li>使用bootstrap自定義的data-toggle及data-target，決定按鈕點下之後，menu的div要以collapse方式展開</li>
-<li>navbar-expand-sm大小則是決定當螢幕尺寸小於sm時，會改為以「三」顯示menu項目</li>
+        <h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><ul>
+<li>傳值(Call by value)：在 JavaScript 中的純值 是傳值。(傳過去以後就沒有任何關聯性)</li>
+<li>傳參考/傳參照(Call by reference)：傳遞給函式的是它實際參數的隱式參照，而不是實際的拷貝。</li>
+<li>傳共用物件(Call by sharing)： a 與 b 是共用同一個物件內容，若 b 修改了物件內容，則 a 也會被修改成同樣內容(物件是共用的，沒有拷貝)。</li>
 </ul>
-<p><img src="https://i.imgur.com/Bm6IPRD.png" alt=""></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;nav id=<span class="string">"main-nav"</span> class=<span class="string">"navbar navbar-expand-sm navbar-dark fixed-top"</span> &gt;</span><br><span class="line"></span><br><span class="line">&lt;nav class=<span class="string">"nav navbar-default"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"container-fluid"</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">"navbar-header"</span>&gt;</span><br><span class="line">          &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"navbar-toggle"</span> data-toggle=<span class="string">"collapse"</span> data-target=<span class="string">"#Navbarshow"</span>&gt;</span><br><span class="line">              &lt;span class=<span class="string">"icon-bar"</span>&gt;&lt;/span&gt;</span><br><span class="line">              &lt;span class=<span class="string">"icon-bar"</span>&gt;&lt;/span&gt;</span><br><span class="line">              &lt;span class=<span class="string">"icon-bar"</span>&gt;&lt;/span&gt; </span><br><span class="line">          &lt;/button&gt;</span><br><span class="line">          &lt;a class=<span class="string">"navbar-brand"</span> href=<span class="string">"#"</span>&gt;Brand&lt;/a&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=<span class="string">"collapse navbar-collapse"</span> id=<span class="string">"Navbarshow"</span>&gt; //底下放要縮放的內容</span><br><span class="line">          &lt;ul class=<span class="string">"nav navbar-nav"</span>&gt;</span><br><span class="line">              &lt;li&gt;&lt;a data-toggle=<span class="string">"tab"</span> href=<span class="string">"#home"</span>&gt;Home&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">              &lt;li&gt;&lt;a data-toggle=<span class="string">"tab"</span> href=<span class="string">"#menu1"</span>&gt;Page 1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">              &lt;li&gt;&lt;a data-toggle=<span class="string">"tab"</span> href=<span class="string">"#menu2"</span>&gt;Page 2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">          &lt;/ul&gt;</span><br><span class="line">          &lt;ul class=<span class="string">"nav navbar-nav navbar-right"</span>&gt;</span><br><span class="line">              &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;&lt;span class=<span class="string">"glyphicon glyphicon-log-in"</span>&gt;&lt;/span&gt; Log <span class="keyword">in</span>&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">              &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;Log out&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">              &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;&lt;span class=<span class="string">"glyphicon glyphicon-user"</span>&gt;&lt;/span&gt; Admin&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">          &lt;/ul&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/nav&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 傳值</span><br><span class="line">var person = <span class="string">'小明'</span>; // 純值</span><br><span class="line">var person2 = person;</span><br><span class="line">person2 = <span class="string">'杰倫'</span>;</span><br><span class="line">console.log(perosn, person2)</span><br><span class="line">// 小明,杰倫</span><br><span class="line">//傳參考</span><br><span class="line">var person = &#123;</span><br><span class="line"> name: <span class="string">'小明'</span></span><br><span class="line">&#125;;</span><br><span class="line">var person2 = person;</span><br><span class="line">perosn2.name = <span class="string">'杰倫'</span>; // 改變物件內容</span><br><span class="line">console.log(perosn, person2);</span><br><span class="line">console.log(perosn === person2);</span><br><span class="line">// 杰倫,杰倫</span><br><span class="line">// <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="建立漢堡按鍵步驟"><a href="#建立漢堡按鍵步驟" class="headerlink" title="建立漢堡按鍵步驟"></a>建立漢堡按鍵步驟</h4><ol>
-<li><p>class=”navbar-toggle”：這個是關鍵字，有它才能讓我們順利看到漢堡按鍵，並出現在視窗右方。</p>
-</li>
-<li><p>data-toggle=”collapse”：這是用來製作動畫效果的，沒有的話，我們點「三」的時候不會有任何反應。</p>
-</li>
-<li><p>data-target=”#myNavbar”這裡面的myNavbar是一個CSS的id，可以任意命名，一定要跟下面縮放的id對應才可執行。</p>
-</li>
-<li><p><span class="icon-bar"></span>這段這是用來產生「一」，當有三個「一」時，合在一起就會變「三」的按鍵了。</p>
-</li>
-<li><p>class=”collapse navbar-collapse”：這兩字詞幫助我們在正常視窗的情況下，可以看到原本的導覽列。</p>
-</li>
-<li><p>id=”Navbarshow”與button裡的data-target做對應，能讓我們看到縮放裡的內容</p>
-</li>
-<li><p>如果希望navbar不會受頁面捲動下移而消失，則在class加上fixed-top，變會置頂在最上方</p>
-</li>
-</ol>
+<p>More info: <a href="https://medium.com/@kumoshih/js-%E6%A0%B8%E5%BF%83%E7%AF%87-%E5%82%B3%E5%80%BC-%E5%82%B3%E5%8F%83%E8%80%83-5fdc5023e549" target="_blank" rel="noopener">傳值、傳參考</a></p>
+<h3 id="應對方式：Object-assign"><a href="#應對方式：Object-assign" class="headerlink" title="應對方式：Object.assign"></a>應對方式：Object.assign</h3><p><img src="https://i.imgur.com/GGbYNRa.png" alt=""></p>
+<h3 id="操作測試"><a href="#操作測試" class="headerlink" title="操作測試"></a>操作測試</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> openModal(item)&#123;</span><br><span class="line"></span><br><span class="line">    //this.tempProduct= item;  //因為物件傳參考的特性，直接用item會與tmepProduct相同</span><br><span class="line">    this.tempProduct= Object.assign(&#123;&#125;,item); //可採用es6語法，將item傳自獨立的空物件裡，才不會互相渲染</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>無法直接指定匯入變數中，因傳參考的特性會互相渲染，需將item傳入空物件裡才能順利使用。</p>
 
       
     </div>
@@ -226,7 +264,7 @@
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
 
       
     </footer>
@@ -238,7 +276,7 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-1114"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-1212"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -246,7 +284,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/11/14/1114/">Bootstrap_Collapse &amp; Accordion折疊語法</a>
+      <a class="article-title" href="../../2019/12/12/1212/">CSS_統整display各種屬性</a>
     </h1>
   
 
@@ -254,8 +292,8 @@
     
     <div class="article-meta">
       
-	<a href="../../2019/11/14/1114/" class="article-date">
-	  <time datetime="2019-11-13T16:00:00.000Z" itemprop="datePublished">十一月 14, 2019</time>
+	<a href="../../2019/12/12/1212/" class="article-date">
+	  <time datetime="2019-12-11T16:00:00.000Z" itemprop="datePublished">十二月 12, 2019</time>
 	</a>
 
        
@@ -263,347 +301,10 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="什麼是Collapse折疊？"><a href="#什麼是Collapse折疊？" class="headerlink" title="什麼是Collapse折疊？"></a>什麼是Collapse折疊？</h3><p>使特定的頁面區塊隱藏起來，當點擊某些按鈕或者動作時，資料才會顯現出來。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;button data-toggle=<span class="string">"collapse"</span> data-target=<span class="string">"#demo"</span>&gt;Collapsible&lt;/button&gt;</span><br><span class="line">&lt;div id=<span class="string">"demo"</span> class=<span class="string">"collapse"</span>&gt;</span><br><span class="line">Lorem ipsum dolor text....</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>按鈕上一定要有 data-toggle=“collapse” 這個宣告詞，然後需要顯示的資訊在 data-target=”#demo” 的連結上。</p>
-</li>
-<li><p>再利用 div 或者是其他區塊類的元素，增加 id=“demo”，重要的是 demo 跟 button 的 data-target 命名必須相同才可運作。</p>
-</li>
-<li><p>預設的折疊效果是隱藏的，點擊才會出現，若要設定為展開開狀態，在collapse後方添加show便可顯現。</p>
-</li>
-</ul>
-<h3 id="Accordion隱藏折疊資料"><a href="#Accordion隱藏折疊資料" class="headerlink" title="Accordion隱藏折疊資料"></a>Accordion隱藏折疊資料</h3><p>透過 Accordion 的方法來處理時，看起來所有的連結會比較整齊， FAQ 問答頁面多使用這種模式。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"accordion"</span> &gt;</span><br><span class="line"> &lt;div class=<span class="string">"card"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"card-header"</span>&gt;</span><br><span class="line">    &lt;h5 class=<span class="string">"mb-0"</span>&gt;</span><br><span class="line">     &lt;div href=<span class="string">"#collapse1"</span> data-toggle=<span class="string">"collapse"</span> data-parent=<span class="string">"#accordion"</span>&gt;</span><br><span class="line">      &lt;i class=<span class="string">"fas fa-chevron-circle-down"</span>&gt;&lt;/i&gt; Good Deal&lt;/div&gt;</span><br><span class="line">    &lt;/h5&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  </span><br><span class="line">    &lt;div id=<span class="string">"collapse1"</span> class=<span class="string">"collapse show"</span>&gt;</span><br><span class="line">     &lt;div class=<span class="string">"card-body"</span>&gt;</span><br><span class="line">     Lorem ipsum dolor, sit amet consectetur adipisicing elit... </span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;      </span><br><span class="line">  &lt;/div&gt; </span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="實作成果"><a href="#實作成果" class="headerlink" title="實作成果"></a>實作成果</h4><p><img src="https://i.imgur.com/29cCi0A.png" alt=""></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-1113"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/11/13/1113/">Bootstrap_宣告指令（移動區塊、改變色系）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2019/11/13/1113/" class="article-date">
-	  <time datetime="2019-11-12T16:00:00.000Z" itemprop="datePublished">十一月 13, 2019</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="色系調色盤-bg-text"><a href="#色系調色盤-bg-text" class="headerlink" title="色系調色盤-bg/text"></a>色系調色盤-bg/text</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class=<span class="string">"text-primary"</span>&gt;調整文字色系&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.imgur.com/C9pXmEY.png" alt=""><br><img src="https://i.imgur.com/hGezCVV.png" alt=""></p>
-<h4 id="移動位置區塊-p-m"><a href="#移動位置區塊-p-m" class="headerlink" title="移動位置區塊-p/m"></a>移動位置區塊-p/m</h4><ul>
-<li>移動y軸代表調整上下位置，x軸則是左右位置</li>
-<li>pl= padding left|</li>
-<li>py= padding top &amp; bottom</li>
-<li>ml= margin left</li>
-</ul>
-<h4 id="響應式圖片"><a href="#響應式圖片" class="headerlink" title="響應式圖片"></a>響應式圖片</h4><ul>
-<li>img-fluid自動縮放圖片寬度</li>
-<li>rounded 可以讓圖片顯示圓角傚果</li>
-<li>rounded-circle 可以設置橢圓形圖片</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">"..."</span> class=<span class="string">"img-fluid rounded"</span> alt=<span class="string">"Responsive image"</span>&gt;</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="背景圖"><a href="#背景圖" class="headerlink" title="背景圖"></a>背景圖</h4><p>background-attachment是背景固定模式的屬性，而不同的固定模式就有不一樣的視覺效果</p>
-<ul>
-<li>scroll模式也是預設值，背景圖會隨著外圍頁面滾動而移動。</li>
-<li>fixed模式，不管外面、裡面怎麼滾，他都是不會動的。</li>
-<li>local模式，主要的特色就是，自己的區塊內如果滾動時，背景圖也會跟著移動。</li>
-</ul>
-<h4 id="icon圖型"><a href="#icon圖型" class="headerlink" title="icon圖型"></a>icon圖型</h4><p>i標籤將想使用的icon圖寫入欲出現位置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i class=<span class="string">"fas fa-band-aid"</span>&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://pjchender.blogspot.com/2015/04/font-awesomeicon.html" target="_blank" rel="noopener">font-awesome</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-1111"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/11/11/1111/">Bootstrap_GridSystem 配置版面</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2019/11/11/1111/" class="article-date">
-	  <time datetime="2019-11-10T16:00:00.000Z" itemprop="datePublished">十一月 11, 2019</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="定義網格規則"><a href="#定義網格規則" class="headerlink" title="定義網格規則"></a>定義網格規則</h4><ul>
-<li><p>Bootstrap使用flexbox建立網格系統，符合響應式設計，並且能夠更方便的實現等高及對齊置中效果。</p>
-</li>
-<li><p>定義列與行的語法，先決定外層row列數，再設定內層的寬度col，寬度bootstrap定義分成12等分， <code>&lt;div class=&quot;col-[裝置尺寸]-[寬度大小]&quot;&gt;</code></p>
-</li>
-<li><p>定義螢幕尺寸(xs, sm, md, lg)<br><img src="https://i.imgur.com/zacSWXI.png" alt=""></p>
-</li>
-</ul>
-<p>範例：&lt;div class=”col-md-6&gt; 在md的大小時會佔據6/12一半的寬度(深綠色)，程式碼如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"row"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"col-md-12  text-center"</span>&gt;12/12&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=<span class="string">"row"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"col-md-6  text-center"</span>&gt;6/12&lt;/div&gt;</span><br><span class="line">  &lt;div class=<span class="string">"col-md-6  text-center"</span>&gt;6/12&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.imgur.com/1BlIJRJ.png" alt=""></p>
-<h4 id="垂直對齊容器位置"><a href="#垂直對齊容器位置" class="headerlink" title="垂直對齊容器位置"></a>垂直對齊容器位置</h4><p>可以在.row的 class 加上：<br>左-&gt;align-items-start<br>右-&gt;align-items-end<br>中-&gt;align-items-center</p>
-<p><img src="https://i.imgur.com/peBTLQ0.png" alt=""></p>
-<h4 id="水平調整容器位置"><a href="#水平調整容器位置" class="headerlink" title="水平調整容器位置"></a>水平調整容器位置</h4><p><img src="https://i.imgur.com/CSj8mFQ.png" alt=""></p>
-<h4 id="補充資料"><a href="#補充資料" class="headerlink" title="補充資料"></a>補充資料</h4><ul>
-<li><p>在預設的情況下，每一個欄（column）之間都會有間隙（gutter），透過在 .row 上加上 .no-gutters 即可去除</p>
-</li>
-<li><p>我們可以在同一個 column 上給多的 class 來讓頁面在不同螢幕尺寸時有不同的排版：<code>&lt;div class=&quot;col-sm-4 col-md-8&quot;&gt;&lt;/div&gt;</code>當螢幕尺寸為md以上時會以8/12顯示，sm則以4/12顯示</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-1111_2"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/11/11/1111_2/">Bootstrap_Carousel輪播幻燈片</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2019/11/11/1111_2/" class="article-date">
-	  <time datetime="2019-11-10T16:00:00.000Z" itemprop="datePublished">十一月 11, 2019</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Carousel中文為幻燈片的意思，在元件裡面可以添加控制元素來控制幻燈片的播放。</p>
-<h4 id="組成結構"><a href="#組成結構" class="headerlink" title="組成結構"></a>組成結構</h4><p>分為三個元素組成</p>
-<ul>
-<li>Carousel item</li>
-<li>Carousel controls</li>
-<li>Carousel indicators</li>
-</ul>
-<p><img src="https://i.imgur.com/BNCk0cb.jpg" alt=""></p>
-<h4 id="Carousel-item項目"><a href="#Carousel-item項目" class="headerlink" title="Carousel item項目"></a>Carousel item項目</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"myCarousel"</span> class=<span class="string">"carousel slide"</span> data-ride=<span class="string">"carousel"</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">"carousel-inner"</span>&gt;</span><br><span class="line">        &lt;div class=<span class="string">"carousel-item active"</span>&gt;</span><br><span class="line">            &lt;img class=<span class="string">"d-block w-100"</span> src=<span class="string">"img/bg1.jpg"</span> alt=<span class="string">"slide01"</span>&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=<span class="string">"carousel-item"</span>&gt;</span><br><span class="line">            &lt;img class=<span class="string">"d-block w-100"</span> src=<span class="string">"img/bg2.jpg"</span> alt=<span class="string">"slide01"</span>&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=<span class="string">"carousel-item"</span>&gt;</span><br><span class="line">            &lt;img class=<span class="string">"d-block w-100"</span> src=<span class="string">"img/bg3.jpg"</span> alt=<span class="string">"slide01"</span>&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>添加一個carousel容器，他可以包裝整個幻燈片組建所需的元件</li>
-<li>內容放在一個carousel-inner 容器裡並在項目中carousel-item放置圖片與資訊內容</li>
-<li>d-block代表display:block為佔據一行，w-100表示寬度100</li>
-<li>data-ride 讓幻燈片可以自動切換 預設頻率是每五秒更換一次，若需要有滑動效果可以在最外面加個 slide。</li>
-</ul>
-<h4 id="Controls控制項"><a href="#Controls控制項" class="headerlink" title="Controls控制項"></a>Controls控制項</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"#myCarousel"</span> data-slide=<span class="string">"prev"</span>  class=<span class="string">"carousel-control-prev"</span>&gt;</span><br><span class="line"> &lt;span class=<span class="string">"carousel-control-prev-icon"</span>&gt;  &lt;/span&gt;</span><br><span class="line">&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;a href=<span class="string">"#myCarousel"</span> data-slide=<span class="string">"next"</span>  class=<span class="string">"carousel-control-next"</span>&gt;</span><br><span class="line">    &lt;span class=<span class="string">"carousel-control-next-icon"</span>&gt;&lt;/span&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在data-slide分別設置prv及next以完成設定左右切換圖片的功能</li>
-</ul>
-<h4 id="indicators指示器"><a href="#indicators指示器" class="headerlink" title="indicators指示器"></a>indicators指示器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol class=<span class="string">"carousel-indicators"</span>&gt;</span><br><span class="line">  &lt;li data-target=<span class="string">"#myCarousel"</span> data-slide-to=<span class="string">"0"</span> class=<span class="string">"active"</span>&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li data-target=<span class="string">"#myCarousel"</span> data-slide-to=<span class="string">"1"</span>&gt;&lt;/li&gt;</span><br><span class="line">  &lt;li data-target=<span class="string">"#myCarousel"</span> data-slide-to=<span class="string">"2"</span>&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用ol及li列表結構並套用carousel-indicators</li>
-<li>每個li標籤對應一個slide，並將active加入到齊幻燈片內，否則輪播將看不見。</li>
-</ul>
-<h5 id="改變slide停留時間"><a href="#改變slide停留時間" class="headerlink" title="改變slide停留時間"></a>改變slide停留時間</h5><p>每張幻燈片預設的停留時間為5秒，如果想要改變停留的時間，可加上interval這個選項，調整滯留的秒數。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.carousel'</span>).carousel(&#123;</span><br><span class="line">      interval: 6000,</span><br><span class="line">      pause: <span class="string">'hover'</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="取消自動輪播"><a href="#取消自動輪播" class="headerlink" title="取消自動輪播"></a>取消自動輪播</h5><p>將interval設為false即可取消自動輪播</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.carousel'</span>).carousel(&#123;</span><br><span class="line">  interval: <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h5 id="鼠標滑入持續輪播"><a href="#鼠標滑入持續輪播" class="headerlink" title="鼠標滑入持續輪播"></a>鼠標滑入持續輪播</h5><p>Carousel預設是當鼠標滑入時，輪播就會暫停。若想要讓滑鼠滑入時繼續輪播，就可使用以下設定。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$(<span class="string">'.carousel'</span>).carousel(&#123;</span><br><span class="line">  pause: <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h5 id="停止循環播放"><a href="#停止循環播放" class="headerlink" title="停止循環播放"></a>停止循環播放</h5><p>bootstrap預設data-wrap：ture（循環播放），若投影片只想播放一個循環，更改為false即可停止無限循環。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"myCarousel"</span> class=<span class="string">"carousel slide"</span> data-wrap=<span class="string">"false"</span> data-ride=<span class="string">"carousel"</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="實作成果"><a href="#實作成果" class="headerlink" title="實作成果"></a>實作成果</h4><p>首頁輪播: <a href="https://vince-chen-hao.github.io/BS_NewsChannel/">運動頻道</a></p>
-<p><img src="/images/caro_image.png" alt=""></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-1110"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/11/10/1110/">HTML_解析絕對/相對路徑</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2019/11/10/1110/" class="article-date">
-	  <time datetime="2019-11-09T16:00:00.000Z" itemprop="datePublished">十一月 10, 2019</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="定義「相對路徑」和「絕對路徑」"><a href="#定義「相對路徑」和「絕對路徑」" class="headerlink" title="定義「相對路徑」和「絕對路徑」"></a>定義「相對路徑」和「絕對路徑」</h4><ul>
-<li>相對路徑是相對於現在目錄的路徑表示，也就是你現在這個檔案在哪裡，這個目錄的路徑起始點就在哪裡，所以每個檔案的相對路徑起始點都可能會不同</li>
-<li>絕對路徑是一個絕對位置，他不會隨著檔案位置的變換而改變他的路徑。</li>
-</ul>
-<h4 id="舉例的路徑符號"><a href="#舉例的路徑符號" class="headerlink" title="舉例的路徑符號"></a>舉例的路徑符號</h4><ul>
-<li>「.」是代表目前所在目錄</li>
-<li>「..」是代表上層目錄，若目前已經是根目錄則依然為目前所在目錄</li>
-<li>「/」在各個目錄名稱之間的分隔符號，若放置在路徑之前則代表根目錄</li>
-</ul>
-<h5 id="相對路徑顯示圖片"><a href="#相對路徑顯示圖片" class="headerlink" title="相對路徑顯示圖片"></a>相對路徑顯示圖片</h5><p><img src="https://dotblogsfile.blob.core.windows.net/user/sqz777/ef6dc91b-b50c-4956-bb48-427e1debfe9c/1501077214_39801.png" alt=""> </p>
-<h5 id="絕對路徑顯示圖片"><a href="#絕對路徑顯示圖片" class="headerlink" title="絕對路徑顯示圖片"></a>絕對路徑顯示圖片</h5><p><img src="https://dotblogsfile.blob.core.windows.net/user/sqz777/ef6dc91b-b50c-4956-bb48-427e1debfe9c/1501077304_52355.png" alt=""> </p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/HTML/" rel="tag">HTML</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-1102"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/11/02/1102/">CSS_轉場特效(transitions)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2019/11/02/1102/" class="article-date">
-	  <time datetime="2019-11-01T16:00:00.000Z" itemprop="datePublished">十一月 2, 2019</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="使用時機"><a href="#使用時機" class="headerlink" title="使用時機"></a>使用時機</h4><p>想在滑鼠移上去的時候做一點效果，希望能讓整個頁面看起來更精緻，為了使畫面在轉場時變得生動，此時就很適合用到有漸變的動畫的transition。例：hover設定浮出來的效果（box shadow）並且變亮。注意：transition需寫在外層裡(尚未觸發前)，而非在hover效果層內</p>
-<p><img src="https://i.imgur.com/IVlCTyK.png" alt=""> </p>
-<p><img src="https://i.imgur.com/s11sQ8f.png" alt=""> </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;section id=<span class="string">"video-play"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"dark-overlay"</span>&gt; &lt;!-- 背景暗色 --&gt;</span><br><span class="line">    &lt;div class=<span class="string">"row"</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">"col"</span>&gt;</span><br><span class="line">        &lt;div class=<span class="string">"container p-5"</span>&gt;&lt;!-- padding --&gt;</span><br><span class="line">          &lt;a href=<span class="string">"#"</span> class=<span class="string">"video"</span> data-video=<span class="string">"https://www.youtube.com/embed/SjJ08V166uU"</span> data-toggle=<span class="string">"modal"</span> data-target=<span class="string">"#videoModal"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"fas fa-play fa-3x"</span>&gt;&lt;/i&gt;&lt;!--data-toggle 通常會伴隨一個icon，告知系統在點擊後會觸發另一個行動 --&gt;</span><br><span class="line">          &lt;/a&gt;</span><br><span class="line">          &lt;h1&gt;Watch Our Publicity Film&lt;/h1&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="進階效果設定"><a href="#進階效果設定" class="headerlink" title="進階效果設定"></a>進階效果設定</h4><ul>
-<li>box-shadow陰影效果，也能在chrome內建工具進行細部調整</li>
-<li>filter效果brightness是可以調整亮度</li>
-<li>transform: scale(1.2) //指定元素由參考點縮放 m 倍</li>
-</ul>
-<p>參考網站: <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter/" target="_blank" rel="noopener">filterCSS属性</a> <a href="https://www.cssfilters.co/" target="_blank" rel="noopener">濾鏡效果製造器</a></p>
+        <h4 id="display-block"><a href="#display-block" class="headerlink" title="display: block"></a>display: block</h4><p>不論前後元素為何，display:block 元素會直接「換行」開始。<br><code>&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;、&lt;h2&gt;、&lt;iframe&gt;、&lt;img&gt;</code>這幾個 HTML 元素預設的 display 屬性是 block<br>可以自定義寬高或縮排(margin 、 padding 、 width 、 height 、 background-image 皆「有效」)</p>
+<h4 id="display-inline"><a href="#display-inline" class="headerlink" title="display: inline"></a>display: inline</h4><p>display : inline 的元素連在一起會在同一行，「不會換行」。<br>要讓 display : inline 元素水平置中的方式是在此元素的父元素加上 text-align : center。<br><code>&lt;a&gt;、&lt;span&gt;、&lt;b&gt;、&lt;i&gt;、&lt;iframe&gt;、&lt;img&gt;</code>這幾個 HTML 元素預設的 display 屬性是 inline<br>可以針對左右做縮排(margin-left 、 margin-right 、 padding-left 、 padding-right「有效」)<br>上下縮排會失效，且寬高為內容本身寬高，無法自定義寬高。 (margin-top 、 margin-bottom 、 padding-top 、 padding-bottom 、 width 、 height 、 background-image 皆「無效」)</p>
+<h4 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display: inline-block"></a>display: inline-block</h4><p>內部元素水平排列，而且不需要額外設定clear，也不會讓接著的元素疊上來。<br>可以理解為：外面是inline，裡面是block。所以元素「不會換行」，但是又可以設定元素的padding-top 、 padding-bottom 、 width 、 height 、 background-image 。</p>
+<h4 id="display-none"><a href="#display-none" class="headerlink" title="display: none"></a>display: none</h4><p>display設為none這個東西就不見了，不佔空間。<br>補充：visibility:hidden是隱形看不見，不過還是有佔空間</p>
 
       
     </div>
@@ -623,7 +324,7 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-1027"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-1211"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -631,7 +332,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/10/27/1027/">CSS_絕對/相對定位</a>
+      <a class="article-title" href="../../2019/12/11/1211/">Bootstrap_Lightbox影像燈箱</a>
     </h1>
   
 
@@ -639,8 +340,8 @@
     
     <div class="article-meta">
       
-	<a href="../../2019/10/27/1027/" class="article-date">
-	  <time datetime="2019-10-26T16:00:00.000Z" itemprop="datePublished">十月 27, 2019</time>
+	<a href="../../2019/12/11/1211/" class="article-date">
+	  <time datetime="2019-12-10T16:00:00.000Z" itemprop="datePublished">十二月 11, 2019</time>
 	</a>
 
        
@@ -648,17 +349,130 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>absolute 元素的定位是在他所處上層容器的相對位置</li>
-<li>如果沒有寫relative對應，則會依照瀏覽器預設的寬高為基準</li>
-<li>若要頁面「並排」可使用float，「重疊」可用相對定位語法</li>
+        <p>主要功能是點選照片，該張照片會以燈箱方式全版展開，提升觀看體驗，請參考<a href="https://ithelp.ithome.com.tw/articles/10193599" target="_blank" rel="noopener">Lightbox for Bootstrap</a>進行安裝</p>
+<p>結構分為兩層</p>
+<ul>
+<li>外層定義燈箱展示的照片，以及展示後的大小</li>
+<li>內層定義原始照片</li>
 </ul>
-<p><img src="https://i.imgur.com/A0HbxdZ.png" alt=""> </p>
-<h4 id="單獨使用relative及absolute的解析"><a href="#單獨使用relative及absolute的解析" class="headerlink" title="單獨使用relative及absolute的解析"></a>單獨使用relative及absolute的解析</h4><ul>
-<li>單設定一組absolute，會以body裡為範圍做位置上的移動，因此在設定一組absolute前，我們w通常會需要先新增一組relative當作外框架的基準，才能在目前的區塊去做移動而不是整個大body</li>
-<li>單設定一組relative，則box會以class目前所在的位置做移動(top:20px)</li>
+<p>在外層使用bootstrap自定義的data-toggle設定啟用lightbox功能;data-lightbox將多張照片群組起來，在左右切換照片時可以辨識為同一群組的照片</p>
+<ul>
+<li>新增程式碼至html裡使data-toggle串連lightbox</li>
 </ul>
-<h4 id="設定重疊順序z-index"><a href="#設定重疊順序z-index" class="headerlink" title="設定重疊順序z-index"></a>設定重疊順序z-index</h4><p>box1: z-index=2<br>box2: z-index=1<br>結果：box1會重疊在box2區塊上方</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"https://unsplash.it/1200/768.jpg?image=250"</span> data-toggle=<span class="string">"lightbox"</span> data-title=<span class="string">"A random title"</span> data-footer=<span class="string">"A custom footer text"</span>&gt;</span><br><span class="line">    &lt;img src=<span class="string">"https://unsplash.it/600.jpg?image=250"</span> class=<span class="string">"img-fluid"</span>&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最後添加jquery程式碼，避免預設效果，而採用引入的lightbox效果展示</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(document).on(<span class="string">'click'</span>, <span class="string">'[data-toggle="lightbox"]'</span>, <span class="keyword">function</span>(event) &#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line">    $(this).ekkoLightbox();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h4><p>燈箱畫冊: <a href="https://vince-chen-hao.github.io/BS_NewsChannel/collection.html">運動頻道</a></p>
+<p><img src="https://i.imgur.com/fg6QT4v.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-1207"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2019/12/07/1207/">VsCode- 常用快捷鍵</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2019/12/07/1207/" class="article-date">
+	  <time datetime="2019-12-06T16:00:00.000Z" itemprop="datePublished">十二月 7, 2019</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="以下快捷鍵限支援Mac"><a href="#以下快捷鍵限支援Mac" class="headerlink" title="以下快捷鍵限支援Mac"></a>以下快捷鍵限支援Mac</h4><ul>
+<li>程式自動排版：option + shift + f</li>
+<li>更改相同的命名：com + d</li>
+<li>選取多欄：shift + 點擊</li>
+<li>跳行(游標在字裡行間也可行)：com + enter</li>
+<li>套件：點擊html及可得知對應的css內容：按住com ＋ 點擊</li>
+</ul>
+<p><img src="/images/vscode.png" alt=""></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/VsCode/" rel="tag">VsCode</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-1204"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2019/12/04/1204/">CSS_圖片取代文字(SEO優化)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2019/12/04/1204/" class="article-date">
+	  <time datetime="2019-12-03T16:00:00.000Z" itemprop="datePublished">十二月 4, 2019</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="SEO搜尋優化"><a href="#SEO搜尋優化" class="headerlink" title="SEO搜尋優化"></a>SEO搜尋優化</h4><p>文字在SEO中的影響力仍然大於圖片，但我們也不可忽視圖片搜尋的趨勢。要兼顧排版及SEO，建議以圖文並茂、相輔相成的方式進行，若是因為版面限制，則可以運用其他可以放文字的區塊、頁面，將圖片中的內容轉換成文字，讓搜尋引擎爬蟲知道你的網站中也有這些內容！</p>
+<p>瀏覽器爬蟲網頁的過程會以搜尋文字為主，採用此形式協助網站做<a href="https://ithelp.ithome.com.tw/articles/10193599" target="_blank" rel="noopener">SEO優化</a></p>
+<p>目的：標題內新增圖片，讓logo背景蓋住文字內容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.logo h2&#123;</span><br><span class="line">    background-image: url(/photo/logoword.jpg);</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    display:block;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    text-indent:101%;</span><br><span class="line">    white-space:nowrap;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>text-indent: 101% 這是表示 段落首字縮排，將文字推出logo背景</li>
+<li>overflow: hidden;超出 div 父元素時，自動隱藏該元素</li>
+<li>white-space: nowrap：規定段落中的文字不得進行換行，常用於避免字數過多時自動換行導致閱讀效果變差</li>
+</ul>
 
       
     </div>
@@ -678,7 +492,7 @@
 <!-- Table of Contents -->
 
   
-    <article id="post-1028"  class="article article-type-post" itemscope itemprop="blogPost" >
+    <article id="post-1204-2"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -686,7 +500,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/10/27/1028/">CSS_區塊元素與行內元素</a>
+      <a class="article-title" href="../../2019/12/04/1204-2/">JavaScript_基礎語法：switch判斷式</a>
     </h1>
   
 
@@ -694,8 +508,8 @@
     
     <div class="article-meta">
       
-	<a href="../../2019/10/27/1028/" class="article-date">
-	  <time datetime="2019-10-26T16:00:00.000Z" itemprop="datePublished">十月 27, 2019</time>
+	<a href="../../2019/12/04/1204-2/" class="article-date">
+	  <time datetime="2019-12-03T16:00:00.000Z" itemprop="datePublished">十二月 4, 2019</time>
 	</a>
 
        
@@ -703,33 +517,14 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="區塊元素-block"><a href="#區塊元素-block" class="headerlink" title="區塊元素(block)"></a>區塊元素(block)</h4><ul>
-<li>在新的一行開始</li>
-<li>若沒有定義該元素長寬，則會100%佔滿所在空間</li>
-<li>例：<div>會佔滿整個區塊(整行)</li>
-<li>css語法：display:block;</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">區塊元素常見包括</span><br><span class="line">div、p、h1~h6、</span><br><span class="line">ul、ol、li、</span><br><span class="line">dl、dt、dd、</span><br><span class="line">form、table、hr、</span><br><span class="line">blockquote 、</span><br><span class="line">address、menu、pre.....等等</span><br></pre></td></tr></table></figure>
+        <h4 id="switch與if的差異"><a href="#switch與if的差異" class="headerlink" title="switch與if的差異"></a>switch與if的差異</h4><p>if else 會把每個條件跟程式碼都檢視過一次，而 switch 只會去檢視 case 內的條件是否吻合，吻合才去執行程式碼區塊，相對來說，if else 會比較消耗效能，因if語法瀏覽器會都進行處理，而switch需對應後才處理，並且跑到指定需求後便停止。除了比if語法有較快的效率，使程式碼更好閱讀，同時效能較佳，</p>
+<h5 id="使用時機"><a href="#使用時機" class="headerlink" title="使用時機"></a>使用時機</h5><p>如有確定特定狀態便推薦使用switch，ex：只有紅燈、黃燈、綠燈三種</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var light = yellow;</span><br><span class="line"></span><br><span class="line">switch(light)&#123;</span><br><span class="line">    // 如果是紅色就執行這區塊的程式碼</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'red'</span>:</span><br><span class="line">        console.log(<span class="string">'現在是'</span>+light);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">     // 如果是黃色就執行這區塊的程式碼 </span><br><span class="line">    <span class="keyword">case</span> <span class="string">'yellow'</span>:</span><br><span class="line">        console.log(<span class="string">'現在是'</span>+light);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">    // 如果上述都沒有符合的條件，就執行這區塊的程式碼   </span><br><span class="line">    default:</span><br><span class="line">        console.log(<span class="string">'現在是綠燈'</span>);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h5 id="switch嚴謹模式"><a href="#switch嚴謹模式" class="headerlink" title="switch嚴謹模式"></a>switch嚴謹模式</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var n = <span class="string">'5'</span>;</span><br><span class="line">switch(n)&#123;</span><br><span class="line">    <span class="keyword">case</span> 5:</span><br><span class="line">        console.log(<span class="string">'success'</span>);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">        </span><br><span class="line">    default:</span><br><span class="line">        console.log(<span class="string">'fail'</span>);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">// console 輸出 fail</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-<p><img src="https://i.imgur.com/A0HbxdZ.png" alt=""> </p>
-<h4 id="行內元素-inline"><a href="#行內元素-inline" class="headerlink" title="行內元素(inline)"></a>行內元素(inline)</h4><ul>
-<li>不一定會在新的一行開始</li>
-<li>該元素佔有的空間為其內容本身(文字或圖片)之長寬</li>
-<li>無法重新自定義長寬</li>
-<li>可能其他元素並排(視空間寬度而定)</li>
-<li>例：span會接續前方元素，不會換行</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">行內元素常見包括</span><br><span class="line">span、em、i、b、</span><br><span class="line">strong、a、img、input、</span><br><span class="line">br、select、textarea、q、bdo、</span><br><span class="line">sub、sup</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="空元素特點"><a href="#空元素特點" class="headerlink" title="空元素特點"></a>空元素特點</h4><p>1.没有内容的 HTML 元素被稱為空元素。空元素是在開始標籤中關閉的。<br>2.由於HTML元素的内容是開始標籤与结束標籤之间的内容。<br>  而某些HTML元素具有空内容。那些含有空内容的HTML元素，就是空元素。<br>3.單標籤，只有開始標籤，没有结束標籤</p>
-<p>空元素常見包括</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;br&gt; &lt;hr&gt; &lt;img&gt; &lt;input&gt; &lt;link&gt; &lt;meta&gt;</span><br><span class="line">&lt;area&gt; &lt;base&gt; &lt;col&gt; &lt;<span class="built_in">command</span>&gt; &lt;embed&gt; &lt;param&gt; &lt;<span class="built_in">source</span>&gt; &lt;track&gt; &lt;wbr&gt;</span><br><span class="line">...等等</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://medium.com/@small2883/%E5%8D%80%E5%A1%8A%E5%85%83%E7%B4%A0-%E8%A1%8C%E5%85%A7%E5%85%83%E7%B4%A0-%E7%A9%BA%E5%85%83%E7%B4%A0%E7%89%B9%E9%BB%9E%E5%88%86%E5%88%A5%E6%9C%89%E5%93%AA%E4%BA%9B-19f8c05f16f6" target="_blank" rel="noopener">參考連結</a></p>
+<p>看起來同樣的判斷卻在 switch 和 if else 上有著不一樣的結果，這是因為 switch 在判斷上採取嚴謹模式，亦即 ===(即型別也要相同)，而在 if else 的判斷上並沒有採取這麼嚴謹的模式，需更改case’5’才能正確運行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">switch(n)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'5'</span>:</span><br><span class="line">        console.log(<span class="string">'success'</span>);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">        </span><br><span class="line">    default:</span><br><span class="line">        console.log(<span class="string">'fail'</span>);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">// console 輸出 success</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -737,7 +532,131 @@
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/CSS/" rel="tag">CSS</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-1202"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2019/12/02/1202/">Slick_迅速搭建的輪播套件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2019/12/02/1202/" class="article-date">
+	  <time datetime="2019-12-01T16:00:00.000Z" itemprop="datePublished">十二月 2, 2019</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h4><p><a href="https://kenwheeler.github.io/slick/" target="_blank" rel="noopener">Slick官網</a>提供多種輪播樣式，可進行滑動、設定輪播等功能，我們只需要選定輪播形式後，引用js、css套件，即可使用它所支援的slider樣式。</p>
+<p><img src="https://i.imgur.com/75Dvc8W.png" alt=""></p>
+<h4 id="操作步驟"><a href="#操作步驟" class="headerlink" title="操作步驟"></a>操作步驟</h4><p>搜尋並引入slick cdn，加入css及js相對應程式碼</p>
+<p>將slick.css複製到<head>中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"</span> /&gt;</span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>slick.js複製到<body>段底部</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script src=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>在html建立輪播的內容結構，並在外層使用一個class作標記</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=<span class="string">"slider"</span>&gt;</span><br><span class="line">    &lt;div&gt;slide 1&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;slide 2&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;slide 3&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>在slick官網上選擇sliders樣式，複製對應語法到body、script中</p>
+<p><img src="https://i.imgur.com/pHpxsYI.png" alt=""></p>
+<p>經由optional控制元素來調整輪播、滑動等功能設定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">arrows: (boolean值)是否顯示左右箭頭功能</span><br><span class="line">dots:(boolean值)是否顯示下方小圓點功能</span><br><span class="line">autoplay：(boolean值)是否自動播放</span><br><span class="line">autoplaySpeed:(毫秒值)自動播放的速度</span><br><span class="line">slidesToShow:(數量值)一次主要顯現幾個slides</span><br><span class="line">slidesToScroll:(數量值)每次滑動幾張slides</span><br><span class="line">fade:(boolean值)是否採用淡出/淡入效果</span><br><span class="line">infinite：(boolean值)滑到最後一張，是否繼續從回到一開始同向循環(4&gt;1&gt;2&gt;3&gt;…)，或是逆轉向循環(4&gt;3&gt;2&gt;…)</span><br><span class="line">centerMode:(boolean值)是否同時顯現前後兩張slide的部分內容</span><br><span class="line">centerPadding:(px值)搭配centerMode:<span class="literal">true</span>使用，表示前後兩張slide要顯現多少範圍</span><br><span class="line">responsive:(陣列)針對不同尺寸做額外設定</span><br><span class="line">breakpoint:(螢幕尺寸)</span><br><span class="line">settings:(&#123;物件&#125;)包含各種設定</span><br></pre></td></tr></table></figure>
+
+<h4 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h4><p>Slick幻燈片: <a href="https://vince-chen-hao.github.io/BS_NewsChannel/about.html">運動頻道</a></p>
+<p><img src="/images/lightbox.png" alt=""></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Slick/" rel="tag">Slick</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-1127"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2019/11/27/1127/">JavaScript_基礎語法：呼叫函式實作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2019/11/27/1127/" class="article-date">
+	  <time datetime="2019-11-26T16:00:00.000Z" itemprop="datePublished">十一月 27, 2019</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>創建一個物件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> var farm = &#123;</span><br><span class="line">    duck: 5</span><br><span class="line">    chicken: 10,</span><br><span class="line">    dogs: [<span class="string">'柴犬'</span>,<span class="string">'柯基'</span>],</span><br><span class="line">    cornField: [5,6,7]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此時若要新增一個屬性用來計算總共有多少隻家禽，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var farm = &#123;</span><br><span class="line">    duck: 5,</span><br><span class="line">    chicken: 10,</span><br><span class="line">    dogs: [<span class="string">'柴犬'</span>,<span class="string">'柯基'</span>],</span><br><span class="line">    cornField: [5,6,7],</span><br><span class="line">    poultry: <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        var total = this.duck + this.chicken;</span><br><span class="line">        console.log(total);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我們新增了一個 poultry 屬性，並給予一個計算小鴨跟小雞數量的函式(這裡函式可以不用命名)，當然除了上述的第一個方法，我們也可以中途加入 poultry 這個屬性，如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">farm.poultry = <span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    var total = this.duck + this.chicken;</span><br><span class="line">    console.log(total);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而當我們在呼叫屬性且有函式時，會比較不一樣</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">farm.poultry();</span><br></pre></td></tr></table></figure>
+
+<p>有屬性若為函式，需要跟前面講到函式時一樣，跟函式的呼叫一樣需要加括號</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
 
       
     </footer>
@@ -753,7 +672,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../3/">上一頁</a><a class="page-number" href="../../">1</a><a class="page-number" href="../2/">2</a><a class="page-number" href="../3/">3</a><span class="page-number current">4</span><a class="page-number" href="../5/">5</a><a class="extend next" rel="next" href="../5/">下一頁</a>
+    <a class="extend prev" rel="prev" href="../3/">上一頁</a><a class="page-number" href="../../">1</a><a class="page-number" href="../2/">2</a><a class="page-number" href="../3/">3</a><span class="page-number current">4</span><a class="page-number" href="../5/">5</a><a class="page-number" href="../6/">6</a><a class="extend next" rel="next" href="../5/">下一頁</a>
   </nav>
 
 </section>
@@ -885,8 +804,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="../../2020/05/12/0116/">Vue_ MVVM架構說明</a></h6>
-              <span>五月 12, 2020</span>
+              <h6 style="margin: 0;"><a href="../../2020/03/15/0315/">Vue_過濾API資料(實作)</a></h6>
+              <span>三月 15, 2020</span>
             </div>
 
           </li>
@@ -897,8 +816,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="../../2020/02/03/0203/">ES6_let、const變數</a></h6>
-              <span>二月 3, 2020</span>
+              <h6 style="margin: 0;"><a href="../../2020/03/13/0313/">Vue_ 口罩地圖(實作)</a></h6>
+              <span>三月 13, 2020</span>
             </div>
 
           </li>
@@ -909,8 +828,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="../../2020/02/02/0202/">Webpack_建置工具</a></h6>
-              <span>二月 2, 2020</span>
+              <h6 style="margin: 0;"><a href="../../2020/03/10/0310/">jQuery_事件(Events)</a></h6>
+              <span>三月 10, 2020</span>
             </div>
 
           </li>
@@ -921,8 +840,8 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="../../2020/01/29/0129/">Vue_ 解析Props、 emit</a></h6>
-              <span>一月 29, 2020</span>
+              <h6 style="margin: 0;"><a href="../../2020/03/08/0308/">Vue_取得不重複陣列(實作)</a></h6>
+              <span>三月 8, 2020</span>
             </div>
 
           </li>
@@ -939,7 +858,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">標籤</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ES6/" rel="tag">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Git/" rel="tag">Git</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Slick/" rel="tag">Slick</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E5%89%8D%E7%AB%AF%E6%96%87/" rel="tag">前端文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%95%99%E5%AD%B8%E6%96%87/" rel="tag">教學文</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/ES6/" rel="tag">ES6</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/HTML/" rel="tag">HTML</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/JSON/" rel="tag">JSON</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Slick/" rel="tag">Slick</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/VsCode/" rel="tag">VsCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Vue/" rel="tag">Vue</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Webpack/" rel="tag">Webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/jQuery/" rel="tag">jQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E5%89%8D%E7%AB%AF%E6%96%87/" rel="tag">前端文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%95%99%E5%AD%B8%E6%96%87/" rel="tag">教學文</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -949,7 +868,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">標籤雲</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/Bootstrap/" style="font-size: 18.33px;">Bootstrap</a> <a href="../../tags/CSS/" style="font-size: 16.67px;">CSS</a> <a href="../../tags/ES6/" style="font-size: 10px;">ES6</a> <a href="../../tags/Git/" style="font-size: 13.33px;">Git</a> <a href="../../tags/HTML/" style="font-size: 11.67px;">HTML</a> <a href="../../tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="../../tags/Slick/" style="font-size: 10px;">Slick</a> <a href="../../tags/Vue/" style="font-size: 15px;">Vue</a> <a href="../../tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="../../tags/%E5%89%8D%E7%AB%AF%E6%96%87/" style="font-size: 10px;">前端文</a> <a href="../../tags/%E6%95%99%E5%AD%B8%E6%96%87/" style="font-size: 10px;">教學文</a>
+      <a href="../../tags/Bootstrap/" style="font-size: 16px;">Bootstrap</a> <a href="../../tags/CSS/" style="font-size: 16px;">CSS</a> <a href="../../tags/ES6/" style="font-size: 14px;">ES6</a> <a href="../../tags/Git/" style="font-size: 12px;">Git</a> <a href="../../tags/HTML/" style="font-size: 12px;">HTML</a> <a href="../../tags/JSON/" style="font-size: 10px;">JSON</a> <a href="../../tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="../../tags/Slick/" style="font-size: 10px;">Slick</a> <a href="../../tags/VsCode/" style="font-size: 10px;">VsCode</a> <a href="../../tags/Vue/" style="font-size: 18px;">Vue</a> <a href="../../tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="../../tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="../../tags/%E5%89%8D%E7%AB%AF%E6%96%87/" style="font-size: 10px;">前端文</a> <a href="../../tags/%E6%95%99%E5%AD%B8%E6%96%87/" style="font-size: 10px;">教學文</a>
     </div>
   </div>
 
@@ -959,7 +878,7 @@
     <h3 class="widget-title">彙整</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">五月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">一月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">十二月 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">十一月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">二月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">一月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">十二月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">十一月 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -1013,8 +932,7 @@
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 
 
-    <!-- headerblur min height -->
-    
+    // 
     
 </script>
     

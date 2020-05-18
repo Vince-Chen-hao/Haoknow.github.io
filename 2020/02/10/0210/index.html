@@ -3,35 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Git_分支 | Vince Blog</title>
+  <title>Vue_ 渲染列表 | Vince Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Git" />
+  <meta name="keywords" content="Vue" />
   
   
   
   
-  <meta name="description" content="分支建立(git branch)分支的好處，就是每一條線都各司其職，做完事後，再將兩條線的功能合併，並部署上線。 原狀態 新增分支接下來，我們想要開始新增新功能，但又不能污染到目前 master 的穩定版本狀態，於是我們新增一個 dev 分支，指令是：git branch dev 切換至分支當我們要切換分支時，指令是：git checkout dev  新增分支上commit再來我們就開始在 de">
+  <meta name="description" content="v-for把陣列轉換為一組元素將item拿出來當作屬性自訂所需資料在陣列裡，使用動態屬性分別套入不同顏色(css設定)資料匯入的過程新增一組判斷式，當key值為A則顯示紅色，B則顯示藍色，利用動態屬性更改色系這裡與之前案例的內容相同，也是使用:class綁定屬性的顏色(經由css修改) 123456789101112131415161718192021222324252627&lt;div id&#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git_分支">
-<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/01/22/0219/index.html">
+<meta property="og:title" content="Vue_ 渲染列表">
+<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/02/10/0210/index.html">
 <meta property="og:site_name" content="Vince Blog">
-<meta property="og:description" content="分支建立(git branch)分支的好處，就是每一條線都各司其職，做完事後，再將兩條線的功能合併，並部署上線。 原狀態 新增分支接下來，我們想要開始新增新功能，但又不能污染到目前 master 的穩定版本狀態，於是我們新增一個 dev 分支，指令是：git branch dev 切換至分支當我們要切換分支時，指令是：git checkout dev  新增分支上commit再來我們就開始在 de">
+<meta property="og:description" content="v-for把陣列轉換為一組元素將item拿出來當作屬性自訂所需資料在陣列裡，使用動態屬性分別套入不同顏色(css設定)資料匯入的過程新增一組判斷式，當key值為A則顯示紅色，B則顯示藍色，利用動態屬性更改色系這裡與之前案例的內容相同，也是使用:class綁定屬性的顏色(經由css修改) 123456789101112131415161718192021222324252627&lt;div id&#x3D;">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/MgCXoVk.png">
-<meta property="og:image" content="https://i.imgur.com/lUqjIUp.png">
-<meta property="og:image" content="https://i.imgur.com/ozHA9J8.png">
-<meta property="og:image" content="https://i.imgur.com/CqXfI38.png">
-<meta property="og:image" content="https://i.imgur.com/9J9lPZv.png">
-<meta property="og:image" content="https://i.imgur.com/uClnoKg.png">
-<meta property="og:image" content="https://i.imgur.com/MXgcQUe.png">
-<meta property="og:image" content="https://i.imgur.com/4p1ym2u.png">
-<meta property="article:published_time" content="2020-01-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-14T10:15:38.406Z">
+<meta property="article:published_time" content="2020-02-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-15T06:53:55.221Z">
 <meta property="article:author" content="Vince">
-<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/MgCXoVk.png">
   
     <link rel="alternate" href="/atom.xml" title="Vince Blog" type="application/atom+xml">
   
@@ -118,7 +109,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-0219" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-0210" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -126,7 +117,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Git_分支
+      Vue_ 渲染列表
     </h1>
   
 
@@ -135,7 +126,7 @@
     <div class="article-meta">
       
 	<a href="" class="article-date">
-	  <time datetime="2020-01-21T16:00:00.000Z" itemprop="datePublished">一月 22, 2020</time>
+	  <time datetime="2020-02-09T16:00:00.000Z" itemprop="datePublished">二月 10, 2020</time>
 	</a>
 
        
@@ -147,22 +138,67 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="分支建立-git-branch"><a href="#分支建立-git-branch" class="headerlink" title="分支建立(git branch)"></a>分支建立(git branch)</h3><p>分支的好處，就是每一條線都各司其職，做完事後，再將兩條線的功能合併，並部署上線。</p>
-<h4 id="原狀態"><a href="#原狀態" class="headerlink" title="原狀態"></a>原狀態</h4><p><img src="https://i.imgur.com/MgCXoVk.png" alt=""></p>
-<h4 id="新增分支"><a href="#新增分支" class="headerlink" title="新增分支"></a>新增分支</h4><p>接下來，我們想要開始新增新功能，但又不能污染到目前 master 的穩定版本狀態，於是我們新增一個 dev 分支，指令是：git branch dev<br><img src="https://i.imgur.com/lUqjIUp.png" alt=""></p>
-<h4 id="切換至分支"><a href="#切換至分支" class="headerlink" title="切換至分支"></a>切換至分支</h4><p>當我們要切換分支時，指令是：git checkout dev</p>
-<p><img src="https://i.imgur.com/ozHA9J8.png" alt=""></p>
-<h4 id="新增分支上commit"><a href="#新增分支上commit" class="headerlink" title="新增分支上commit"></a>新增分支上commit</h4><p>再來我們就開始在 dev 上開發，並新增兩個commit。</p>
-<p><img src="https://i.imgur.com/CqXfI38.png" alt=""></p>
-<h4 id="切換回主狀態"><a href="#切換回主狀態" class="headerlink" title="切換回主狀態"></a>切換回主狀態</h4><p>接下來我們切換回 master 看它的狀態。指令是：git checkout master</p>
-<p><img src="https://i.imgur.com/9J9lPZv.png" alt=""></p>
-<h4 id="lt-重要-gt-合併分支：讓master吃到dev最新狀態"><a href="#lt-重要-gt-合併分支：讓master吃到dev最新狀態" class="headerlink" title="&lt;重要&gt;合併分支：讓master吃到dev最新狀態"></a>&lt;重要&gt;合併分支：讓master吃到dev最新狀態</h4><p>我們目前的狀態是 master 目前的版本比較舊，而 dev 的版本比較新，所以接下來我們要做的事情，就是讓 master 可以吃到 c3、c4 的 commit。</p>
-<p>因為目前 master 版本比較舊，你就必須先用 git checkout master 指令，讓 HEAD 移動到 master。</p>
-<p>確保有切換後，就可以下此指令：git merge dev<br>此時，master 位置就會在 c4 了。<br><img src="https://i.imgur.com/uClnoKg.png" alt=""></p>
-<h4 id="快轉模式-vs-非快轉模式"><a href="#快轉模式-vs-非快轉模式" class="headerlink" title="快轉模式 vs 非快轉模式"></a>快轉模式 vs 非快轉模式</h4><p>當你的 HEAD 位置是某個要被 merge branch(dev) 上的初始 commit，就會觸發快轉模式。</p>
-<p><img src="https://i.imgur.com/MXgcQUe.png" alt=""></p>
-<p>但如果在 master 再新增一個 commit 的話，就不會觸發快轉模式。</p>
-<p><img src="https://i.imgur.com/4p1ym2u.png" alt=""></p>
+        <h4 id="v-for把陣列轉換為一組元素"><a href="#v-for把陣列轉換為一組元素" class="headerlink" title="v-for把陣列轉換為一組元素"></a>v-for把陣列轉換為一組元素</h4><h5 id="將item拿出來當作屬性"><a href="#將item拿出來當作屬性" class="headerlink" title="將item拿出來當作屬性"></a>將item拿出來當作屬性</h5><p>自訂所需資料在陣列裡，使用動態屬性分別套入不同顏色(css設定)<br>資料匯入的過程新增一組判斷式，當key值為A則顯示紅色，B則顯示藍色，利用動態屬性更改色系<br>這裡與之前案例的內容相同，也是使用:class綁定屬性的顏色(經由css修改)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;ol&gt;</span><br><span class="line">    &lt;li v-for=<span class="string">"item in todo"</span> v-bind:class=<span class="string">'item.key'</span>&gt;</span><br><span class="line">      &#123;&#123;item.date&#125;&#125; &#123;&#123;item.content&#125;&#125;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  &lt;/ol&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el:<span class="string">'#app'</span>,</span><br><span class="line">  data:&#123;  </span><br><span class="line">    todo:[&#123;key:<span class="string">'first'</span>,date:<span class="string">'3/9'</span>,content:<span class="string">'學習javascrip'</span>&#125;,</span><br><span class="line">      &#123;key:<span class="string">'second'</span>,date:<span class="string">'3/10'</span>,content:<span class="string">'學會vue框架'</span>&#125;,</span><br><span class="line">      &#123;key:<span class="string">'second'</span>,date:<span class="string">'3/11'</span>,content:<span class="string">'做作品'</span>&#125;,</span><br><span class="line">      &#123;key:<span class="string">'second'</span>,date:<span class="string">'3/12'</span>,content:<span class="string">'準備面試'</span>&#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">    .first&#123;</span><br><span class="line">        color:red;</span><br><span class="line">    &#125;</span><br><span class="line">    .second&#123;</span><br><span class="line">        color:green;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="陣列新增、刪減、排列基本語法"><a href="#陣列新增、刪減、排列基本語法" class="headerlink" title="陣列新增、刪減、排列基本語法"></a>陣列新增、刪減、排列基本語法</h4><ul>
+<li>push(ew item)從陣列後面新增</li>
+<li>pop()從陣列後面刪減</li>
+<li>unshift(new item)從陣列前面新增</li>
+<li>shift()從陣列前面刪減</li>
+</ul>
+<pre><code class="bash">
+&lt;div id=<span class="string">"app"</span>&gt;
+  &lt;ul&gt;
+    &lt;li v-for=<span class="string">"item in steps"</span>&gt;{{item}}&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;button @click=<span class="string">"push"</span>&gt;Push&lt;/button&gt;
+  &lt;button @click=<span class="string">"pop"</span>&gt;Pop&lt;/button&gt;
+  &lt;button @click=<span class="string">"shift"</span>&gt;Shift&lt;/button&gt;
+  &lt;button @click=<span class="string">"unshift"</span>&gt;Unshift&lt;/button&gt;
+&lt;/div&gt;
+
+new Vue({
+  el:<span class="string">'#app'</span>,
+  data:{
+    steps:[1,2,3,4,5],
+  },
+  methods:{
+    <span class="function"><span class="title">push</span></span>(){
+      this.steps.push(this.steps.length+1);
+    },
+    <span class="function"><span class="title">pop</span></span>(){
+      this.steps.pop();
+    },
+    <span class="function"><span class="title">shift</span></span>(){
+      this.steps.shift();
+    },
+    <span class="function"><span class="title">unshift</span></span>(){
+      this.steps.unshift(0);
+    },
+
+  }
+})
+</code></pre>
+<h4 id="用v-for渲染templete"><a href="#用v-for渲染templete" class="headerlink" title="用v-for渲染templete"></a>用v-for渲染templete</h4><p>每次迴圈需要被render出來的不只一個元素，而是包含多個標籤元素，可以使用templete&gt;，並將v-for指令放在templete標籤中。</p>
+<pre><code class="bash">&lt;div id=<span class="string">"app"</span>&gt;
+  &lt;template v-for=<span class="string">'item in header'</span>&gt;
+    &lt;h1&gt;{{item}}&lt;/h1&gt;
+    &lt;hr/&gt;
+  &lt;/template&gt;
+&lt;/div&gt;
+
+new Vue({
+  el:<span class="string">'#app'</span>,
+  data:{
+    header:[<span class="string">'Home'</span>,<span class="string">'About'</span>,<span class="string">'Product'</span>,<span class="string">'Contact'</span>]
+  },
+  methods:{
+
+  }
+})
+</code></pre>
 
       
     </div>
@@ -170,7 +206,7 @@
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Git/" rel="tag">Git</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Vue/" rel="tag">Vue</a></li></ul>
 
       
         
@@ -205,19 +241,19 @@
     
 <nav id="article-nav">
   
-    <a href="../0122/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../13/0213/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Git_分支
+          Vue_ 自訂圖標及標題
         
       </div>
     </a>
   
   
-    <a href="../0227/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../06/0206/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Git_分支</div>
+      <div class="article-nav-title">Vue_ 觸發事件</div>
     </a>
   
 </nav>
@@ -231,7 +267,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目錄</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分支建立-git-branch"><span class="nav-number">1.</span> <span class="nav-text">分支建立(git branch)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原狀態"><span class="nav-number">1.1.</span> <span class="nav-text">原狀態</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增分支"><span class="nav-number">1.2.</span> <span class="nav-text">新增分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切換至分支"><span class="nav-number">1.3.</span> <span class="nav-text">切換至分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增分支上commit"><span class="nav-number">1.4.</span> <span class="nav-text">新增分支上commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切換回主狀態"><span class="nav-number">1.5.</span> <span class="nav-text">切換回主狀態</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-重要-gt-合併分支：讓master吃到dev最新狀態"><span class="nav-number">1.6.</span> <span class="nav-text">&lt;重要&gt;合併分支：讓master吃到dev最新狀態</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快轉模式-vs-非快轉模式"><span class="nav-number">1.7.</span> <span class="nav-text">快轉模式 vs 非快轉模式</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-for把陣列轉換為一組元素"><span class="nav-number">1.</span> <span class="nav-text">v-for把陣列轉換為一組元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#將item拿出來當作屬性"><span class="nav-number">1.1.</span> <span class="nav-text">將item拿出來當作屬性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#陣列新增、刪減、排列基本語法"><span class="nav-number">2.</span> <span class="nav-text">陣列新增、刪減、排列基本語法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用v-for渲染templete"><span class="nav-number">3.</span> <span class="nav-text">用v-for渲染templete</span></a></li></ol>
     
     </div>
   </aside>
@@ -283,8 +319,7 @@
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 
 
-    <!-- headerblur min height -->
-    
+    // 
     
 </script>
     

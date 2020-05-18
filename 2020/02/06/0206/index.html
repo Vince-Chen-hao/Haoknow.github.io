@@ -3,35 +3,28 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Git_分支 | Vince Blog</title>
+  <title>Vue_ 觸發事件 | Vince Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Git" />
+  <meta name="keywords" content="Vue" />
   
   
   
   
-  <meta name="description" content="分支建立(git branch)分支的好處，就是每一條線都各司其職，做完事後，再將兩條線的功能合併，並部署上線。 原狀態 新增分支接下來，我們想要開始新增新功能，但又不能污染到目前 master 的穩定版本狀態，於是我們新增一個 dev 分支，指令是：git branch dev 切換至分支當我們要切換分支時，指令是：git checkout dev  新增分支上commit再來我們就開始在 de">
+  <meta name="description" content="v-on綁定事件可將原表達式v-on:click&#x3D;””簡寫為@:click&#x3D;”” &lt;實作&gt;點擊button做來回切換，語法：class&#x3D;”{‘A效果’：變數}”  A效果連結style宣告的效果 變數宣告從data建議變數而來，再經由methods函數做轉換功能(B&#x3D;!B)   點擊click事件後，啟動將變數轉為true 此時觸發:Class裡的公式rotate，roatate便會套">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git_分支">
-<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/01/22/0227/index.html">
+<meta property="og:title" content="Vue_ 觸發事件">
+<meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/02/06/0206/index.html">
 <meta property="og:site_name" content="Vince Blog">
-<meta property="og:description" content="分支建立(git branch)分支的好處，就是每一條線都各司其職，做完事後，再將兩條線的功能合併，並部署上線。 原狀態 新增分支接下來，我們想要開始新增新功能，但又不能污染到目前 master 的穩定版本狀態，於是我們新增一個 dev 分支，指令是：git branch dev 切換至分支當我們要切換分支時，指令是：git checkout dev  新增分支上commit再來我們就開始在 de">
+<meta property="og:description" content="v-on綁定事件可將原表達式v-on:click&#x3D;””簡寫為@:click&#x3D;”” &lt;實作&gt;點擊button做來回切換，語法：class&#x3D;”{‘A效果’：變數}”  A效果連結style宣告的效果 變數宣告從data建議變數而來，再經由methods函數做轉換功能(B&#x3D;!B)   點擊click事件後，啟動將變數轉為true 此時觸發:Class裡的公式rotate，roatate便會套">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://i.imgur.com/MgCXoVk.png">
-<meta property="og:image" content="https://i.imgur.com/lUqjIUp.png">
-<meta property="og:image" content="https://i.imgur.com/ozHA9J8.png">
-<meta property="og:image" content="https://i.imgur.com/CqXfI38.png">
-<meta property="og:image" content="https://i.imgur.com/9J9lPZv.png">
-<meta property="og:image" content="https://i.imgur.com/uClnoKg.png">
-<meta property="og:image" content="https://i.imgur.com/MXgcQUe.png">
-<meta property="og:image" content="https://i.imgur.com/4p1ym2u.png">
-<meta property="article:published_time" content="2020-01-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-14T10:15:47.374Z">
+<meta property="og:image" content="https://i.imgur.com/u6Cz86Y.png">
+<meta property="article:published_time" content="2020-02-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-15T06:53:11.801Z">
 <meta property="article:author" content="Vince">
-<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.imgur.com/MgCXoVk.png">
+<meta name="twitter:image" content="https://i.imgur.com/u6Cz86Y.png">
   
     <link rel="alternate" href="/atom.xml" title="Vince Blog" type="application/atom+xml">
   
@@ -118,7 +111,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-0227" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-0206" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -126,7 +119,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Git_分支
+      Vue_ 觸發事件
     </h1>
   
 
@@ -135,7 +128,7 @@
     <div class="article-meta">
       
 	<a href="" class="article-date">
-	  <time datetime="2020-01-21T16:00:00.000Z" itemprop="datePublished">一月 22, 2020</time>
+	  <time datetime="2020-02-05T16:00:00.000Z" itemprop="datePublished">二月 6, 2020</time>
 	</a>
 
        
@@ -147,22 +140,54 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="分支建立-git-branch"><a href="#分支建立-git-branch" class="headerlink" title="分支建立(git branch)"></a>分支建立(git branch)</h3><p>分支的好處，就是每一條線都各司其職，做完事後，再將兩條線的功能合併，並部署上線。</p>
-<h4 id="原狀態"><a href="#原狀態" class="headerlink" title="原狀態"></a>原狀態</h4><p><img src="https://i.imgur.com/MgCXoVk.png" alt=""></p>
-<h4 id="新增分支"><a href="#新增分支" class="headerlink" title="新增分支"></a>新增分支</h4><p>接下來，我們想要開始新增新功能，但又不能污染到目前 master 的穩定版本狀態，於是我們新增一個 dev 分支，指令是：git branch dev<br><img src="https://i.imgur.com/lUqjIUp.png" alt=""></p>
-<h4 id="切換至分支"><a href="#切換至分支" class="headerlink" title="切換至分支"></a>切換至分支</h4><p>當我們要切換分支時，指令是：git checkout dev</p>
-<p><img src="https://i.imgur.com/ozHA9J8.png" alt=""></p>
-<h4 id="新增分支上commit"><a href="#新增分支上commit" class="headerlink" title="新增分支上commit"></a>新增分支上commit</h4><p>再來我們就開始在 dev 上開發，並新增兩個commit。</p>
-<p><img src="https://i.imgur.com/CqXfI38.png" alt=""></p>
-<h4 id="切換回主狀態"><a href="#切換回主狀態" class="headerlink" title="切換回主狀態"></a>切換回主狀態</h4><p>接下來我們切換回 master 看它的狀態。指令是：git checkout master</p>
-<p><img src="https://i.imgur.com/9J9lPZv.png" alt=""></p>
-<h4 id="lt-重要-gt-合併分支：讓master吃到dev最新狀態"><a href="#lt-重要-gt-合併分支：讓master吃到dev最新狀態" class="headerlink" title="&lt;重要&gt;合併分支：讓master吃到dev最新狀態"></a>&lt;重要&gt;合併分支：讓master吃到dev最新狀態</h4><p>我們目前的狀態是 master 目前的版本比較舊，而 dev 的版本比較新，所以接下來我們要做的事情，就是讓 master 可以吃到 c3、c4 的 commit。</p>
-<p>因為目前 master 版本比較舊，你就必須先用 git checkout master 指令，讓 HEAD 移動到 master。</p>
-<p>確保有切換後，就可以下此指令：git merge dev<br>此時，master 位置就會在 c4 了。<br><img src="https://i.imgur.com/uClnoKg.png" alt=""></p>
-<h4 id="快轉模式-vs-非快轉模式"><a href="#快轉模式-vs-非快轉模式" class="headerlink" title="快轉模式 vs 非快轉模式"></a>快轉模式 vs 非快轉模式</h4><p>當你的 HEAD 位置是某個要被 merge branch(dev) 上的初始 commit，就會觸發快轉模式。</p>
-<p><img src="https://i.imgur.com/MXgcQUe.png" alt=""></p>
-<p>但如果在 master 再新增一個 commit 的話，就不會觸發快轉模式。</p>
-<p><img src="https://i.imgur.com/4p1ym2u.png" alt=""></p>
+        <h4 id="v-on綁定事件"><a href="#v-on綁定事件" class="headerlink" title="v-on綁定事件"></a>v-on綁定事件</h4><p>可將原表達式v-on:click=””簡寫為@:click=””</p>
+<h5 id="lt-實作-gt"><a href="#lt-實作-gt" class="headerlink" title="&lt;實作&gt;"></a>&lt;實作&gt;</h5><p>點擊button做來回切換，語法：class=”{‘A效果’：變數}”</p>
+<ul>
+<li>A效果連結style宣告的效果</li>
+<li>變數宣告從data建議變數而來，再經由methods函數做轉換功能(B=!B)</li>
+</ul>
+<ol>
+<li>點擊click事件後，啟動將變數轉為true</li>
+<li>此時觸發:Class裡的公式rotate，roatate便會套用css寫入的翻轉語法而產生效果</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=<span class="string">"box"</span> :class=<span class="string">"&#123;'rotate': isRotate &#125;"</span>&gt;&lt;/div&gt;</span><br><span class="line">  &lt;button class=<span class="string">"btn btn-outline-primary"</span> @click=<span class="string">"changeRotate"</span>&gt;</span><br><span class="line">    切換 box 樣式</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;  </span><br><span class="line"></span><br><span class="line">   data: &#123;</span><br><span class="line">    isRotate: <span class="literal">false</span>,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeRotate: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">      this.isRotate = !this.isRotate;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .box &#123;</span><br><span class="line">            display: block;</span><br><span class="line">            transition: all .5s;</span><br><span class="line">        &#125;</span><br><span class="line">        .box.rotate &#123;</span><br><span class="line">            transform: rotate(45deg)</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>其他滑鼠事件</p>
+<ul>
+<li>mouseover：滑鼠經過</li>
+<li>mouseout：滑鼠移出</li>
+<li>mousedown:滑鼠點下</li>
+<li>mouseup:滑鼠點下後‘放開’</li>
+<li>mousemove：滑鼠在其上方移動時</li>
+</ul>
+<h4 id="偵聽按鍵事件"><a href="#偵聽按鍵事件" class="headerlink" title="偵聽按鍵事件"></a>偵聽按鍵事件</h4><p>鍵盤事件</p>
+<ul>
+<li>keydown：按鍵被‘按下’時</li>
+<li>keyup：按鍵被按下後‘彈起’時</li>
+<li>v-on:keydown.enter (當「enter」按鍵被按下時)</li>
+<li>v-on:keydown.a.prevent(當「a」按鍵被按下時，但a的內容不會被放入input中)</li>
+</ul>
+<h4 id="便利的修飾符語法"><a href="#便利的修飾符語法" class="headerlink" title="便利的修飾符語法"></a>便利的修飾符語法</h4><ul>
+<li>.prevent：不執行預設效果</li>
+<li>.stop：不讓event傳到外層</li>
+<li>.self：只執行自己發出的event</li>
+<li>.once：只執行一次</li>
+</ul>
+<pre><code class="bash">
+&lt;div id=<span class="string">"app"</span>&gt;
+  &lt;h1&gt;{{num}}&lt;/h1&gt;
+  &lt;button @click.once=<span class="string">"num+=1"</span>&gt;+Add &lt;/button&gt;
+&lt;/div&gt;
+
+new Vue({
+  el:<span class="string">"#app"</span>,
+  data:{
+    num:0,
+  },
+})  
+</code></pre>
+<h3 id="更多修飾符"><a href="#更多修飾符" class="headerlink" title="更多修飾符"></a>更多修飾符</h3><p><img src="https://i.imgur.com/u6Cz86Y.png" alt=""></p>
 
       
     </div>
@@ -170,7 +195,7 @@
       
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Git/" rel="tag">Git</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Vue/" rel="tag">Vue</a></li></ul>
 
       
         
@@ -205,19 +230,19 @@
     
 <nav id="article-nav">
   
-    <a href="../0219/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../10/0210/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Git_分支
+          Vue_ 渲染列表
         
       </div>
     </a>
   
   
-    <a href="../../15/0115/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../05/0205/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Vue_class動態切換Style(實作)</div>
+      <div class="article-nav-title">Vue_ 統整判斷式</div>
     </a>
   
 </nav>
@@ -231,7 +256,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目錄</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#分支建立-git-branch"><span class="nav-number">1.</span> <span class="nav-text">分支建立(git branch)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原狀態"><span class="nav-number">1.1.</span> <span class="nav-text">原狀態</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增分支"><span class="nav-number">1.2.</span> <span class="nav-text">新增分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切換至分支"><span class="nav-number">1.3.</span> <span class="nav-text">切換至分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增分支上commit"><span class="nav-number">1.4.</span> <span class="nav-text">新增分支上commit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切換回主狀態"><span class="nav-number">1.5.</span> <span class="nav-text">切換回主狀態</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-重要-gt-合併分支：讓master吃到dev最新狀態"><span class="nav-number">1.6.</span> <span class="nav-text">&lt;重要&gt;合併分支：讓master吃到dev最新狀態</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快轉模式-vs-非快轉模式"><span class="nav-number">1.7.</span> <span class="nav-text">快轉模式 vs 非快轉模式</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-on綁定事件"><span class="nav-number">1.</span> <span class="nav-text">v-on綁定事件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#lt-實作-gt"><span class="nav-number">1.1.</span> <span class="nav-text">&lt;實作&gt;</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偵聽按鍵事件"><span class="nav-number">2.</span> <span class="nav-text">偵聽按鍵事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#便利的修飾符語法"><span class="nav-number">3.</span> <span class="nav-text">便利的修飾符語法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多修飾符"><span class="nav-number"></span> <span class="nav-text">更多修飾符</span></a>
     
     </div>
   </aside>
@@ -283,8 +308,7 @@
     contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
 
 
-    <!-- headerblur min height -->
-    
+    // 
     
 </script>
     
