@@ -104,53 +104,6 @@
         
           <section id="main">
   
-    <article id="post-1127_2"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/11/27/1127_2/">JavaScript_基礎語法：===等號間的嚴謹模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2019/11/27/1127_2/" class="article-date">
-	  <time datetime="2019-11-26T16:00:00.000Z" itemprop="datePublished">十一月 27, 2019</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有一個較為嚴謹的比較模式，當等號使用==時，左右兩邊並不會比較資料型別，而會自動去轉型做比較，專業回答：兩個等於（==）會對被判別的變數做轉換型別的動作（coercion又稱為implicit type conversion）</p>
-<p>例如：1 == ‘1’，數字1等於字串1，這時候會回傳 true，JavaScript 會自動把字串1先轉型成數字1，再去做比較</p>
-<p>如果在===的情況下，1 === ‘1’ ，數字1並不會等於字串1，會回傳 false 因為數字跟字串本身就是不一樣的資料型別，所以在比較的時候會先從資料型別去做比較，如果兩邊的資料型別不一樣，則就先回傳 false ，所以這是較嚴謹的比較模式。</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-1123_1"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -176,13 +129,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="語法解析器-syntax-parser"><a href="#語法解析器-syntax-parser" class="headerlink" title="語法解析器(syntax parser)"></a>語法解析器(syntax parser)</h3><p>包含直譯器、編譯器，會一個字一個字讀取並辨識程式碼是否有效，再將之轉換成為電腦可以解讀的指令</p>
-<h3 id="詞彙環境-lexical-environment"><a href="#詞彙環境-lexical-environment" class="headerlink" title="詞彙環境(lexical environment)"></a>詞彙環境(lexical environment)</h3><p>程式碼在程式中實際的所在位置，對於某些程式語言非常重要，例：JavaScript。</p>
-<p>因為當systax parser在解讀並轉換程式碼時， 會考量該變數、函式的lexical environment，而影響到它實際在記憶體中的位置或是跟其他變數、函式作用的關係。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">hello</span></span>()&#123;</span><br><span class="line">    var a = <span class="string">'Hello'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>變數a的lexical environment就是hello()這個函式。</p>
-<h3 id="執行環境-execution-context"><a href="#執行環境-execution-context" class="headerlink" title="執行環境(execution context)"></a>執行環境(execution context)</h3><p>一個程式碼中有多個lexical environment，因此execution context負責協助管理正在執行的程式，如同一個wrapper，包含我們撰寫的程式碼，以及syntax parser執行轉換的程式碼。</p>
+        
 
+          
+          <div class="entry-summary">
+          語法解析器(syntax parser)包含直譯器、編譯器，會一個字一個字讀取並辨識程式碼是否有效，再將之轉換成為電腦可以解讀的指令
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/23/1123_1/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -226,20 +183,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>創建一個物件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> var farm = &#123;</span><br><span class="line">    duck: 5</span><br><span class="line">    chicken: 10,</span><br><span class="line">    dogs: [<span class="string">'柴犬'</span>,<span class="string">'柯基'</span>],</span><br><span class="line">    cornField: [5,6,7]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
 
-<p>此時若要新增一個屬性用來計算總共有多少隻家禽，如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var farm = &#123;</span><br><span class="line">    duck: 5,</span><br><span class="line">    chicken: 10,</span><br><span class="line">    dogs: [<span class="string">'柴犬'</span>,<span class="string">'柯基'</span>],</span><br><span class="line">    cornField: [5,6,7],</span><br><span class="line">    poultry: <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        var total = this.duck + this.chicken;</span><br><span class="line">        console.log(total);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          創建一個物件如程式碼：
 
-<p>我們新增了一個 poultry 屬性，並給予一個計算小鴨跟小雞數量的函式(這裡函式可以不用命名)，當然除了上述的第一個方法，我們也可以中途加入 poultry 這個屬性，如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">farm.poultry = <span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    var total = this.duck + this.chicken;</span><br><span class="line">    console.log(total);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>而當我們在呼叫屬性且有函式時，會比較不一樣</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">farm.poultry();</span><br></pre></td></tr></table></figure>
-
-<p>有屬性若為函式，需要跟前面講到函式時一樣，跟函式的呼叫一樣需要加括號</p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/23/1123_3/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -283,17 +237,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="代入id渲染方式"><a href="#代入id渲染方式" class="headerlink" title="代入id渲染方式"></a>代入id渲染方式</h4><p>在 JavaScript 裡，當想要選取一個 id 渲染到網頁上時，可以使用下面的語法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(<span class="string">''</span>);</span><br></pre></td></tr></table></figure>
+        
 
-<p>假使今天想要選取一個 id 且為hello，則可以這樣寫：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">document.getElementById(<span class="string">'hello'</span>);</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          代入id渲染方式在 JavaScript 裡，當想要選取一個 id 渲染到網頁上時，可以使用下面的語法：
 
-<p>接下來介紹一個新增文字的方式，再選取完一個 id 且為hello時，想渲染一些文字時，可以如下：<br>document.getElementById(‘hello’).textContent = ‘這是一段文字’;</p>
-<h4 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;p id=<span class="string">"test"</span>&gt;文字1&lt;/p&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    document.getElementById(<span class="string">'test'</span>).textContent=<span class="string">"修改後標題"</span>;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;p id=<span class="string">"test"</span>&gt;修改後標題&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/23/1123_2/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -337,21 +291,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一般在撰寫事件有三種方式，第一種也是較為早期的一種，也是不推薦使用的方式，因為較容易受到外來的攻擊，關鍵是在 onclick=“hello();” 在這裡面可以撰寫 JS，所以也較容易受到外來的方式改寫程式碼，也是較為危險的方式</p>
-<h5 id="第一種"><a href="#第一種" class="headerlink" title="第一種"></a>第一種</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"btn"</span> value=<span class="string">"點擊"</span> onclick=<span class="string">"hello();"</span>&gt;</span><br></pre></td></tr></table></figure>
+        
 
-<h5 id="第二種"><a href="#第二種" class="headerlink" title="第二種"></a>第二種</h5><p>直接把事件內容全寫在 JS 檔內，而不是 HTML 內</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var el = document.querySelector(<span class="string">'.btn'</span>);</span><br><span class="line">el.onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    alert(<span class="string">'Hello'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          一般在撰寫事件有三種方式，第一種也是較為早期的一種，也是不推薦使用的方式，因為較容易受到外來的攻擊，關鍵是在 onclick=“hello();” 在這裡面可以撰寫 JS，所以也較容易受到外來的方式改寫程式碼，也是較為危險的方式
 
-<h5 id="第三種"><a href="#第三種" class="headerlink" title="第三種"></a>第三種</h5><p>採用addEventListener() 方法，俗稱事件監聽，來做事件的綁定</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var el = document.querySelector(<span class="string">'.btn'</span>);</span><br><span class="line">el.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    alert(<span class="string">'Hello'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="比較彼此差異"><a href="#比較彼此差異" class="headerlink" title="比較彼此差異"></a>比較彼此差異</h4><p>撇除掉第一種較危險的方式之外，來談談第二種跟第三種的差異性<br>這兩個方法差異性在哪裡？假設我們今天同一個元素要綁定多個事件時：當採用第一種方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var el = document.querySelector(<span class="string">'.btn'</span>);</span><br><span class="line">    el.onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        alert(<span class="string">'Hello1'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    el.onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        alert(<span class="string">'Hello2'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>這時候只會彈跳 Hello2 出來，第一個 click 事件被蓋掉了，而使用另外一種方法時</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var el = document.querySelector(<span class="string">'.btn'</span>);</span><br><span class="line">    el.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            alert(<span class="string">'Hello1'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    el.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            alert(<span class="string">'Hello2'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)  </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>這時候會發現，會依序彈跳 Hello1 Hello2，事件會依序出來，並不會被蓋掉<br>上述就是其差異性，為了避免這種狀況，建議之後可以改用 .addEventListener()的方式</p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/20/1120/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -395,28 +345,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="什麼是BOM？"><a href="#什麼是BOM？" class="headerlink" title="什麼是BOM？"></a>什麼是BOM？</h4><p>瀏覽器物件模型（Browser Object Model,BOM）是瀏覽器提供的附加對象，用於處理 document 以外的所有内容，主要處理瀏覽器窗口和框架，不过通常瀏覽器特定的 JavaScript 也會被看作 BOM 的一部分。<br>區別：BOM 描述了與瀏覽器進行交互的方法和接口，DOM 描述了處理網頁内容的方法和接口。</p>
-<ul>
-<li>window 物件包含属性：document、navigator、frames、history、location、screen</li>
-<li>document 根節點包含子節點：forms、location、anchors、images、links</li>
-</ul>
-<p><img src="https://i.imgur.com/y6ohu8g.png" alt=""></p>
-<h4 id="什麼是DOM-Document-Object-Model-？"><a href="#什麼是DOM-Document-Object-Model-？" class="headerlink" title="什麼是DOM(Document Object Model)？"></a>什麼是DOM(Document Object Model)？</h4><p>檔案物件模型（Document Object Model, DOM）是瀏覽器的執行規範，提供了結構化的標準方法，將網頁的程式碼及其他程式語言結合起來。開發人員即可以通過文件中物件的屬性、方法和事件來掌控、操縱和建立動態的網頁元素。</p>
-<p>每個 DOM 的基礎建置在一個(D)文件上（也就是以 document 作為根基），而由 document 中的每個(O)物件作為出一個個節點，最後由這一個個節點，組成為一個 DOM Tree。</p>
-<ul>
-<li>D：（文件）瀏覽器當前載入的 document</li>
-<li>O：（物件）將 document 中的所有元素視為物件，可以調用其屬性、方法</li>
-<li>M：（模型）所有的物件在該結構中都是節點，這些眾多節點組成一個樹狀結構</li>
-</ul>
-<p><img src="https://i.imgur.com/01xXBTU.jpg" alt=""></p>
-<p>DOM 節點有:</p>
-<ul>
-<li>元素節點：上圖中html、body、p標籤皆是元素節點。</li>
-<li>文本節點:向用户展示的内容，如li…/li中的 JavaScript、DOM、CSS 等文本。</li>
-<li>屬性節點:標籤中的屬性，如a標籤中的連結屬性href=”<a href="http://www.yahoo.com&quot;。" target="_blank" rel="noopener">http://www.yahoo.com&quot;。</a></li>
-</ul>
-<h5 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h5><p>用 DOM API 可以輕鬆地删除、添加和替換節點。<br>| DOM 操作 |说明 |<br>| ————- |:————-:|<br>|creatElement(element) |創建一个新的元素節點|<br>|creatTextNode() |創建一个包含給定文本的新文本節點|<br>|appendChild() |指定節點的最後一個節點列表後添加一个新的子節點|<br>|insertBefore() |將一個給定節點节点插入到一个給定元素節點的給定子節點的前面|<br>|removeChild() |从一个给定元素中删除子节点|<br>|replaceChild() |把一个给定父元素里的一个子节点替换为另外一个节点|</p>
+        
 
+          
+          <div class="entry-summary">
+          什麼是BOM？瀏覽器物件模型（Browser Object Model,BOM）是瀏覽器提供的附加對象，用於處理 document 以外的所有内容，主要處理瀏覽器窗口和框架，不过通常瀏覽器特定的 JavaScript 也會被看作 BOM 的一部分。區別：BOM 描述了與瀏覽器進行交互的方法和接口，DOM 描述了處理網頁内容的方法和接口。
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/20/1120_2/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -460,32 +399,23 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="navbar導覽使用方式"><a href="#navbar導覽使用方式" class="headerlink" title="navbar導覽使用方式"></a>navbar導覽使用方式</h2><ul>
-<li>nav外層使用<div class=”container”></div>包住時，Navbar導覽列放置在頁面中央或內容的中間，若沒有設定container，導覽列預設的內容寬度是浮動，並自動佔滿水平寬度</li>
-<li>透過navbar-expand定義在何種尺寸，menu項目的呈現會改為「漢堡折疊」樣式效果</li>
-<li>使用bootstrap自定義的data-toggle及data-target，決定按鈕點下之後，menu的div要以collapse方式展開</li>
-<li>navbar-expand-sm大小則是決定當螢幕尺寸小於sm時，會改為以「三」顯示menu項目</li>
-</ul>
-<p><img src="https://i.imgur.com/Bm6IPRD.png" alt=""></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;nav id=<span class="string">"main-nav"</span> class=<span class="string">"navbar navbar-expand-sm navbar-dark fixed-top"</span> &gt;</span><br><span class="line"></span><br><span class="line">&lt;nav class=<span class="string">"nav navbar-default"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"container-fluid"</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">"navbar-header"</span>&gt;</span><br><span class="line">          &lt;button <span class="built_in">type</span>=<span class="string">"button"</span> class=<span class="string">"navbar-toggle"</span> data-toggle=<span class="string">"collapse"</span> data-target=<span class="string">"#Navbarshow"</span>&gt;</span><br><span class="line">              &lt;span class=<span class="string">"icon-bar"</span>&gt;&lt;/span&gt;</span><br><span class="line">              &lt;span class=<span class="string">"icon-bar"</span>&gt;&lt;/span&gt;</span><br><span class="line">              &lt;span class=<span class="string">"icon-bar"</span>&gt;&lt;/span&gt; </span><br><span class="line">          &lt;/button&gt;</span><br><span class="line">          &lt;a class=<span class="string">"navbar-brand"</span> href=<span class="string">"#"</span>&gt;Brand&lt;/a&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=<span class="string">"collapse navbar-collapse"</span> id=<span class="string">"Navbarshow"</span>&gt; //底下放要縮放的內容</span><br><span class="line">          &lt;ul class=<span class="string">"nav navbar-nav"</span>&gt;</span><br><span class="line">              &lt;li&gt;&lt;a data-toggle=<span class="string">"tab"</span> href=<span class="string">"#home"</span>&gt;Home&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">              &lt;li&gt;&lt;a data-toggle=<span class="string">"tab"</span> href=<span class="string">"#menu1"</span>&gt;Page 1&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">              &lt;li&gt;&lt;a data-toggle=<span class="string">"tab"</span> href=<span class="string">"#menu2"</span>&gt;Page 2&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">          &lt;/ul&gt;</span><br><span class="line">          &lt;ul class=<span class="string">"nav navbar-nav navbar-right"</span>&gt;</span><br><span class="line">              &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;&lt;span class=<span class="string">"glyphicon glyphicon-log-in"</span>&gt;&lt;/span&gt; Log <span class="keyword">in</span>&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">              &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;Log out&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">              &lt;li&gt;&lt;a href=<span class="string">"#"</span>&gt;&lt;span class=<span class="string">"glyphicon glyphicon-user"</span>&gt;&lt;/span&gt; Admin&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">          &lt;/ul&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/nav&gt;</span><br></pre></td></tr></table></figure>
+        
 
-<h4 id="建立漢堡按鍵步驟"><a href="#建立漢堡按鍵步驟" class="headerlink" title="建立漢堡按鍵步驟"></a>建立漢堡按鍵步驟</h4><ol>
-<li><p>class=”navbar-toggle”：這個是關鍵字，有它才能讓我們順利看到漢堡按鍵，並出現在視窗右方。</p>
-</li>
-<li><p>data-toggle=”collapse”：這是用來製作動畫效果的，沒有的話，我們點「三」的時候不會有任何反應。</p>
-</li>
-<li><p>data-target=”#myNavbar”這裡面的myNavbar是一個CSS的id，可以任意命名，一定要跟下面縮放的id對應才可執行。</p>
-</li>
-<li><p><span class="icon-bar"></span>這段這是用來產生「一」，當有三個「一」時，合在一起就會變「三」的按鍵了。</p>
-</li>
-<li><p>class=”collapse navbar-collapse”：這兩字詞幫助我們在正常視窗的情況下，可以看到原本的導覽列。</p>
-</li>
-<li><p>id=”Navbarshow”與button裡的data-target做對應，能讓我們看到縮放裡的內容</p>
-</li>
-<li><p>如果希望navbar不會受頁面捲動下移而消失，則在class加上fixed-top，變會置頂在最上方</p>
-</li>
-</ol>
+          
+          <div class="entry-summary">
+          navbar導覽使用方式
+nav外層使用包住時，Navbar導覽列放置在頁面中央或內容的中間，若沒有設定container，導覽列預設的內容寬度是浮動，並自動佔滿水平寬度
+透過navbar-expand定義在何種尺寸，menu項目的呈現會改為「漢堡折疊」樣式效果
+使用bootstrap自定義的data-toggle及data-target，決定按鈕點下之後，menu的div要以collapse方式展開
+navbar-expand-sm大小則是決定當螢幕尺寸小於sm時，會改為以「三」顯示menu項目
 
+
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/15/1115/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -529,22 +459,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="什麼是Collapse折疊？"><a href="#什麼是Collapse折疊？" class="headerlink" title="什麼是Collapse折疊？"></a>什麼是Collapse折疊？</h3><p>使特定的頁面區塊隱藏起來，當點擊某些按鈕或者動作時，資料才會顯現出來。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;button data-toggle=<span class="string">"collapse"</span> data-target=<span class="string">"#demo"</span>&gt;Collapsible&lt;/button&gt;</span><br><span class="line">&lt;div id=<span class="string">"demo"</span> class=<span class="string">"collapse"</span>&gt;</span><br><span class="line">Lorem ipsum dolor text....</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+        
 
-<ul>
-<li><p>按鈕上一定要有 data-toggle=“collapse” 這個宣告詞，然後需要顯示的資訊在 data-target=”#demo” 的連結上。</p>
-</li>
-<li><p>再利用 div 或者是其他區塊類的元素，增加 id=“demo”，重要的是 demo 跟 button 的 data-target 命名必須相同才可運作。</p>
-</li>
-<li><p>預設的折疊效果是隱藏的，點擊才會出現，若要設定為展開開狀態，在collapse後方添加show便可顯現。</p>
-</li>
-</ul>
-<h3 id="Accordion隱藏折疊資料"><a href="#Accordion隱藏折疊資料" class="headerlink" title="Accordion隱藏折疊資料"></a>Accordion隱藏折疊資料</h3><p>透過 Accordion 的方法來處理時，看起來所有的連結會比較整齊， FAQ 問答頁面多使用這種模式。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"accordion"</span> &gt;</span><br><span class="line"> &lt;div class=<span class="string">"card"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"card-header"</span>&gt;</span><br><span class="line">    &lt;h5 class=<span class="string">"mb-0"</span>&gt;</span><br><span class="line">     &lt;div href=<span class="string">"#collapse1"</span> data-toggle=<span class="string">"collapse"</span> data-parent=<span class="string">"#accordion"</span>&gt;</span><br><span class="line">      &lt;i class=<span class="string">"fas fa-chevron-circle-down"</span>&gt;&lt;/i&gt; Good Deal&lt;/div&gt;</span><br><span class="line">    &lt;/h5&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  </span><br><span class="line">    &lt;div id=<span class="string">"collapse1"</span> class=<span class="string">"collapse show"</span>&gt;</span><br><span class="line">     &lt;div class=<span class="string">"card-body"</span>&gt;</span><br><span class="line">     Lorem ipsum dolor, sit amet consectetur adipisicing elit... </span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;      </span><br><span class="line">  &lt;/div&gt; </span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          什麼是Collapse折疊？使特定的頁面區塊隱藏起來，當點擊某些按鈕或者動作時，資料才會顯現出來。
 
-<h4 id="實作成果"><a href="#實作成果" class="headerlink" title="實作成果"></a>實作成果</h4><p><img src="https://i.imgur.com/29cCi0A.png" alt=""></p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/14/1114/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -588,33 +513,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="色系調色盤-bg-text"><a href="#色系調色盤-bg-text" class="headerlink" title="色系調色盤-bg/text"></a>色系調色盤-bg/text</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class=<span class="string">"text-primary"</span>&gt;調整文字色系&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+        
 
-<p><img src="https://i.imgur.com/C9pXmEY.png" alt=""><br><img src="https://i.imgur.com/hGezCVV.png" alt=""></p>
-<h4 id="移動位置區塊-p-m"><a href="#移動位置區塊-p-m" class="headerlink" title="移動位置區塊-p/m"></a>移動位置區塊-p/m</h4><ul>
-<li>移動y軸代表調整上下位置，x軸則是左右位置</li>
-<li>pl= padding left|</li>
-<li>py= padding top &amp; bottom</li>
-<li>ml= margin left</li>
-</ul>
-<h4 id="響應式圖片"><a href="#響應式圖片" class="headerlink" title="響應式圖片"></a>響應式圖片</h4><ul>
-<li>img-fluid自動縮放圖片寬度</li>
-<li>rounded 可以讓圖片顯示圓角傚果</li>
-<li>rounded-circle 可以設置橢圓形圖片</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">"..."</span> class=<span class="string">"img-fluid rounded"</span> alt=<span class="string">"Responsive image"</span>&gt;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          色系調色盤-bg/text
 
-
-<h4 id="背景圖"><a href="#背景圖" class="headerlink" title="背景圖"></a>背景圖</h4><p>background-attachment是背景固定模式的屬性，而不同的固定模式就有不一樣的視覺效果</p>
-<ul>
-<li>scroll模式也是預設值，背景圖會隨著外圍頁面滾動而移動。</li>
-<li>fixed模式，不管外面、裡面怎麼滾，他都是不會動的。</li>
-<li>local模式，主要的特色就是，自己的區塊內如果滾動時，背景圖也會跟著移動。</li>
-</ul>
-<h4 id="icon圖型"><a href="#icon圖型" class="headerlink" title="icon圖型"></a>icon圖型</h4><p>i標籤將想使用的icon圖寫入欲出現位置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i class=<span class="string">"fas fa-band-aid"</span>&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://pjchender.blogspot.com/2015/04/font-awesomeicon.html" target="_blank" rel="noopener">font-awesome</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/13/1113/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -658,28 +567,72 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="定義網格規則"><a href="#定義網格規則" class="headerlink" title="定義網格規則"></a>定義網格規則</h4><ul>
-<li><p>Bootstrap使用flexbox建立網格系統，符合響應式設計，並且能夠更方便的實現等高及對齊置中效果。</p>
-</li>
-<li><p>定義列與行的語法，先決定外層row列數，再設定內層的寬度col，寬度bootstrap定義分成12等分， <code>&lt;div class=&quot;col-[裝置尺寸]-[寬度大小]&quot;&gt;</code></p>
-</li>
-<li><p>定義螢幕尺寸(xs, sm, md, lg)<br><img src="https://i.imgur.com/zacSWXI.png" alt=""></p>
-</li>
-</ul>
-<p>範例：&lt;div class=”col-md-6&gt; 在md的大小時會佔據6/12一半的寬度(深綠色)，程式碼如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"row"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"col-md-12  text-center"</span>&gt;12/12&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=<span class="string">"row"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"col-md-6  text-center"</span>&gt;6/12&lt;/div&gt;</span><br><span class="line">  &lt;div class=<span class="string">"col-md-6  text-center"</span>&gt;6/12&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+        
 
-<p><img src="https://i.imgur.com/1BlIJRJ.png" alt=""></p>
-<h4 id="垂直對齊容器位置"><a href="#垂直對齊容器位置" class="headerlink" title="垂直對齊容器位置"></a>垂直對齊容器位置</h4><p>可以在.row的 class 加上：<br>左-&gt;align-items-start<br>右-&gt;align-items-end<br>中-&gt;align-items-center</p>
-<p><img src="https://i.imgur.com/peBTLQ0.png" alt=""></p>
-<h4 id="水平調整容器位置"><a href="#水平調整容器位置" class="headerlink" title="水平調整容器位置"></a>水平調整容器位置</h4><p><img src="https://i.imgur.com/CSj8mFQ.png" alt=""></p>
-<h4 id="補充資料"><a href="#補充資料" class="headerlink" title="補充資料"></a>補充資料</h4><ul>
-<li><p>在預設的情況下，每一個欄（column）之間都會有間隙（gutter），透過在 .row 上加上 .no-gutters 即可去除</p>
-</li>
-<li><p>我們可以在同一個 column 上給多的 class 來讓頁面在不同螢幕尺寸時有不同的排版：<code>&lt;div class=&quot;col-sm-4 col-md-8&quot;&gt;&lt;/div&gt;</code>當螢幕尺寸為md以上時會以8/12顯示，sm則以4/12顯示</p>
-</li>
-</ul>
+          
+          <div class="entry-summary">
+          定義網格規則
+Bootstrap使用flexbox建立網格系統，符合響應式設計，並且能夠更方便的實現等高及對齊置中效果。
 
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/11/1111/#more">閱讀全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-1111_2"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2019/11/11/1111_2/">Bootstrap_Carousel輪播幻燈片</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2019/11/11/1111_2/" class="article-date">
+	  <time datetime="2019-11-10T16:00:00.000Z" itemprop="datePublished">十一月 11, 2019</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+          <div class="entry-summary">
+          Carousel中文為幻燈片的意思，在元件裡面可以添加控制元素來控制幻燈片的播放。
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/11/1111_2/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -810,30 +763,6 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="../../2020/05/13/hello-world/">Hello World</a></h6>
-              <span>五月 13, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="../../2020/05/12/0513/">JS- scope chain</a></h6>
-              <span>五月 12, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="../../2020/03/15/0315/">Vue_過濾API資料(實作)</a></h6>
               <span>三月 15, 2020</span>
             </div>
@@ -876,6 +805,30 @@
 
           </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2020/03/05/0305/">JavaScript- 陣列處理方式</a></h6>
+              <span>三月 5, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2020/03/03/0303/">Vue_Vuex狀態管理</a></h6>
+              <span>三月 3, 2020</span>
+            </div>
+
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -908,7 +861,7 @@
     <h3 class="widget-title">彙整</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">二月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">一月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">十二月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">十一月 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">二月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">一月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">十二月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">十一月 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

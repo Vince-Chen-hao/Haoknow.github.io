@@ -104,68 +104,6 @@
         
           <section id="main">
   
-    <article id="post-1219"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2019/12/19/1219/">Bootstrap_影片彈出視窗(實作)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2019/12/19/1219/" class="article-date">
-	  <time datetime="2019-12-18T16:00:00.000Z" itemprop="datePublished">十二月 19, 2019</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="目的：點擊影片後顯示彈出視窗，並自動播放影片內容"><a href="#目的：點擊影片後顯示彈出視窗，並自動播放影片內容" class="headerlink" title="目的：點擊影片後顯示彈出視窗，並自動播放影片內容"></a>目的：點擊影片後顯示彈出視窗，並自動播放影片內容</h4><p><img src="https://i.imgur.com/eDBfZuu.png" alt=""></p>
-<ul>
-<li>設置HTML樣板</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  &lt;!-- VIDEO PLAY --&gt;</span><br><span class="line">&lt;section id=<span class="string">"video-play"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"dark-overlay"</span>&gt; </span><br><span class="line">    &lt;div class=<span class="string">"container p-5"</span>&gt; </span><br><span class="line">    &lt;div class=<span class="string">"row"</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">"col"</span>&gt;</span><br><span class="line">          &lt;a href=<span class="string">"#"</span> class=<span class="string">"video"</span> data-video=<span class="string">"https://www.youtube.com/embed/SjJ08V166uU"</span> data-toggle=<span class="string">"modal"</span> data-target=<span class="string">"#videoModal"</span>&gt;</span><br><span class="line">            &lt;i class=<span class="string">"fas fa-play fa-3x"</span>&gt;&lt;/i&gt;&lt;!--data-toggle 通常會伴隨一個icon，告知系統在點擊後會觸發另一個行動 --&gt;</span><br><span class="line">          &lt;/a&gt;</span><br><span class="line">          &lt;h1&gt;Watch Our Publicity Film&lt;/h1&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>點擊後開啟Modal互動視窗</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- VIDEO MODAL --&gt;</span><br><span class="line">&lt;div class=<span class="string">"modal fade"</span> id=<span class="string">"videoModal"</span>&gt; &lt;!--點擊後淡化原視窗背景顏色 --&gt;</span><br><span class="line">  &lt;div class=<span class="string">"modal-dialog"</span>&gt;&lt;!-- 影片左右置中進行--&gt;</span><br><span class="line">    &lt;div class=<span class="string">"modal-content"</span>&gt;</span><br><span class="line">      &lt;div class=<span class="string">"modal-body"</span>&gt;</span><br><span class="line">        &lt;button class=<span class="string">"close"</span> data-dismiss=<span class="string">"modal"</span>&gt;&lt;!--關閉鈕 --&gt;</span><br><span class="line">          &lt;span&gt;&amp;<span class="built_in">times</span>;&lt;/span&gt;</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">        &lt;iframe src=<span class="string">""</span> frameborder=<span class="string">"0"</span> height=<span class="string">"350"</span> width=<span class="string">"100%"</span> allowfullscreen&gt;&lt;/iframe&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>套用JQ影片播放語法</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Video Play</span><br><span class="line">$(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  // Auto play modal video</span><br><span class="line">  $(<span class="string">".video"</span>).click(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    var theModal = $(this).data(<span class="string">"target"</span>),</span><br><span class="line">      videoSRC = $(this).attr(<span class="string">"data-video"</span>),</span><br><span class="line">      videoSRCauto = videoSRC + <span class="string">"?modestbranding=1&amp;rel=0&amp;controls=0&amp;showinfo=0&amp;html5=1&amp;autoplay=1"</span>;</span><br><span class="line">    $(theModal + <span class="string">' iframe'</span>).attr(<span class="string">'src'</span>, videoSRCauto);</span><br><span class="line">    $(theModal + <span class="string">' button.close'</span>).click(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      $(theModal + <span class="string">' iframe'</span>).attr(<span class="string">'src'</span>, videoSRC);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="實作成品"><a href="#實作成品" class="headerlink" title="實作成品"></a>實作成品</h4><p>彈出式影片: <a href="https://vince-chen-hao.github.io/BS_NewsChannel/index.html">運動頻道</a></p>
-<p><img src="https://i.imgur.com/vhpe9O4.png" alt=""></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-1218"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -191,17 +129,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="動態型別"><a href="#動態型別" class="headerlink" title="動態型別"></a>動態型別</h4><p>在JavaScript中，不需要宣告變數的型別，因為JavaScript是使用「動態型別」在處理變數。<br>僅需要宣告變數(type)，不需要告訴JavaScript變數的型別(type)，它會在執行程式時，自動判別變數的型別，而且一個變數在不同時候可能擁有不同型別。</p>
-<h4 id="JavaScript的六種純值-primitive"><a href="#JavaScript的六種純值-primitive" class="headerlink" title="JavaScript的六種純值(primitive)"></a>JavaScript的六種純值(primitive)</h4><p>純值是一種資料型別，代表基本型別，只是一個值，而非物件。</p>
-<h5 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h5><p>JavaScript給所有變數的初始值，變數會一直處於undefined，直到程式碼執行到設定變數的值</p>
-<h5 id="null"><a href="#null" class="headerlink" title="null"></a>null</h5><p>表示不存在，可以在程式宣告時，給與該變數的值為null，用以表示該變數沒有值。</p>
-<h5 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h5><p>表示對或錯，用true或false表示值</p>
-<h5 id="Number-數值"><a href="#Number-數值" class="headerlink" title="Number(數值)"></a>Number(數值)</h5><p>在JavaScript中的數值皆為浮點數，不像其他程式語言還會細分整數或其他浮點數等，所以在JavaScript中也可以直接把他假裝為整數。</p>
-<h5 id="String-字串"><a href="#String-字串" class="headerlink" title="String(字串)"></a>String(字串)</h5><p>由一連串字符所組成，可以單引號或雙引號表示</p>
-<h5 id="Symbal-符號"><a href="#Symbal-符號" class="headerlink" title="Symbal(符號)"></a>Symbal(符號)</h5><p>這是新的型別，被用在ES6中，尚未被全部的瀏覽器支援</p>
-<h5 id="強制型轉-Coercion"><a href="#強制型轉-Coercion" class="headerlink" title="強制型轉(Coercion)"></a>強制型轉(Coercion)</h5><p>JavaScript引擎自動將1轉換為字串’1’，才繼續做相加運算，自動避免出錯</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = 8 + <span class="string">'7'</span>;</span><br><span class="line">console.log(a);//87</span><br></pre></td></tr></table></figure>
+        
 
+          
+          <div class="entry-summary">
+          動態型別在JavaScript中，不需要宣告變數的型別，因為JavaScript是使用「動態型別」在處理變數。僅需要宣告變數(type)，不需要告訴JavaScript變數的型別(type)，它會在執行程式時，自動判別變數的型別，而且一個變數在不同時候可能擁有不同型別。
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/18/1218/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -245,19 +183,21 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h3><ul>
-<li>傳值(Call by value)：在 JavaScript 中的純值 是傳值。(傳過去以後就沒有任何關聯性)</li>
-<li>傳參考/傳參照(Call by reference)：傳遞給函式的是它實際參數的隱式參照，而不是實際的拷貝。</li>
-<li>傳共用物件(Call by sharing)： a 與 b 是共用同一個物件內容，若 b 修改了物件內容，則 a 也會被修改成同樣內容(物件是共用的，沒有拷貝)。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 傳值</span><br><span class="line">var person = <span class="string">'小明'</span>; // 純值</span><br><span class="line">var person2 = person;</span><br><span class="line">person2 = <span class="string">'杰倫'</span>;</span><br><span class="line">console.log(perosn, person2)</span><br><span class="line">// 小明,杰倫</span><br><span class="line">//傳參考</span><br><span class="line">var person = &#123;</span><br><span class="line"> name: <span class="string">'小明'</span></span><br><span class="line">&#125;;</span><br><span class="line">var person2 = person;</span><br><span class="line">perosn2.name = <span class="string">'杰倫'</span>; // 改變物件內容</span><br><span class="line">console.log(perosn, person2);</span><br><span class="line">console.log(perosn === person2);</span><br><span class="line">// 杰倫,杰倫</span><br><span class="line">// <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+        
 
-<p>More info: <a href="https://medium.com/@kumoshih/js-%E6%A0%B8%E5%BF%83%E7%AF%87-%E5%82%B3%E5%80%BC-%E5%82%B3%E5%8F%83%E8%80%83-5fdc5023e549" target="_blank" rel="noopener">傳值、傳參考</a></p>
-<h3 id="應對方式：Object-assign"><a href="#應對方式：Object-assign" class="headerlink" title="應對方式：Object.assign"></a>應對方式：Object.assign</h3><p><img src="https://i.imgur.com/GGbYNRa.png" alt=""></p>
-<h3 id="操作測試"><a href="#操作測試" class="headerlink" title="操作測試"></a>操作測試</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> openModal(item)&#123;</span><br><span class="line"></span><br><span class="line">    //this.tempProduct= item;  //因為物件傳參考的特性，直接用item會與tmepProduct相同</span><br><span class="line">    this.tempProduct= Object.assign(&#123;&#125;,item); //可採用es6語法，將item傳自獨立的空物件裡，才不會互相渲染</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          定義
+傳值(Call by value)：在 JavaScript 中的純值 是傳值。(傳過去以後就沒有任何關聯性)
+傳參考/傳參照(Call by reference)：傳遞給函式的是它實際參數的隱式參照，而不是實際的拷貝。
+傳共用物件(Call by sharing)： a 與 b 是共用同一個物件內容，若 b 修改了物件內容，則 a 也會被修改成同樣內容(物件是共用的，沒有拷貝)。
 
-<p>無法直接指定匯入變數中，因傳參考的特性會互相渲染，需將item傳入空物件裡才能順利使用。</p>
 
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/15/1215/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -301,11 +241,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="display-block"><a href="#display-block" class="headerlink" title="display: block"></a>display: block</h4><p>不論前後元素為何，display:block 元素會直接「換行」開始。<br><code>&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;、&lt;h2&gt;、&lt;iframe&gt;、&lt;img&gt;</code>這幾個 HTML 元素預設的 display 屬性是 block<br>可以自定義寬高或縮排(margin 、 padding 、 width 、 height 、 background-image 皆「有效」)</p>
-<h4 id="display-inline"><a href="#display-inline" class="headerlink" title="display: inline"></a>display: inline</h4><p>display : inline 的元素連在一起會在同一行，「不會換行」。<br>要讓 display : inline 元素水平置中的方式是在此元素的父元素加上 text-align : center。<br><code>&lt;a&gt;、&lt;span&gt;、&lt;b&gt;、&lt;i&gt;、&lt;iframe&gt;、&lt;img&gt;</code>這幾個 HTML 元素預設的 display 屬性是 inline<br>可以針對左右做縮排(margin-left 、 margin-right 、 padding-left 、 padding-right「有效」)<br>上下縮排會失效，且寬高為內容本身寬高，無法自定義寬高。 (margin-top 、 margin-bottom 、 padding-top 、 padding-bottom 、 width 、 height 、 background-image 皆「無效」)</p>
-<h4 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display: inline-block"></a>display: inline-block</h4><p>內部元素水平排列，而且不需要額外設定clear，也不會讓接著的元素疊上來。<br>可以理解為：外面是inline，裡面是block。所以元素「不會換行」，但是又可以設定元素的padding-top 、 padding-bottom 、 width 、 height 、 background-image 。</p>
-<h4 id="display-none"><a href="#display-none" class="headerlink" title="display: none"></a>display: none</h4><p>display設為none這個東西就不見了，不佔空間。<br>補充：visibility:hidden是隱形看不見，不過還是有佔空間</p>
+        
 
+          
+          <div class="entry-summary">
+          display: block不論前後元素為何，display:block 元素會直接「換行」開始。&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;、&lt;h2&gt;、&lt;iframe&gt;、&lt;img&gt;這幾個 HTML 元素預設的 display 屬性是 block可以自定義寬高或縮排(margin 、 padding 、 width 、 height 、 background-image 皆「有效」)
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/12/1212/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -349,26 +295,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>主要功能是點選照片，該張照片會以燈箱方式全版展開，提升觀看體驗，請參考<a href="https://ithelp.ithome.com.tw/articles/10193599" target="_blank" rel="noopener">Lightbox for Bootstrap</a>進行安裝</p>
-<p>結構分為兩層</p>
-<ul>
-<li>外層定義燈箱展示的照片，以及展示後的大小</li>
-<li>內層定義原始照片</li>
-</ul>
-<p>在外層使用bootstrap自定義的data-toggle設定啟用lightbox功能;data-lightbox將多張照片群組起來，在左右切換照片時可以辨識為同一群組的照片</p>
-<ul>
-<li>新增程式碼至html裡使data-toggle串連lightbox</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"https://unsplash.it/1200/768.jpg?image=250"</span> data-toggle=<span class="string">"lightbox"</span> data-title=<span class="string">"A random title"</span> data-footer=<span class="string">"A custom footer text"</span>&gt;</span><br><span class="line">    &lt;img src=<span class="string">"https://unsplash.it/600.jpg?image=250"</span> class=<span class="string">"img-fluid"</span>&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+        
 
-<ul>
-<li>最後添加jquery程式碼，避免預設效果，而採用引入的lightbox效果展示</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(document).on(<span class="string">'click'</span>, <span class="string">'[data-toggle="lightbox"]'</span>, <span class="keyword">function</span>(event) &#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line">    $(this).ekkoLightbox();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          主要功能是點選照片，該張照片會以燈箱方式全版展開，提升觀看體驗，請參考Lightbox for Bootstrap進行安裝
 
-<h4 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h4><p>燈箱畫冊: <a href="https://vince-chen-hao.github.io/BS_NewsChannel/collection.html">運動頻道</a></p>
-<p><img src="https://i.imgur.com/fg6QT4v.jpg" alt=""></p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/11/1211/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -412,15 +349,23 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="以下快捷鍵限支援Mac"><a href="#以下快捷鍵限支援Mac" class="headerlink" title="以下快捷鍵限支援Mac"></a>以下快捷鍵限支援Mac</h4><ul>
-<li>程式自動排版：option + shift + f</li>
-<li>更改相同的命名：com + d</li>
-<li>選取多欄：shift + 點擊</li>
-<li>跳行(游標在字裡行間也可行)：com + enter</li>
-<li>套件：點擊html及可得知對應的css內容：按住com ＋ 點擊</li>
-</ul>
-<p><img src="/images/vscode.png" alt=""></p>
+        
 
+          
+          <div class="entry-summary">
+          以下快捷鍵限支援Mac
+程式自動排版：option + shift + f
+更改相同的命名：com + d
+選取多欄：shift + 點擊
+跳行(游標在字裡行間也可行)：com + enter
+套件：點擊html及可得知對應的css內容：按住com ＋ 點擊
+
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/07/1207/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -464,16 +409,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="SEO搜尋優化"><a href="#SEO搜尋優化" class="headerlink" title="SEO搜尋優化"></a>SEO搜尋優化</h4><p>文字在SEO中的影響力仍然大於圖片，但我們也不可忽視圖片搜尋的趨勢。要兼顧排版及SEO，建議以圖文並茂、相輔相成的方式進行，若是因為版面限制，則可以運用其他可以放文字的區塊、頁面，將圖片中的內容轉換成文字，讓搜尋引擎爬蟲知道你的網站中也有這些內容！</p>
-<p>瀏覽器爬蟲網頁的過程會以搜尋文字為主，採用此形式協助網站做<a href="https://ithelp.ithome.com.tw/articles/10193599" target="_blank" rel="noopener">SEO優化</a></p>
-<p>目的：標題內新增圖片，讓logo背景蓋住文字內容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.logo h2&#123;</span><br><span class="line">    background-image: url(/photo/logoword.jpg);</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 300px;</span><br><span class="line">    display:block;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    text-indent:101%;</span><br><span class="line">    white-space:nowrap;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>text-indent: 101% 這是表示 段落首字縮排，將文字推出logo背景</li>
-<li>overflow: hidden;超出 div 父元素時，自動隱藏該元素</li>
-<li>white-space: nowrap：規定段落中的文字不得進行換行，常用於避免字數過多時自動換行導致閱讀效果變差</li>
-</ul>
+        
 
+          
+          <div class="entry-summary">
+          SEO搜尋優化文字在SEO中的影響力仍然大於圖片，但我們也不可忽視圖片搜尋的趨勢。要兼顧排版及SEO，建議以圖文並茂、相輔相成的方式進行，若是因為版面限制，則可以運用其他可以放文字的區塊、頁面，將圖片中的內容轉換成文字，讓搜尋引擎爬蟲知道你的網站中也有這些內容！
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/04/1204/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -517,15 +463,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="switch與if的差異"><a href="#switch與if的差異" class="headerlink" title="switch與if的差異"></a>switch與if的差異</h4><p>if else 會把每個條件跟程式碼都檢視過一次，而 switch 只會去檢視 case 內的條件是否吻合，吻合才去執行程式碼區塊，相對來說，if else 會比較消耗效能，因if語法瀏覽器會都進行處理，而switch需對應後才處理，並且跑到指定需求後便停止。除了比if語法有較快的效率，使程式碼更好閱讀，同時效能較佳，</p>
-<h5 id="使用時機"><a href="#使用時機" class="headerlink" title="使用時機"></a>使用時機</h5><p>如有確定特定狀態便推薦使用switch，ex：只有紅燈、黃燈、綠燈三種</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var light = yellow;</span><br><span class="line"></span><br><span class="line">switch(light)&#123;</span><br><span class="line">    // 如果是紅色就執行這區塊的程式碼</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'red'</span>:</span><br><span class="line">        console.log(<span class="string">'現在是'</span>+light);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">     // 如果是黃色就執行這區塊的程式碼 </span><br><span class="line">    <span class="keyword">case</span> <span class="string">'yellow'</span>:</span><br><span class="line">        console.log(<span class="string">'現在是'</span>+light);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">    // 如果上述都沒有符合的條件，就執行這區塊的程式碼   </span><br><span class="line">    default:</span><br><span class="line">        console.log(<span class="string">'現在是綠燈'</span>);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
 
-<h5 id="switch嚴謹模式"><a href="#switch嚴謹模式" class="headerlink" title="switch嚴謹模式"></a>switch嚴謹模式</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var n = <span class="string">'5'</span>;</span><br><span class="line">switch(n)&#123;</span><br><span class="line">    <span class="keyword">case</span> 5:</span><br><span class="line">        console.log(<span class="string">'success'</span>);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">        </span><br><span class="line">    default:</span><br><span class="line">        console.log(<span class="string">'fail'</span>);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">// console 輸出 fail</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          switch與if的差異if else 會把每個條件跟程式碼都檢視過一次，而 switch 只會去檢視 case 內的條件是否吻合，吻合才去執行程式碼區塊，相對來說，if else 會比較消耗效能，因if語法瀏覽器會都進行處理，而switch需對應後才處理，並且跑到指定需求後便停止。除了比if語法有較快的效率，使程式碼更好閱讀，同時效能較佳，
 
-<p>看起來同樣的判斷卻在 switch 和 if else 上有著不一樣的結果，這是因為 switch 在判斷上採取嚴謹模式，亦即 ===(即型別也要相同)，而在 if else 的判斷上並沒有採取這麼嚴謹的模式，需更改case’5’才能正確運行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">switch(n)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'5'</span>:</span><br><span class="line">        console.log(<span class="string">'success'</span>);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">        </span><br><span class="line">    default:</span><br><span class="line">        console.log(<span class="string">'fail'</span>);</span><br><span class="line">        <span class="built_in">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">// console 輸出 success</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/04/1204-2/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -569,30 +517,39 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="介紹"><a href="#介紹" class="headerlink" title="介紹"></a>介紹</h4><p><a href="https://kenwheeler.github.io/slick/" target="_blank" rel="noopener">Slick官網</a>提供多種輪播樣式，可進行滑動、設定輪播等功能，我們只需要選定輪播形式後，引用js、css套件，即可使用它所支援的slider樣式。</p>
-<p><img src="https://i.imgur.com/75Dvc8W.png" alt=""></p>
-<h4 id="操作步驟"><a href="#操作步驟" class="headerlink" title="操作步驟"></a>操作步驟</h4><p>搜尋並引入slick cdn，加入css及js相對應程式碼</p>
-<p>將slick.css複製到<head>中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"</span> /&gt;</span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"</span> /&gt;</span><br></pre></td></tr></table></figure>
+        
+
+          
+          <div class="entry-summary">
+          介紹Slick官網提供多種輪播樣式，可進行滑動、設定輪播等功能，我們只需要選定輪播形式後，引用js、css套件，即可使用它所支援的slider樣式。
+
+操作步驟搜尋並引入slick cdn，加入css及js相對應程式碼
+將slick.css複製到中
+12&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" /&gt;&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" /&gt;
 
 
 
-<p>slick.js複製到<body>段底部</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script src=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+slick.js複製到段底部
+12&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"&gt;&lt;/script&gt;
 
 
 
 
-<p>在html建立輪播的內容結構，並在外層使用一個class作標記</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=<span class="string">"slider"</span>&gt;</span><br><span class="line">    &lt;div&gt;slide 1&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;slide 2&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;slide 3&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>在slick官網上選擇sliders樣式，複製對應語法到body、script中</p>
-<p><img src="https://i.imgur.com/pHpxsYI.png" alt=""></p>
-<p>經由optional控制元素來調整輪播、滑動等功能設定</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">arrows: (boolean值)是否顯示左右箭頭功能</span><br><span class="line">dots:(boolean值)是否顯示下方小圓點功能</span><br><span class="line">autoplay：(boolean值)是否自動播放</span><br><span class="line">autoplaySpeed:(毫秒值)自動播放的速度</span><br><span class="line">slidesToShow:(數量值)一次主要顯現幾個slides</span><br><span class="line">slidesToScroll:(數量值)每次滑動幾張slides</span><br><span class="line">fade:(boolean值)是否採用淡出/淡入效果</span><br><span class="line">infinite：(boolean值)滑到最後一張，是否繼續從回到一開始同向循環(4&gt;1&gt;2&gt;3&gt;…)，或是逆轉向循環(4&gt;3&gt;2&gt;…)</span><br><span class="line">centerMode:(boolean值)是否同時顯現前後兩張slide的部分內容</span><br><span class="line">centerPadding:(px值)搭配centerMode:<span class="literal">true</span>使用，表示前後兩張slide要顯現多少範圍</span><br><span class="line">responsive:(陣列)針對不同尺寸做額外設定</span><br><span class="line">breakpoint:(螢幕尺寸)</span><br><span class="line">settings:(&#123;物件&#125;)包含各種設定</span><br></pre></td></tr></table></figure>
+在html建立輪播的內容結構，並在外層使用一個class作標記
+1234567&lt;div class="slider"&gt;    &lt;div&gt;slide 1&lt;/div&gt;    &lt;div&gt;slide 2&lt;/div&gt;    &lt;div&gt;slide 3&lt;/div&gt;&lt;/div&gt;
+在slick官網上選擇sliders樣式，複製對應語法到body、script中
 
-<h4 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h4><p>Slick幻燈片: <a href="https://vince-chen-hao.github.io/BS_NewsChannel/about.html">運動頻道</a></p>
-<p><img src="/images/lightbox.png" alt=""></p>
+經由optional控制元素來調整輪播、滑動等功能設定
+12345678910111213arrows: (boolean值)是否顯示左右箭頭功能dots:(boolean值)是否顯示下方小圓點功能autoplay：(boolean值)是否自動播放autoplaySpeed:(毫秒值)自動播放的速度slidesToShow:(數量值)一次主要顯現幾個slidesslidesToScroll:(數量值)每次滑動幾張slidesfade:(boolean值)是否採用淡出/淡入效果infinite：(boolean值)滑到最後一張，是否繼續從回到一開始同向循環(4&gt;1&gt;2&gt;3&gt;…)，或是逆轉向循環(4&gt;3&gt;2&gt;…)centerMode:(boolean值)是否同時顯現前後兩張slide的部分內容centerPadding:(px值)搭配centerMode:true使用，表示前後兩張slide要顯現多少範圍responsive:(陣列)針對不同尺寸做額外設定breakpoint:(螢幕尺寸)settings:(&#123;物件&#125;)包含各種設定
 
+實作Slick幻燈片: 運動頻道
+
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/02/1202/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -636,20 +593,71 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>創建一個物件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> var farm = &#123;</span><br><span class="line">    duck: 5</span><br><span class="line">    chicken: 10,</span><br><span class="line">    dogs: [<span class="string">'柴犬'</span>,<span class="string">'柯基'</span>],</span><br><span class="line">    cornField: [5,6,7]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
 
-<p>此時若要新增一個屬性用來計算總共有多少隻家禽，如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var farm = &#123;</span><br><span class="line">    duck: 5,</span><br><span class="line">    chicken: 10,</span><br><span class="line">    dogs: [<span class="string">'柴犬'</span>,<span class="string">'柯基'</span>],</span><br><span class="line">    cornField: [5,6,7],</span><br><span class="line">    poultry: <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        var total = this.duck + this.chicken;</span><br><span class="line">        console.log(total);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          創建一個物件：
 
-<p>我們新增了一個 poultry 屬性，並給予一個計算小鴨跟小雞數量的函式(這裡函式可以不用命名)，當然除了上述的第一個方法，我們也可以中途加入 poultry 這個屬性，如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">farm.poultry = <span class="function"><span class="title">function</span></span> ()&#123;</span><br><span class="line">    var total = this.duck + this.chicken;</span><br><span class="line">    console.log(total);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/27/1127/#more">閱讀全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
 
-<p>而當我們在呼叫屬性且有函式時，會比較不一樣</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">farm.poultry();</span><br></pre></td></tr></table></figure>
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
 
-<p>有屬性若為函式，需要跟前面講到函式時一樣，跟函式的呼叫一樣需要加括號</p>
+<!-- Table of Contents -->
 
+  
+    <article id="post-1127_2"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2019/11/27/1127_2/">JavaScript_基礎語法：===等號間的嚴謹模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2019/11/27/1127_2/" class="article-date">
+	  <time datetime="2019-11-26T16:00:00.000Z" itemprop="datePublished">十一月 27, 2019</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+          <div class="entry-summary">
+          有一個較為嚴謹的比較模式，當等號使用==時，左右兩邊並不會比較資料型別，而會自動去轉型做比較，專業回答：兩個等於（==）會對被判別的變數做轉換型別的動作（coercion又稱為implicit type conversion）
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/11/27/1127_2/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -780,30 +788,6 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="../../2020/05/13/hello-world/">Hello World</a></h6>
-              <span>五月 13, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="../../2020/05/12/0513/">JS- scope chain</a></h6>
-              <span>五月 12, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="../../2020/03/15/0315/">Vue_過濾API資料(實作)</a></h6>
               <span>三月 15, 2020</span>
             </div>
@@ -846,6 +830,30 @@
 
           </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2020/03/05/0305/">JavaScript- 陣列處理方式</a></h6>
+              <span>三月 5, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2020/03/03/0303/">Vue_Vuex狀態管理</a></h6>
+              <span>三月 3, 2020</span>
+            </div>
+
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -878,7 +886,7 @@
     <h3 class="widget-title">彙整</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">二月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">一月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">十二月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">十一月 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">二月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">一月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">十二月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">十一月 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

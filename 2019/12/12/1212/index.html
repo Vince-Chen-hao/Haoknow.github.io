@@ -19,7 +19,7 @@
 <meta property="og:description" content="display: block不論前後元素為何，display:block 元素會直接「換行」開始。&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;、&lt;h2&gt;、&lt;iframe&gt;、&lt;img&gt;這幾個 HTML 元素預設的 display 屬性是 block可以自定義寬高或縮排(margin 、 padding 、 width 、 height 、 ba">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2019-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-14T06:11:52.841Z">
+<meta property="article:modified_time" content="2020-05-18T06:48:17.134Z">
 <meta property="article:author" content="Vince">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary">
@@ -139,6 +139,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="display-block"><a href="#display-block" class="headerlink" title="display: block"></a>display: block</h4><p>不論前後元素為何，display:block 元素會直接「換行」開始。<br><code>&lt;div&gt;、&lt;p&gt;、&lt;h1&gt;、&lt;h2&gt;、&lt;iframe&gt;、&lt;img&gt;</code>這幾個 HTML 元素預設的 display 屬性是 block<br>可以自定義寬高或縮排(margin 、 padding 、 width 、 height 、 background-image 皆「有效」)</p>
+<a id="more"></a>
+
 <h4 id="display-inline"><a href="#display-inline" class="headerlink" title="display: inline"></a>display: inline</h4><p>display : inline 的元素連在一起會在同一行，「不會換行」。<br>要讓 display : inline 元素水平置中的方式是在此元素的父元素加上 text-align : center。<br><code>&lt;a&gt;、&lt;span&gt;、&lt;b&gt;、&lt;i&gt;、&lt;iframe&gt;、&lt;img&gt;</code>這幾個 HTML 元素預設的 display 屬性是 inline<br>可以針對左右做縮排(margin-left 、 margin-right 、 padding-left 、 padding-right「有效」)<br>上下縮排會失效，且寬高為內容本身寬高，無法自定義寬高。 (margin-top 、 margin-bottom 、 padding-top 、 padding-bottom 、 width 、 height 、 background-image 皆「無效」)</p>
 <h4 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display: inline-block"></a>display: inline-block</h4><p>內部元素水平排列，而且不需要額外設定clear，也不會讓接著的元素疊上來。<br>可以理解為：外面是inline，裡面是block。所以元素「不會換行」，但是又可以設定元素的padding-top 、 padding-bottom 、 width 、 height 、 background-image 。</p>
 <h4 id="display-none"><a href="#display-none" class="headerlink" title="display: none"></a>display: none</h4><p>display設為none這個東西就不見了，不佔空間。<br>補充：visibility:hidden是隱形看不見，不過還是有佔空間</p>

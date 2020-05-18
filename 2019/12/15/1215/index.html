@@ -11,16 +11,16 @@
   
   
   
-  <meta name="description" content="定義 傳值(Call by value)：在 JavaScript 中的純值 是傳值。(傳過去以後就沒有任何關聯性) 傳參考&#x2F;傳參照(Call by reference)：傳遞給函式的是它實際參數的隱式參照，而不是實際的拷貝。 傳共用物件(Call by sharing)： a 與 b 是共用同一個物件內容，若 b 修改了物件內容，則 a 也會被修改成同樣內容(物件是共用的，沒有拷貝)。  123">
+  <meta name="description" content="定義 傳值(Call by value)：在 JavaScript 中的純值 是傳值。(傳過去以後就沒有任何關聯性) 傳參考&#x2F;傳參照(Call by reference)：傳遞給函式的是它實際參數的隱式參照，而不是實際的拷貝。 傳共用物件(Call by sharing)： a 與 b 是共用同一個物件內容，若 b 修改了物件內容，則 a 也會被修改成同樣內容(物件是共用的，沒有拷貝)。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript_物件傳參考特性">
 <meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2019/12/15/1215/index.html">
 <meta property="og:site_name" content="Vince Blog">
-<meta property="og:description" content="定義 傳值(Call by value)：在 JavaScript 中的純值 是傳值。(傳過去以後就沒有任何關聯性) 傳參考&#x2F;傳參照(Call by reference)：傳遞給函式的是它實際參數的隱式參照，而不是實際的拷貝。 傳共用物件(Call by sharing)： a 與 b 是共用同一個物件內容，若 b 修改了物件內容，則 a 也會被修改成同樣內容(物件是共用的，沒有拷貝)。  123">
+<meta property="og:description" content="定義 傳值(Call by value)：在 JavaScript 中的純值 是傳值。(傳過去以後就沒有任何關聯性) 傳參考&#x2F;傳參照(Call by reference)：傳遞給函式的是它實際參數的隱式參照，而不是實際的拷貝。 傳共用物件(Call by sharing)： a 與 b 是共用同一個物件內容，若 b 修改了物件內容，則 a 也會被修改成同樣內容(物件是共用的，沒有拷貝)。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/GGbYNRa.png">
 <meta property="article:published_time" content="2019-12-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-14T06:22:17.891Z">
+<meta property="article:modified_time" content="2020-05-18T06:48:20.923Z">
 <meta property="article:author" content="Vince">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -145,6 +145,8 @@
 <li>傳參考/傳參照(Call by reference)：傳遞給函式的是它實際參數的隱式參照，而不是實際的拷貝。</li>
 <li>傳共用物件(Call by sharing)： a 與 b 是共用同一個物件內容，若 b 修改了物件內容，則 a 也會被修改成同樣內容(物件是共用的，沒有拷貝)。</li>
 </ul>
+<a id="more"></a>
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 傳值</span><br><span class="line">var person = <span class="string">'小明'</span>; // 純值</span><br><span class="line">var person2 = person;</span><br><span class="line">person2 = <span class="string">'杰倫'</span>;</span><br><span class="line">console.log(perosn, person2)</span><br><span class="line">// 小明,杰倫</span><br><span class="line">//傳參考</span><br><span class="line">var person = &#123;</span><br><span class="line"> name: <span class="string">'小明'</span></span><br><span class="line">&#125;;</span><br><span class="line">var person2 = person;</span><br><span class="line">perosn2.name = <span class="string">'杰倫'</span>; // 改變物件內容</span><br><span class="line">console.log(perosn, person2);</span><br><span class="line">console.log(perosn === person2);</span><br><span class="line">// 杰倫,杰倫</span><br><span class="line">// <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://medium.com/@kumoshih/js-%E6%A0%B8%E5%BF%83%E7%AF%87-%E5%82%B3%E5%80%BC-%E5%82%B3%E5%8F%83%E8%80%83-5fdc5023e549" target="_blank" rel="noopener">傳值、傳參考</a></p>

@@ -104,118 +104,6 @@
         
           <section id="main">
   
-    <article id="post-0116"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2020/01/24/0116/">Vue_ MVVM架構說明</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2020/01/24/0116/" class="article-date">
-	  <time datetime="2020-01-23T16:00:00.000Z" itemprop="datePublished">一月 24, 2020</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>MVVM 是Model-View-ViewModel 的縮寫，它是一種基於前端開發的架構模式，其核心是提供對View 和View Model 的雙向數據綁定，這使得View Model的狀態改變可以自動傳遞給View，這就是所謂的數據雙向綁定。注意Vue非MVVM框架，但MVVM概念影響Vue.js的運作。</p>
-<h4 id="MVVM-圖解"><a href="#MVVM-圖解" class="headerlink" title="MVVM 圖解"></a>MVVM 圖解</h4><p><img src="https://i.imgur.com/XXk7MDf.png" alt=""></p>
-<p>透過ViewModel將view及model做串連綁定，因此透過在view的變更，後端的資料也會同步更新數值，相較於jQ需寫程式碼去重新匯入view及改變資料的狀態，較為多工，並且需操作畫面上的dom元素，</p>
-<p>而Vue是以資料狀態操作畫面</p>
-<ul>
-<li>透過DOM裡面的監聽event來控制/影響View Model，然後去修改Model中的資料內容;</li>
-<li>當Model中的資料變更，會讓View Model知道，再去修改相對應DOM中的內容</li>
-</ul>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Vue/" rel="tag">Vue</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-0122"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2020/01/22/0122/">Git_分支</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2020/01/22/0122/" class="article-date">
-	  <time datetime="2020-01-21T16:00:00.000Z" itemprop="datePublished">一月 22, 2020</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="分支建立-git-branch"><a href="#分支建立-git-branch" class="headerlink" title="分支建立(git branch)"></a>分支建立(git branch)</h3><p>分支的好處，就是每一條線都各司其職，做完事後，再將兩條線的功能合併，並部署上線。</p>
-<h4 id="原狀態"><a href="#原狀態" class="headerlink" title="原狀態"></a>原狀態</h4><p><img src="https://i.imgur.com/MgCXoVk.png" alt=""></p>
-<h4 id="新增分支"><a href="#新增分支" class="headerlink" title="新增分支"></a>新增分支</h4><p>接下來，我們想要開始新增新功能，但又不能污染到目前 master 的穩定版本狀態，於是我們新增一個 dev 分支，指令是：git branch dev<br><img src="https://i.imgur.com/lUqjIUp.png" alt=""></p>
-<h4 id="切換至分支"><a href="#切換至分支" class="headerlink" title="切換至分支"></a>切換至分支</h4><p>當我們要切換分支時，指令是：git checkout dev</p>
-<p><img src="https://i.imgur.com/ozHA9J8.png" alt=""></p>
-<h4 id="新增分支上commit"><a href="#新增分支上commit" class="headerlink" title="新增分支上commit"></a>新增分支上commit</h4><p>再來我們就開始在 dev 上開發，並新增兩個commit。</p>
-<p><img src="https://i.imgur.com/CqXfI38.png" alt=""></p>
-<h4 id="切換回主狀態"><a href="#切換回主狀態" class="headerlink" title="切換回主狀態"></a>切換回主狀態</h4><p>接下來我們切換回 master 看它的狀態。指令是：git checkout master</p>
-<p><img src="https://i.imgur.com/9J9lPZv.png" alt=""></p>
-<h4 id="lt-重要-gt-合併分支：讓master吃到dev最新狀態"><a href="#lt-重要-gt-合併分支：讓master吃到dev最新狀態" class="headerlink" title="&lt;重要&gt;合併分支：讓master吃到dev最新狀態"></a>&lt;重要&gt;合併分支：讓master吃到dev最新狀態</h4><p>我們目前的狀態是 master 目前的版本比較舊，而 dev 的版本比較新，所以接下來我們要做的事情，就是讓 master 可以吃到 c3、c4 的 commit。</p>
-<p>因為目前 master 版本比較舊，你就必須先用 git checkout master 指令，讓 HEAD 移動到 master。</p>
-<p>確保有切換後，就可以下此指令：git merge dev<br>此時，master 位置就會在 c4 了。<br><img src="https://i.imgur.com/uClnoKg.png" alt=""></p>
-<h4 id="快轉模式-vs-非快轉模式"><a href="#快轉模式-vs-非快轉模式" class="headerlink" title="快轉模式 vs 非快轉模式"></a>快轉模式 vs 非快轉模式</h4><p>當你的 HEAD 位置是某個要被 merge branch(dev) 上的初始 commit，就會觸發快轉模式。</p>
-<p><img src="https://i.imgur.com/MXgcQUe.png" alt=""></p>
-<p>但如果在 master 再新增一個 commit 的話，就不會觸發快轉模式。</p>
-<p><img src="https://i.imgur.com/4p1ym2u.png" alt=""></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Git/" rel="tag">Git</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-0121"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -241,18 +129,21 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="Git-與-Github-？"><a href="#Git-與-Github-？" class="headerlink" title="Git 與 Github ？"></a>Git 與 Github ？</h4><ul>
-<li>Git 是一個分散式版本控制軟體，可藉由它產生一個儲存庫( git Repository)。</li>
-<li>Github：支援 git 程式碼存取和遠端托管儲存庫的平台服務</li>
-<li>關係像是本地端有一個 index.html，但可以放到 dropbox、Google Drive 進行雲端託管</li>
-</ul>
-<h4 id="設定基本資料"><a href="#設定基本資料" class="headerlink" title="設定基本資料"></a>設定基本資料</h4><p>輸入姓名：git config –global user.name “gon”<br>輸入個人的 email：git config –global user.email “<a href="mailto:gonsakon@gmail.com">gonsakon@gmail.com</a>“<br>查詢 git 設定內容：git config –list</p>
-<h4 id="Git指令架構圖"><a href="#Git指令架構圖" class="headerlink" title="Git指令架構圖"></a>Git指令架構圖</h4><p><img src="https://i.imgur.com/xuLLH17.png" alt=""></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">初始化數據庫： git init</span><br><span class="line">開啟 .git 隱藏檔</span><br><span class="line">查詢當前狀態：git status</span><br><span class="line">將檔案加入到索引：git add .</span><br><span class="line">將索引檔案變成一個更新(commit)：git commit -m “修改內容”</span><br><span class="line">觀察 commit 歷史紀錄： git <span class="built_in">log</span></span><br><span class="line">下載遠端數據庫： git <span class="built_in">clone</span> 數據庫網址</span><br><span class="line">更新遠端數據庫： git push origin master</span><br></pre></td></tr></table></figure>
+        
 
-<h4 id="終端機指令學習"><a href="#終端機指令學習" class="headerlink" title="終端機指令學習"></a>終端機指令學習</h4><p>輸入「control + 空白」，關鍵字輸入「終端機」</p>
-<p><img src="https://i.imgur.com/b3vNshK.png" alt=""></p>
+          
+          <div class="entry-summary">
+          Git 與 Github ？
+Git 是一個分散式版本控制軟體，可藉由它產生一個儲存庫( git Repository)。
+Github：支援 git 程式碼存取和遠端托管儲存庫的平台服務
+關係像是本地端有一個 index.html，但可以放到 dropbox、Google Drive 進行雲端託管
 
+
+        
+          <p class="article-more-link">
+            <a href="../../2020/01/21/0121/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -296,29 +187,18 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="實作目的"><a href="#實作目的" class="headerlink" title="實作目的"></a>實作目的</h4><p>點擊按鈕後的切換物件的型態，可使用判斷式來開關呈現的狀態</p>
-<p><img src="https://i.imgur.com/IQr9v6G.png" alt=""></p>
-<h4 id="執行步驟"><a href="#執行步驟" class="headerlink" title="執行步驟"></a>執行步驟</h4><p>在data裡新增一個變數以布林值為判斷單位</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">    isTransform : <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+        
 
-<p>載入style變更box型態</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.box &#123;</span><br><span class="line">  transition: transform .5s;</span><br><span class="line">&#125;</span><br><span class="line">.box.rotate &#123;</span><br><span class="line">  transform: rotate(45deg)</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<p>套用公式 :class=”{‘classname : 判斷式’}”</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;div class=<span class="string">"box"</span> :class=<span class="string">"&#123;'rotate':isTransform&#125;"</span>&gt;&lt;/div&gt;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">  &lt;button class=<span class="string">"btn btn-outline-primary"</span> @click =<span class="string">"isTransform = !isTransform"</span> &gt;選轉物件&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          實作目的點擊按鈕後的切換物件的型態，可使用判斷式來開關呈現的狀態
 
 
-<h4 id="isTransform置換的兩種方式"><a href="#isTransform置換的兩種方式" class="headerlink" title="isTransform置換的兩種方式"></a>isTransform置換的兩種方式</h4><ol>
-<li>直接將A=!A寫入html，當@click點擊觸發後便會產生true跟false置換</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@click =<span class="string">"isTransform = !isTransform"</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>@click後方寫入js函數內，並使用method將A=!A寫入運算內容也可以</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    changeRotate: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">      this.isRotate = !this.isRotate;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-
-
-
+        
+          <p class="article-more-link">
+            <a href="../../2020/01/15/0115/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -362,23 +242,64 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="事件修飾符"><a href="#事件修飾符" class="headerlink" title="事件修飾符"></a>事件修飾符</h4><p>常用：v-on:click只需在後方新增prevent語法(防止防止頁面上移)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"#"</span> class=<span class="string">"btn btn-info"</span> v-on:click.prevent=<span class="string">"reversetext"</span>&gt;</span><br></pre></td></tr></table></figure>
+        
 
-<h4 id="按鍵修飾符"><a href="#按鍵修飾符" class="headerlink" title="按鍵修飾符"></a>按鍵修飾符</h4><ul>
-<li><p>v-on == @<br>原寫法：v-on:click=”函數”<br>修飾寫法：@click=”函數”</p>
-</li>
-<li><p>v-blid ==:<br>原寫法：v-blid:href=”link”<br>修飾寫法：:href=”link”</p>
-</li>
-</ul>
-<h4 id="Modifiers-修飾符"><a href="#Modifiers-修飾符" class="headerlink" title="Modifiers 修飾符"></a>Modifiers 修飾符</h4><p>.lazy<br>原本雙向綁定的更新方式是以 input 事件監聽，亦即資料變動即更新，但使用.lazy會改用 change 事件監聽，event trigger 才更新。<br>此時若要新增一個屬性用來計算總共有多少隻家禽，如下：</p>
-<h4 id="number修飾符"><a href="#number修飾符" class="headerlink" title="number修飾符"></a>number修飾符</h4><p>將字串轉為數字，在後方加入number即可將輸入的字串轉為數字</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="built_in">type</span> =<span class="string">"number"</span> class=<span class="string">"form-control"</span> v-model.number=<span class="string">"age"</span>&gt;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          事件修飾符常用：v-on:click只需在後方新增prevent語法(防止防止頁面上移)
+1&lt;a href="#" class="btn btn-info" v-on:click.prevent="reversetext"&gt;
 
+        
+          <p class="article-more-link">
+            <a href="../../2020/01/08/0108/#more">閱讀全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
 
-<h4 id="trim緊貼文字"><a href="#trim緊貼文字" class="headerlink" title="trim緊貼文字"></a>trim緊貼文字</h4><p>當輸入文字夾雜著空格時，使用trim便可以刪去空格，文字便可以相連</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="built_in">type</span> =<span class="string">"text"</span> class=<span class="string">"form-control"</span> v-model.trim=<span class="string">"age"</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
 
+<!-- Table of Contents -->
+
+  
+    <article id="post-0513"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2020/01/01/0513/">JS- scope chain</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2020/01/01/0513/" class="article-date">
+	  <time datetime="2019-12-31T16:00:00.000Z" itemprop="datePublished">一月 1, 2020</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="外部環境參照"><a href="#外部環境參照" class="headerlink" title="外部環境參照"></a>外部環境參照</h2><p><img src="/images/test.png" alt=""></p>
+<pre><code class="bash"></code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 
       
     </div>
@@ -423,17 +344,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>滾動監聽（Scrollspy）插件，即自動更新導航插件，會根據滾動條的位置自動更新對應的導航目標。其基本的實現是隨著您的滾動，基於滾動條的位置嚮導航欄添加.active class。</p>
-<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>向頂部導航添加滾動監聽行為：</p>
-<p>通過data屬性：向您想要監聽的元素（通常是body）添加data-spy=“scroll”。然後添加帶有Bootstrap .nav組件的父元素的ID或class的屬性data-target。為了它能正常工作，您必須確保頁面主體中有匹配所要監聽鏈接的ID的元素存在。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;body data-spy =“ scroll” data-target =“main-nav”&gt;</span><br><span class="line">...</span><br><span class="line">&lt;div class =“ navbar-example”&gt;</span><br><span class="line">    &lt;ul class =“ nav nav-tabs”&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/ ul&gt;</span><br><span class="line">&lt;/ div&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/ body&gt;</span><br></pre></td></tr></table></figure>
+        
 
-<p>通過JavaScript：您可以通過JavaScript調用滾動監聽，選取要監聽的元素，然後調用.scrollspy()函數：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//Init Scrollspy</span><br><span class="line">$(<span class="string">'body'</span>).scrollspy(&#123; target:<span class="string">'#main-nav'</span>&#125;);</span><br><span class="line"></span><br><span class="line">//Smooth Scrolling</span><br><span class="line">$(<span class="string">'#main-nav a'</span>).on(<span class="string">'click'</span>,<span class="keyword">function</span>(event)&#123;</span><br><span class="line">    <span class="keyword">if</span>(this.hash !==<span class="string">""</span>)&#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">        const <span class="built_in">hash</span> = this.hash;</span><br><span class="line">        $(<span class="string">'html,body'</span>).animate(&#123;</span><br><span class="line">            scrollTop: $(<span class="built_in">hash</span>).offset().top</span><br><span class="line">        &#125;, 700, <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            window.location.hash = <span class="built_in">hash</span>;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          滾動監聽（Scrollspy）插件，即自動更新導航插件，會根據滾動條的位置自動更新對應的導航目標。其基本的實現是隨著您的滾動，基於滾動條的位置嚮導航欄添加.active class。
 
-<h4 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h4><p>Nav監聽: <a href="https://vince-chen-hao.github.io/BS_OnePage/">一頁式官網</a></p>
-<p><img src="/images/Scrollspy.png" alt=""></p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/28/1228/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -477,32 +398,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="JSON簡介"><a href="#JSON簡介" class="headerlink" title="JSON簡介"></a>JSON簡介</h3><p>JSON(全名JavaScript Object Notation)是受到JavaScript物件實體語法啟發的傳輸格式，比起使用XML傳輸資料，JSON格式在檔案大小上更為輕量，也是現在主流的傳輸格式。</p>
-<ul>
-<li>就是 JavaScript Object Notation，JavaScript 物件表示法</li>
-<li>JSON 為 純文字 格式</li>
-<li>JSON 具自我描述性、易於人理解、閱讀和編寫，同時也易於機器解析和生成</li>
-<li>JSON 較 XML (eXtensible Markup Language) 小、快且更易解析</li>
-</ul>
-<h4 id="JSON格式"><a href="#JSON格式" class="headerlink" title="JSON格式"></a>JSON格式</h4><p>JSON 字串可以包含 物件 (Object) 和 陣列 (Array)<br>Tips: 物件與陣列可互相包含，如：{“array”: [{“object”: “object”}]}</p>
-<hr>
+        
 
+          
+          <div class="entry-summary">
+          JSON簡介JSON(全名JavaScript Object Notation)是受到JavaScript物件實體語法啟發的傳輸格式，比起使用XML傳輸資料，JSON格式在檔案大小上更為輕量，也是現在主流的傳輸格式。
 
-<h3 id="JSON格式轉換的兩種語法"><a href="#JSON格式轉換的兩種語法" class="headerlink" title="JSON格式轉換的兩種語法"></a>JSON格式轉換的兩種語法</h3><h4 id="Stringify-將物件序列化成-JSON-字串"><a href="#Stringify-將物件序列化成-JSON-字串" class="headerlink" title="*Stringify(): 將物件序列化成 JSON 字串"></a>*Stringify(): 將物件序列化成 JSON 字串</h4><p>一般來說，如果要用JSON格式來溝通，都要將原先是物件(含陣列)格式轉成JSON看得懂的字串格式，這種情況就可以使用stringify()物件轉字串，再傳至後端處理。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 宣告一個 user object</span><br><span class="line"><span class="built_in">let</span> user = &#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"OAwan"</span>, </span><br><span class="line">  <span class="string">"sex"</span> : <span class="string">"Male"</span>,</span><br><span class="line">  <span class="string">"age"</span> : 27,</span><br><span class="line">  <span class="string">"married"</span> : <span class="literal">false</span>,</span><br><span class="line">  <span class="string">"skills"</span>  : [</span><br><span class="line">    <span class="string">"RubyOnRails"</span>,</span><br><span class="line">    <span class="string">"JavaScript"</span>,</span><br><span class="line">    <span class="string">"Scss"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(</span><br><span class="line">  JSON.stringify(user, [<span class="string">"name"</span>, <span class="string">"sex"</span>], 2);</span><br><span class="line">);</span><br><span class="line">/* 輸出：</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>:<span class="string">"OAwan"</span>,</span><br><span class="line">  <span class="string">"sex"</span>:<span class="string">"Male"</span></span><br><span class="line">&#125;</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-
-<h4 id="Parse-將-JSON-字串解析成-JavaScript-物件"><a href="#Parse-將-JSON-字串解析成-JavaScript-物件" class="headerlink" title="*Parse(): 將 JSON 字串解析成 JavaScript 物件"></a>*Parse(): 將 JSON 字串解析成 JavaScript 物件</h4><p>從後端處理過後或者是網路上取得的JSON格式，如要經過JS處理呈現在網頁上，此時就可以用parse（）轉成JS看得懂的物件格式。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 宣告一個 JSON 字串</span><br><span class="line"><span class="built_in">let</span> userJSON = `&#123;</span><br><span class="line">  <span class="string">"name"</span>:<span class="string">"OAwan"</span>,</span><br><span class="line">  <span class="string">"sex"</span>:<span class="string">"Male"</span>,</span><br><span class="line">  <span class="string">"age"</span>:<span class="string">"27"</span>,</span><br><span class="line">  <span class="string">"married"</span>:<span class="string">"未婚"</span>,</span><br><span class="line">  <span class="string">"skills"</span>:[</span><br><span class="line">    <span class="string">"RubyOnRails"</span>,</span><br><span class="line">    <span class="string">"JavaScript"</span>,</span><br><span class="line">    <span class="string">"Scss"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;`;</span><br><span class="line"></span><br><span class="line">// 透過 JSON.parse() 解析 JSON 字串</span><br><span class="line"><span class="built_in">let</span> user = JSON.parse(userJSON);</span><br><span class="line">// 取得物件值</span><br><span class="line">console.log(</span><br><span class="line">  user.name + <span class="string">', '</span> + user.skills[1]</span><br><span class="line">);</span><br><span class="line">/* 輸出：</span><br><span class="line">OAwan, JavaScript</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="實作練習"><a href="#實作練習" class="headerlink" title="實作練習"></a>實作練習</h4><p>假設我們從後端接到一個JSON字串格式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'&#123;"name":"Simon","isF2E":"true"&#125;'</span></span><br></pre></td></tr></table></figure>
-<p>使用AJAX接到此JSON格式後，現在想要取當中的name來渲染至頁面上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var data = <span class="string">'&#123;"name":"Simon","isF2E":"true"&#125;'</span>;</span><br><span class="line">console.log(data.name+<span class="string">'挑戰第14天'</span>)</span><br></pre></td></tr></table></figure>
-<p>因為JSON被引號包著，現在是字串格式，這時JSON.parse()就派上用場</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var data = <span class="string">'&#123;"name":"Simon","isF2E":"true"&#125;'</span></span><br><span class="line">var data2 = JSON.parse(data);</span><br><span class="line">console.log(data2.name+<span class="string">'挑戰第14天'</span>)</span><br></pre></td></tr></table></figure>
-<p>結果顯示”Simon”挑戰第14天，順利取得資料</p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/26/1226/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -546,34 +452,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="第一種：XMLHttpRequest"><a href="#第一種：XMLHttpRequest" class="headerlink" title="第一種：XMLHttpRequest"></a>第一種：XMLHttpRequest</h3><p>其一老式做法 ── XMLHttpRequest<br>格式：‘get’(讀取資料)、‘post’(傳送資料至該資料庫)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'get'</span>,<span class="string">'URL'</span>,<span class="literal">true</span>);</span><br><span class="line">xhr.send(null); //傳送資料（若上面使用<span class="string">'get'</span>，則此欄填寫空值 null ）</span><br><span class="line">xhr.onload = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    data = JSON.parse(xhr.responseText);</span><br><span class="line">    console.log(`已經載入 api `)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
 
-<p>其中第五行執行的 data = JSON.parse(xhr.responseText)需要提醒一下，因為 JSON 雖然本身是“陣列包物件”的格式，但資料在傳輸的時候必須轉換成 string(字串)，所以我們在接收到了傳送來的「字串」時，就必須使用 JSON.parse 將其轉換回原本的格式</p>
-<h4 id="console可得知的串接狀態"><a href="#console可得知的串接狀態" class="headerlink" title="console可得知的串接狀態"></a>console可得知的串接狀態</h4><h5 id="xmlHttp5個狀態："><a href="#xmlHttp5個狀態：" class="headerlink" title="xmlHttp5個狀態："></a>xmlHttp5個狀態：</h5><p>var state = xmlHttp.readyState;//可能是0、1、2、3、4</p>
-<ul>
-<li>0狀態：剛創建，還沒有調用open()方法;</li>
-<li>1狀態：請求開始：調用了open()方法，但還沒有調用send()方法</li>
-<li>2狀態：調用完了send()方法了；</li>
-<li>3狀態：服務器已經開始響應，但不表示響應結束了！</li>
-<li>4狀態：服務器響應結束！（通常我們只關心這個狀態！！！）</li>
-</ul>
-<h5 id="得到服務器響應的狀態碼："><a href="#得到服務器響應的狀態碼：" class="headerlink" title="得到服務器響應的狀態碼："></a>得到服務器響應的狀態碼：</h5><p>var status = xmlHttp.status;//例如為200、404、500</p>
-<h3 id="第二種：jQuery-原語法"><a href="#第二種：jQuery-原語法" class="headerlink" title="第二種：jQuery- 原語法"></a>第二種：jQuery- 原語法</h3><p>請參考: <a href="https://www.youtube.com/watch?v=OtIOxstrhzY" target="_blank" rel="noopener">jQuery串接影片</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">  url: <span class="string">'https://randomuser.me/api/'</span>,</span><br><span class="line">  dataType: <span class="string">'json'</span>,</span><br><span class="line">  success: <span class="keyword">function</span>(data) &#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">    // 取得的遠端資料</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          第一種：XMLHttpRequest其一老式做法 ── XMLHttpRequest格式：‘get’(讀取資料)、‘post’(傳送資料至該資料庫)
 
-<h3 id="第三種：jQuery-Fetch語法"><a href="#第三種：jQuery-Fetch語法" class="headerlink" title="第三種：jQuery- Fetch語法"></a>第三種：jQuery- Fetch語法</h3><p>Fetch與 $.ajax 不同點在於：</p>
-<ul>
-<li>fetch 會使用 ES6 的 Promise 作回應</li>
-<li>then 作為下一步</li>
-<li>catch 作為錯誤回應 (404, 500…)</li>
-<li>回傳的為 ReadableStream 物件，需要使用不同資料類型使用對應方法，才能正確取得資料物件。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'https://randomuser.me/api/'</span>, &#123;&#125;)</span><br><span class="line">  .<span class="keyword">then</span>((response) =&gt; &#123;</span><br><span class="line">    // 這裡會得到一個 ReadableStream 的物件</span><br><span class="line">    console.log(response);</span><br><span class="line">    // 可以透過 blob(), json(), text() 轉成可用的資訊</span><br><span class="line">    <span class="built_in">return</span> response.json(); </span><br><span class="line">  &#125;).<span class="keyword">then</span>((jsonData) =&gt; &#123;</span><br><span class="line">    console.log(jsonData);</span><br><span class="line">  &#125;).catch((err) =&gt; &#123;</span><br><span class="line">    console.log(<span class="string">'錯誤:'</span>, err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="觀念解析"><a href="#觀念解析" class="headerlink" title="觀念解析"></a>觀念解析</h3><h5 id="true-預設值-非同步"><a href="#true-預設值-非同步" class="headerlink" title="true(預設值) 非同步"></a>true(預設值) 非同步</h5><p>使用非同步的設定時，我們的程式碼不會等到資料回傳回來，就會開始執行後續程式碼，因為有時候我們撈取的 JSON 檔是一大筆資料，那等我們等一大筆筆資料抓完才去執行後續動作，網頁就會在載入完成之前都卡在那邊，無形中就會浪費許多時間成本，因此若要執行非同步，則需另設定一組函式來判定onload狀態，當onload完成後即可取得資料。</p>
-<h5 id="false-同步"><a href="#false-同步" class="headerlink" title="false 同步"></a>false 同步</h5><p>會等資料回傳(接收)完畢，才繼續往下跑</p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/25/1225/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -617,38 +506,22 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="AJAX執行三步驟"><a href="#AJAX執行三步驟" class="headerlink" title="AJAX執行三步驟"></a>AJAX執行三步驟</h4><ol>
-<li>取槍：產生一個XMLHttpRequest</li>
-<li>上膛：取得要讀取的網址，get(讀取資料)、傳送資料到伺服器</li>
-<li>擊發：傳送send</li>
-<li>回膛：回傳資料到瀏覽器</li>
-</ol>
-<h4 id="步驟一（取槍）：產生一個XMLHttpRequest"><a href="#步驟一（取槍）：產生一個XMLHttpRequest" class="headerlink" title="步驟一（取槍）：產生一個XMLHttpRequest"></a>步驟一（取槍）：產生一個XMLHttpRequest</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'get'</span>,<span class="string">'https://vince.project/data.json'</span>,ture)</span><br><span class="line">xhr.send(null);</span><br></pre></td></tr></table></figure>
+        
 
-<p><img src="https://i.imgur.com/WICMBrs.png" alt=""></p>
-<p>我們可以經由console得知現在哪個階層</p>
-<ul>
-<li>0 - 產生XMLHttpRequest，但沒有連結要撈取的資料</li>
-<li>1 - 使用Open()，未傳送資料</li>
-<li>2 - 偵測到有send指令</li>
-<li>3 - loading</li>
-<li>4 - 完成取得資料</li>
-</ul>
-<p><img src="https://i.imgur.com/B3Jo6dY.png" alt=""></p>
-<h4 id="步驟二（上膛）：取得要讀取的網址，get-讀取資料-、傳送資料到伺服器"><a href="#步驟二（上膛）：取得要讀取的網址，get-讀取資料-、傳送資料到伺服器" class="headerlink" title="步驟二（上膛）：取得要讀取的網址，get(讀取資料)、傳送資料到伺服器"></a>步驟二（上膛）：取得要讀取的網址，get(讀取資料)、傳送資料到伺服器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(‘get’,‘https://vince.project/data.json’,ture)</span><br></pre></td></tr></table></figure>
-
-<h5 id="同步與非同步定義"><a href="#同步與非同步定義" class="headerlink" title="同步與非同步定義"></a>同步與非同步定義</h5><ul>
-<li><p>true非同步：<br>不會等資料傳回，就讓程式繼續往下跑，等到回傳才會自動回傳，如果載入的資料量入過大，不可能等到資料全部上傳後才顯示程式，因此仍會使用true。</p>
-</li>
-<li><p>false同步：<br>等資料傳回來之後才會讓程式碼繼續往下跑</p>
-</li>
-</ul>
-<p>我們可以使用onload事件，確定資料有回傳之後才執行函數內容<br><img src="https://i.imgur.com/jtJcnSv.png" alt=""></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">xhr.onload = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    console.log(xhr.responseText) //顯示資料訊息</span><br><span class="line">    var str = JSON.parse(xhr.responseText); //將回傳資料傳到瀏覽器-字串轉陣列：JSON.parse()</span><br><span class="line">    document.querySelector(<span class="string">'.message'</span>) //HTML的文字訊息 class=<span class="string">"message"</span></span><br><span class="line">    .textContent = str[0].name //將要抓取的資料顯示於頁面</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          AJAX執行三步驟
+取槍：產生一個XMLHttpRequest
+上膛：取得要讀取的網址，get(讀取資料)、傳送資料到伺服器
+擊發：傳送send
+回膛：回傳資料到瀏覽器
 
 
-<h4 id="需注意CORS-跨網域撈取資料"><a href="#需注意CORS-跨網域撈取資料" class="headerlink" title="!!!需注意CORS 跨網域撈取資料"></a>!!!需注意CORS 跨網域撈取資料</h4><p>一般來說跨網域需要詢問對方有沒有開啟CORS，開啟才有辦法抓取資料，取得API也是相似，ex.高雄市公開json資料便沒有開啟此功能。可使用偵測網址查閱狀態：<a href="http://test-cors.org/" target="_blank" rel="noopener">http://test-cors.org/</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/24/1224/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -692,19 +565,18 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一旦執行JavaScript程式， 程式碼都是在執行環境（execution context）裡面建立和執行。(執行環境：一個wrapper，把正在執行的程式碼包在執行環境裡面。)</p>
-<p><img src="https://i.imgur.com/0HalHZg.png" alt=""></p>
-<p>然而相較於執行環境，另外有一個基礎執行環境(base execution context)，又稱做全域執行環境。</p>
-<h4 id="全域-Global"><a href="#全域-Global" class="headerlink" title="全域(Global)"></a>全域(Global)</h4><p>‘Global’ means ‘not inside a function’<br>簡而言之，當程式碼或變數不再函式中，就是全域的。</p>
-<h4 id="全域環境"><a href="#全域環境" class="headerlink" title="全域環境"></a>全域環境</h4><p>在全域執行環境中，JavaScript會自動創造兩個東西：</p>
-<ul>
-<li>Global Object：全域物件</li>
-<li>this：一個特殊的變數</li>
-</ul>
-<h5 id="全域物件"><a href="#全域物件" class="headerlink" title="全域物件"></a>全域物件</h5><p>「全域物件」，可以在任何地方被取用。</p>
-<h4 id="this變數"><a href="#this變數" class="headerlink" title="this變數"></a>this變數</h4><p>在沒有寫任何程式碼的情況之下，啟用window瀏覽器執行，這時候全域執行環境中會自動產生一個全域物件-window物件，以及this這個特殊變數。</p>
-<p>同一個瀏覽器，開啟另一個分頁，就會創建另外一個全域執行環境，也會獨立產生一個全域物件及this變數。</p>
+        
 
+          
+          <div class="entry-summary">
+          一旦執行JavaScript程式， 程式碼都是在執行環境（execution context）裡面建立和執行。(執行環境：一個wrapper，把正在執行的程式碼包在執行環境裡面。)
+
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/22/1222/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -712,6 +584,60 @@
       
   <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-1219"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2019/12/19/1219/">Bootstrap_影片彈出視窗(實作)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2019/12/19/1219/" class="article-date">
+	  <time datetime="2019-12-18T16:00:00.000Z" itemprop="datePublished">十二月 19, 2019</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+          <div class="entry-summary">
+          目的：點擊影片後顯示彈出視窗，並自動播放影片內容
+
+        
+          <p class="article-more-link">
+            <a href="../../2019/12/19/1219/#more">閱讀全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Bootstrap/" rel="tag">Bootstrap</a></li></ul>
 
       
     </footer>
@@ -835,30 +761,6 @@
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="../../2020/05/13/hello-world/">Hello World</a></h6>
-              <span>五月 13, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="../../2020/05/12/0513/">JS- scope chain</a></h6>
-              <span>五月 12, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="../../2020/03/15/0315/">Vue_過濾API資料(實作)</a></h6>
               <span>三月 15, 2020</span>
             </div>
@@ -901,6 +803,30 @@
 
           </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2020/03/05/0305/">JavaScript- 陣列處理方式</a></h6>
+              <span>三月 5, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2020/03/03/0303/">Vue_Vuex狀態管理</a></h6>
+              <span>三月 3, 2020</span>
+            </div>
+
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -933,7 +859,7 @@
     <h3 class="widget-title">彙整</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">二月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">一月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">十二月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">十一月 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">二月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">一月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">十二月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">十一月 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

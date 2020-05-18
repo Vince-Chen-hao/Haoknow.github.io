@@ -104,132 +104,6 @@
         
           <section id="main">
   
-    <article id="post-0219"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2020/02/19/0219/">ES6_箭頭函式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2020/02/19/0219/" class="article-date">
-	  <time datetime="2020-02-18T16:00:00.000Z" itemprop="datePublished">二月 19, 2020</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="簡化後的箭頭函式"><a href="#簡化後的箭頭函式" class="headerlink" title="簡化後的箭頭函式"></a>簡化後的箭頭函式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//宣告函式</span><br><span class="line"><span class="keyword">function</span> double(n)&#123;</span><br><span class="line">    <span class="built_in">return</span> n*2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var double = <span class="keyword">function</span>(n)&#123;</span><br><span class="line">    <span class="built_in">return</span> n*2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//箭頭函示</span><br><span class="line">const double = (n)=&gt;&#123;</span><br><span class="line">    <span class="built_in">return</span> n*2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//簡化箭頭函示</span><br><span class="line">//如果只有一個參數，可以省略括號</span><br><span class="line">const double = n =&gt;&#123;</span><br><span class="line">    <span class="built_in">return</span> n*2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//簡化箭頭函示</span><br><span class="line">//如果函式本體只有一行，且<span class="built_in">return</span>一個值，可以省略大括號、<span class="built_in">return</span></span><br><span class="line">const double = n =&gt; n*2</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="箭頭裡的this"><a href="#箭頭裡的this" class="headerlink" title="箭頭裡的ｔｈｉｓ"></a>箭頭裡的ｔｈｉｓ</h4><p>箭頭沒有自己的情境(context)，它內部的context就等於它外面的context，函式在哪裡被宣告函式，它裡面的this就代表被宣告時的環境。</p>
-<p>如果，把函式改成箭頭函式，因為宣告函式的環境是global，因此箭頭函式中的this就代表global環境的物件，也就是window，不論用哪種方式執行函式一樣</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const jump =()=&gt;&#123;</span><br><span class="line">    console.log(this)//this是window</span><br><span class="line">&#125;</span><br><span class="line">jump();</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const jump =()=&gt;&#123;</span><br><span class="line">    console.log(this)//this是window</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const a = &#123;&#125;;</span><br><span class="line">a.jump = jump;</span><br><span class="line">a,jump();</span><br></pre></td></tr></table></figure>
-
-<h4 id="函式裡的this"><a href="#函式裡的this" class="headerlink" title="函式裡的this"></a>函式裡的this</h4><p>第一種：直接執行函式，this代表window</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">jump</span></span>()&#123;</span><br><span class="line">    console.log(this);//this是window</span><br><span class="line">&#125;</span><br><span class="line">jump();</span><br></pre></td></tr></table></figure>
-
-<p>第二種：函式作為物件的方法來執行，其中的this代表物件本身</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">jump</span></span>()&#123;</span><br><span class="line">    console.log(this);//this是a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const a = &#123;&#125;;</span><br><span class="line">a.jump = jump;</span><br><span class="line">a.jump();</span><br></pre></td></tr></table></figure>
-
-
-<p>第三種：函式作為DOM的偵聽函式，其中的this代表DOM元件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;button id=<span class="string">"btn"</span>&gt;btn&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">jump</span></span>()&#123;</span><br><span class="line">    console.log(this);//this是 &lt;button id=<span class="string">"btn"</span>&gt;btn&lt;/button&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>,jump);</span><br></pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/ES6/" rel="tag">ES6</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-0213"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="../../2020/02/13/0213/">Vue_ 自訂圖標及標題</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="../../2020/02/13/0213/" class="article-date">
-	  <time datetime="2020-02-12T16:00:00.000Z" itemprop="datePublished">二月 13, 2020</time>
-	</a>
-
-       
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Vue-Router-設置每頁-title"><a href="#Vue-Router-設置每頁-title" class="headerlink" title="Vue Router 設置每頁 title"></a>Vue Router 設置每頁 title</h4><p>通常網站不僅有一個網頁，建議每個網頁應當有一個專屬的title，以便管理</p>
-<p>step0.在自己專案中的 router.js 或 router/index.js 檔案中(依照個人在專案中的檔案命名及路徑)，確定有引入 vue 及 vue-router</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import Vue from <span class="string">'vue'</span>;</span><br><span class="line">import VueRouter from <span class="string">'vue-router'</span>;</span><br><span class="line">Vue.use(VueRouter);</span><br></pre></td></tr></table></figure>
-
-<p>step1. 加入每個路徑頁面的 meta 資料，且於meta中定義title文字。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">    routes: [</span><br><span class="line">     &#123;</span><br><span class="line">        path: <span class="string">'/entrance'</span>,</span><br><span class="line">        name: <span class="string">'entrance'</span>,</span><br><span class="line">        component: Entrance,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: <span class="string">'Entrance'</span>&#125;</span><br><span class="line">     &#125;,&#123;</span><br><span class="line">        path: <span class="string">'/login'</span>,</span><br><span class="line">        name: <span class="string">'login'</span>,</span><br><span class="line">        component: Login,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: <span class="string">'Login'</span>&#125;</span><br><span class="line">     &#125;,&#123;</span><br><span class="line">        path: <span class="string">'/test'</span>,</span><br><span class="line">        name: <span class="string">'test'</span>,</span><br><span class="line">        component: Test,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: <span class="string">'Test'</span>&#125;</span><br><span class="line">     &#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>step2.使用全域 navigation guards 非同步解析執行：當路徑(router object)前往(to) meta.title 時，瀏覽器的 title 為 meta.title</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">router.beforeEach((to, from, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (to.meta.title) &#123;</span><br><span class="line">        document.title = to.meta.title</span><br><span class="line">    &#125;</span><br><span class="line">    next();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>step3.最後引出該 router</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default router;</span><br></pre></td></tr></table></figure>
-
-<h4 id="在-vue-專案中變更-title-圖示"><a href="#在-vue-專案中變更-title-圖示" class="headerlink" title="在 vue 專案中變更 title 圖示"></a>在 vue 專案中變更 title 圖示</h4><p>step1.因為專案會使用 webpack 或 vue-cli 打包，因此將圖片放置根目錄，或是static資料夾中<br>step2.在 html 的 中配置圖片及文字。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;標題文字&lt;/title&gt;</span><br><span class="line">    &lt;!--href中的路徑依照專案實際放置圖示的位置。--&gt;</span><br><span class="line">    &lt;link rel=<span class="string">"icon"</span> href=<span class="string">"./../static/favicon.ico"</span> <span class="built_in">type</span>=“image/x-icon&gt; </span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-
-<p>step3.修改 webpack 配置檔案</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new HtmlWebpackPlugin(&#123;</span><br><span class="line">  //...</span><br><span class="line">  favicon: path.resolve(<span class="string">'/static/favicon.ico'</span>), //路徑依照專案實際放置圖示的位置</span><br><span class="line">  //...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>step4.重新啟用，並適時清除瀏覽器暫存資料，即可正確圖示畫面</p>
-<p><img src="/images/icon.png" alt=""></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Vue/" rel="tag">Vue</a></li></ul>
-
-      
-    </footer>
-    <hr class="entry-footer-hr">
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
     <article id="post-0210"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -255,68 +129,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="v-for把陣列轉換為一組元素"><a href="#v-for把陣列轉換為一組元素" class="headerlink" title="v-for把陣列轉換為一組元素"></a>v-for把陣列轉換為一組元素</h4><h5 id="將item拿出來當作屬性"><a href="#將item拿出來當作屬性" class="headerlink" title="將item拿出來當作屬性"></a>將item拿出來當作屬性</h5><p>自訂所需資料在陣列裡，使用動態屬性分別套入不同顏色(css設定)<br>資料匯入的過程新增一組判斷式，當key值為A則顯示紅色，B則顯示藍色，利用動態屬性更改色系<br>這裡與之前案例的內容相同，也是使用:class綁定屬性的顏色(經由css修改)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;ol&gt;</span><br><span class="line">    &lt;li v-for=<span class="string">"item in todo"</span> v-bind:class=<span class="string">'item.key'</span>&gt;</span><br><span class="line">      &#123;&#123;item.date&#125;&#125; &#123;&#123;item.content&#125;&#125;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  &lt;/ol&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el:<span class="string">'#app'</span>,</span><br><span class="line">  data:&#123;  </span><br><span class="line">    todo:[&#123;key:<span class="string">'first'</span>,date:<span class="string">'3/9'</span>,content:<span class="string">'學習javascrip'</span>&#125;,</span><br><span class="line">      &#123;key:<span class="string">'second'</span>,date:<span class="string">'3/10'</span>,content:<span class="string">'學會vue框架'</span>&#125;,</span><br><span class="line">      &#123;key:<span class="string">'second'</span>,date:<span class="string">'3/11'</span>,content:<span class="string">'做作品'</span>&#125;,</span><br><span class="line">      &#123;key:<span class="string">'second'</span>,date:<span class="string">'3/12'</span>,content:<span class="string">'準備面試'</span>&#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">    .first&#123;</span><br><span class="line">        color:red;</span><br><span class="line">    &#125;</span><br><span class="line">    .second&#123;</span><br><span class="line">        color:green;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+        
 
+          
+          <div class="entry-summary">
+          v-for把陣列轉換為一組元素將item拿出來當作屬性自訂所需資料在陣列裡，使用動態屬性分別套入不同顏色(css設定)資料匯入的過程新增一組判斷式，當key值為A則顯示紅色，B則顯示藍色，利用動態屬性更改色系這裡與之前案例的內容相同，也是使用:class綁定屬性的顏色(經由css修改)
 
-<h4 id="陣列新增、刪減、排列基本語法"><a href="#陣列新增、刪減、排列基本語法" class="headerlink" title="陣列新增、刪減、排列基本語法"></a>陣列新增、刪減、排列基本語法</h4><ul>
-<li>push(ew item)從陣列後面新增</li>
-<li>pop()從陣列後面刪減</li>
-<li>unshift(new item)從陣列前面新增</li>
-<li>shift()從陣列前面刪減</li>
-</ul>
-<pre><code class="bash">
-&lt;div id=<span class="string">"app"</span>&gt;
-  &lt;ul&gt;
-    &lt;li v-for=<span class="string">"item in steps"</span>&gt;{{item}}&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;button @click=<span class="string">"push"</span>&gt;Push&lt;/button&gt;
-  &lt;button @click=<span class="string">"pop"</span>&gt;Pop&lt;/button&gt;
-  &lt;button @click=<span class="string">"shift"</span>&gt;Shift&lt;/button&gt;
-  &lt;button @click=<span class="string">"unshift"</span>&gt;Unshift&lt;/button&gt;
-&lt;/div&gt;
-
-new Vue({
-  el:<span class="string">'#app'</span>,
-  data:{
-    steps:[1,2,3,4,5],
-  },
-  methods:{
-    <span class="function"><span class="title">push</span></span>(){
-      this.steps.push(this.steps.length+1);
-    },
-    <span class="function"><span class="title">pop</span></span>(){
-      this.steps.pop();
-    },
-    <span class="function"><span class="title">shift</span></span>(){
-      this.steps.shift();
-    },
-    <span class="function"><span class="title">unshift</span></span>(){
-      this.steps.unshift(0);
-    },
-
-  }
-})
-</code></pre>
-<h4 id="用v-for渲染templete"><a href="#用v-for渲染templete" class="headerlink" title="用v-for渲染templete"></a>用v-for渲染templete</h4><p>每次迴圈需要被render出來的不只一個元素，而是包含多個標籤元素，可以使用templete&gt;，並將v-for指令放在templete標籤中。</p>
-<pre><code class="bash">&lt;div id=<span class="string">"app"</span>&gt;
-  &lt;template v-for=<span class="string">'item in header'</span>&gt;
-    &lt;h1&gt;{{item}}&lt;/h1&gt;
-    &lt;hr/&gt;
-  &lt;/template&gt;
-&lt;/div&gt;
-
-new Vue({
-  el:<span class="string">'#app'</span>,
-  data:{
-    header:[<span class="string">'Home'</span>,<span class="string">'About'</span>,<span class="string">'Product'</span>,<span class="string">'Contact'</span>]
-  },
-  methods:{
-
-  }
-})
-</code></pre>
-
+        
+          <p class="article-more-link">
+            <a href="../../2020/02/10/0210/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -360,55 +183,17 @@ new Vue({
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="v-on綁定事件"><a href="#v-on綁定事件" class="headerlink" title="v-on綁定事件"></a>v-on綁定事件</h4><p>可將原表達式v-on:click=””簡寫為@:click=””</p>
-<h5 id="lt-實作-gt"><a href="#lt-實作-gt" class="headerlink" title="&lt;實作&gt;"></a>&lt;實作&gt;</h5><p>點擊button做來回切換，語法：class=”{‘A效果’：變數}”</p>
-<ul>
-<li>A效果連結style宣告的效果</li>
-<li>變數宣告從data建議變數而來，再經由methods函數做轉換功能(B=!B)</li>
-</ul>
-<ol>
-<li>點擊click事件後，啟動將變數轉為true</li>
-<li>此時觸發:Class裡的公式rotate，roatate便會套用css寫入的翻轉語法而產生效果</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=<span class="string">"box"</span> :class=<span class="string">"&#123;'rotate': isRotate &#125;"</span>&gt;&lt;/div&gt;</span><br><span class="line">  &lt;button class=<span class="string">"btn btn-outline-primary"</span> @click=<span class="string">"changeRotate"</span>&gt;</span><br><span class="line">    切換 box 樣式</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;  </span><br><span class="line"></span><br><span class="line">   data: &#123;</span><br><span class="line">    isRotate: <span class="literal">false</span>,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeRotate: <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">      this.isRotate = !this.isRotate;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .box &#123;</span><br><span class="line">            display: block;</span><br><span class="line">            transition: all .5s;</span><br><span class="line">        &#125;</span><br><span class="line">        .box.rotate &#123;</span><br><span class="line">            transform: rotate(45deg)</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br></pre></td></tr></table></figure>
+        
 
+          
+          <div class="entry-summary">
+          v-on綁定事件可將原表達式v-on:click=””簡寫為@:click=””
 
-<p>其他滑鼠事件</p>
-<ul>
-<li>mouseover：滑鼠經過</li>
-<li>mouseout：滑鼠移出</li>
-<li>mousedown:滑鼠點下</li>
-<li>mouseup:滑鼠點下後‘放開’</li>
-<li>mousemove：滑鼠在其上方移動時</li>
-</ul>
-<h4 id="偵聽按鍵事件"><a href="#偵聽按鍵事件" class="headerlink" title="偵聽按鍵事件"></a>偵聽按鍵事件</h4><p>鍵盤事件</p>
-<ul>
-<li>keydown：按鍵被‘按下’時</li>
-<li>keyup：按鍵被按下後‘彈起’時</li>
-<li>v-on:keydown.enter (當「enter」按鍵被按下時)</li>
-<li>v-on:keydown.a.prevent(當「a」按鍵被按下時，但a的內容不會被放入input中)</li>
-</ul>
-<h4 id="便利的修飾符語法"><a href="#便利的修飾符語法" class="headerlink" title="便利的修飾符語法"></a>便利的修飾符語法</h4><ul>
-<li>.prevent：不執行預設效果</li>
-<li>.stop：不讓event傳到外層</li>
-<li>.self：只執行自己發出的event</li>
-<li>.once：只執行一次</li>
-</ul>
-<pre><code class="bash">
-&lt;div id=<span class="string">"app"</span>&gt;
-  &lt;h1&gt;{{num}}&lt;/h1&gt;
-  &lt;button @click.once=<span class="string">"num+=1"</span>&gt;+Add &lt;/button&gt;
-&lt;/div&gt;
-
-new Vue({
-  el:<span class="string">"#app"</span>,
-  data:{
-    num:0,
-  },
-})  
-</code></pre>
-<h3 id="更多修飾符"><a href="#更多修飾符" class="headerlink" title="更多修飾符"></a>更多修飾符</h3><p><img src="https://i.imgur.com/u6Cz86Y.png" alt=""></p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2020/02/06/0206/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -452,27 +237,21 @@ new Vue({
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> v-model=<span class="string">"showRed"</span>/&gt;red</span><br><span class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> v-model=<span class="string">"showGreen"</span>/&gt;green</span><br><span class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> v-model=<span class="string">"showBlue"</span>/&gt;blue</span><br><span class="line">  &lt;h1 v-if=<span class="string">"showRed"</span>&gt;I<span class="string">'m Red.&lt;/h1&gt;</span></span><br><span class="line"><span class="string">  &lt;h1 v-else-if="showGreen"&gt;I'</span>m Green.&lt;/h1&gt;</span><br><span class="line">  &lt;h1 v-else-if=<span class="string">"showBlue"</span>&gt;I<span class="string">'m Blue.&lt;/h1&gt;</span></span><br><span class="line"><span class="string">  &lt;h1 v-else&gt;Non&lt;/h1&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">new Vue(&#123;</span></span><br><span class="line"><span class="string">  el:'</span><span class="comment">#app',</span></span><br><span class="line">  data:&#123;</span><br><span class="line">   showRed:<span class="literal">false</span>,</span><br><span class="line">    showGreen:<span class="literal">false</span>,</span><br><span class="line">    showBlue:<span class="literal">false</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+        
 
-<ul>
-<li>v-if是讓程式判斷是否被render出來</li>
-<li>v-show是用css控制是否在畫面中顯示(意即套用display: none)，所以該元素在原始碼中有被render出來，只是不在畫面顯示</li>
-<li>可以搭配v-if使用，代表裡面的東西是否render出來;但是不能用v-show，因為本身並非一個元素，只是一個模板，無法被顯示處理</li>
-</ul>
-<h4 id="v-else"><a href="#v-else" class="headerlink" title="v-else"></a>v-else</h4><ul>
-<li>v-else一定要依附在v-if之後，且是同一層的東西</li>
-<li>==如果中間有其他東西，v-else會無效</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> v-model=<span class="string">"show"</span>/&gt;</span><br><span class="line">  &lt;span v-if=<span class="string">'show'</span>&gt;隱藏內容&lt;/span&gt;</span><br><span class="line">  &lt;span v-else&gt;秀出內容&lt;/span&gt;</span><br><span class="line">  &lt;templete v-if=<span class="string">"show"</span>&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123;message&#125;&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;</span><br><span class="line">    &lt;h3&gt;&#123;&#123;message&#125;&#125;&lt;/h3&gt;</span><br><span class="line">  &lt;/templete&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> v-model=<span class="string">"show"</span>/&gt;</span><br><span class="line">  &lt;span v-if=<span class="string">'show'</span>&gt;隱藏內容&lt;/span&gt;</span><br><span class="line">  &lt;br/&gt;//錯誤：不得再v-if/v-else插入其他東西，會出錯</span><br><span class="line">  &lt;span v-else&gt;秀出內容&lt;/span&gt;</span><br><span class="line">  &lt;templete v-if=<span class="string">"show"</span>&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123;message&#125;&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;</span><br><span class="line">    &lt;h3&gt;&#123;&#123;message&#125;&#125;&lt;/h3&gt;</span><br><span class="line">  &lt;/templete&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          v-show
+v-if是讓程式判斷是否被render出來
+v-show是用css控制是否在畫面中顯示(意即套用display: none)，所以該元素在原始碼中有被render出來，只是不在畫面顯示
+可以搭配v-if使用，代表裡面的東西是否render出來;但是不能用v-show，因為本身並非一個元素，只是一個模板，無法被顯示處理
 
-<h4 id="v-else-if"><a href="#v-else-if" class="headerlink" title="v-else-if"></a>v-else-if</h4><p>v-if若有成立，就不會render下面的v-else-if與v-else</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> v-model=<span class="string">"showRed"</span>/&gt;red</span><br><span class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> v-model=<span class="string">"showGreen"</span>/&gt;green</span><br><span class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> v-model=<span class="string">"showBlue"</span>/&gt;blue</span><br><span class="line">  &lt;h1 v-if=<span class="string">"showRed"</span>&gt;I<span class="string">'m Red.&lt;/h1&gt;</span></span><br><span class="line"><span class="string">  &lt;h1 v-else-if="showGreen"&gt;I'</span>m Green.&lt;/h1&gt;</span><br><span class="line">  &lt;h1 v-else-if=<span class="string">"showBlue"</span>&gt;I<span class="string">'m Blue.&lt;/h1&gt;</span></span><br><span class="line"><span class="string">  &lt;h1 v-else&gt;Non&lt;/h1&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">new Vue(&#123;</span></span><br><span class="line"><span class="string">  el:'</span><span class="comment">#app',</span></span><br><span class="line">  data:&#123;</span><br><span class="line">   showRed:<span class="literal">false</span>,</span><br><span class="line">    showGreen:<span class="literal">false</span>,</span><br><span class="line">    showBlue:<span class="literal">false</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h4 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h4><h5 id="v-for與v-if-優先權的比較"><a href="#v-for與v-if-優先權的比較" class="headerlink" title="v-for與v-if 優先權的比較"></a>v-for與v-if 優先權的比較</h5><ul>
-<li>v-for的優先權高於v-if，因此當兩者皆出現在同一個元素上時，v-if會隨著v-for重覆執行數次。</li>
-<li>建議將v-for與v-if放不同標籤裡。</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="../../2020/02/05/0205/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -516,28 +295,17 @@ new Vue({
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="ES6的變異"><a href="#ES6的變異" class="headerlink" title="ES6的變異"></a>ES6的變異</h4><p>總體而言，使用 let 與 const 的變數宣告方式，相較於 var 會更為嚴謹，因此建議在開發 ES6 之後的專案，使用let 與 const 作為變數宣吿，除了讓專案更穩定之外，也可以增加程式碼的可讀性。以下三點解釋：</p>
-<ul>
-<li>區塊限制使用</li>
-<li>變數「不」提升(hositing)</li>
-<li>不允許重複宣告</li>
-</ul>
-<h4 id="案例1：let與const是用來宣告區塊裡的變數"><a href="#案例1：let與const是用來宣告區塊裡的變數" class="headerlink" title="案例1：let與const是用來宣告區塊裡的變數"></a>案例1：let與const是用來宣告區塊裡的變數</h4><p>＊區塊是指程式碼{}的部分。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">if</span>(2&gt;1)&#123;</span><br><span class="line">        <span class="built_in">let</span> a =3</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+        
 
-<h5 id="案例2：比較let與Var的差異"><a href="#案例2：比較let與Var的差異" class="headerlink" title="案例2：比較let與Var的差異"></a>案例2：比較let與Var的差異</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var a = 3;</span><br><span class="line">var a = 5;</span><br><span class="line"></span><br><span class="line">//結果會等於5</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> a = 3;</span><br><span class="line"><span class="built_in">let</span> a = 5;</span><br><span class="line"></span><br><span class="line">//結果顯示錯誤，因重複宣告變數</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          ES6的變異總體而言，使用 let 與 const 的變數宣告方式，相較於 var 會更為嚴謹，因此建議在開發 ES6 之後的專案，使用let 與 const 作為變數宣吿，除了讓專案更穩定之外，也可以增加程式碼的可讀性。
 
-<ul>
-<li>var變數會向上提升，如果沒有命名變數也會顯示undefined，而let與const則不會</li>
-<li>同個區塊不可重複命名</li>
-<li>常數const: 裝入東西(值)之後就上鎖的盒子，之後不可以再更動裡面的值，const 是唯獨變數，不能被修改，當重要檔案不能被變更如url網址，就適合使用唯獨變數。但如果是在陣列[]或者物件{}內仍可以被變更</li>
-<li>變數let: 暫時存放值的盒子，盒子是打開的，可以更動裡面的值</li>
-</ul>
-<h4 id="let與var的作用域："><a href="#let與var的作用域：" class="headerlink" title="let與var的作用域："></a>let與var的作用域：</h4><p>作用域不一樣，var的作用域在函數 (function) 裡，let的作用域則是在區塊 (block) 裡。</p>
-<h5 id="全域變數："><a href="#全域變數：" class="headerlink" title="全域變數："></a>全域變數：</h5><p>在函式作用域(function scope)之外宣告的變數，全域變數在整個程式中都可以被存取與修改。</p>
-<h5 id="區域變數："><a href="#區域變數：" class="headerlink" title="區域變數："></a>區域變數：</h5><p>在函式作用域(function scope)內宣告，每次執行函式時，就會建立區域變數再予以摧毀，而且函式之外的所有程式碼都不能存取這個變數。</p>
-<p>使用var宣告變數，可用範圍以function為界，function外讀不到值，但如使用區塊語句像if, else, for, while等等區塊語句時，宣告的區域變數仍然可在整段程式碼做存取，這並不是我們希望的結果，這時候就會建議使用let宣告。</p>
-
+        
+          <p class="article-more-link">
+            <a href="../../2020/02/03/0203/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -581,35 +349,18 @@ new Vue({
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="介紹建置工具"><a href="#介紹建置工具" class="headerlink" title="介紹建置工具"></a>介紹建置工具</h3><h5 id="過去："><a href="#過去：" class="headerlink" title="過去："></a>過去：</h5><p>早期前端工程師寫網頁，僅透過前端三大元素「JavaScript、CSS、HTML」開發web應用。</p>
-<h5 id="現今："><a href="#現今：" class="headerlink" title="現今："></a>現今：</h5><p>近年前端發展出許多新思維，出現了「模組化」的概念、「新框架」的出現、「新語言」的誕生，讓傳統的作法不再流行，各種可以加強開發效率的新工具出現。</p>
-<ul>
-<li>模組化：模組化是將一個複雜的系統，分解為多個模組以方便程式開發。例：ES6模組化是國際標準組織ECMA提出的JavaScript模組化標準，他在語言層面上實現模組化，成為瀏覽器和伺服器通用的模組化解決方案。</li>
-<li>新框架：在web應用變的龐大時，直接操作DOM會使程式變得複雜難以維護，因此出現React、Vue、Augular前端框架。</li>
-<li>新語言：ES6、TypeScript、Flow、SCSS…</li>
-</ul>
-<p>然而，前端技術發展之快，卻有一個共同點：這些工具的原始碼無法直接執行，必須透過「轉換」才可以正常執行，因此，「建置工具」就誕生了。</p>
-<h4 id="建置工具實際任務"><a href="#建置工具實際任務" class="headerlink" title="建置工具實際任務"></a>建置工具實際任務</h4><p>「建置」就是將原始程式碼，轉換成可以執行的JavaScript、CSS、HTML。<br>「建置」的目的最主要就是工程化、自動化。</p>
-<ul>
-<li>程式轉換：將TypeScript編譯為JavaScript，將SCSS編譯為CSS。</li>
-<li>檔案最佳化：壓縮JavaScript、CSS、HTML程式，壓縮合併圖片。</li>
-<li>程式分割：分析首頁不需要執行的部分程式，讓其非同步載入。</li>
-<li>模組合併：採用模組化建置的專案中的有多個模組、檔案，透過建置功能，將模組合併為一個檔案。</li>
-<li>自動更新：監聽本機端程式碼的變動，自動重新建置、更新瀏覽器。</li>
-<li>程式驗證：在程式被傳送到倉庫前，需要驗證程式是否符合標準，以及單元測試是否通過。</li>
-<li>自動發布：更新程式後，自動建置出現上發布程式，並傳輸給發布系統。</li>
-</ul>
-<h4 id="常見的「建置工具」"><a href="#常見的「建置工具」" class="headerlink" title="常見的「建置工具」"></a>常見的「建置工具」</h4><p>Npm Script：Node.js附帶的套件管理員<br>Grunt：自動化執行依賴的工作<br>Gulp：以串流為基礎的自動化建置工<br>Fis3：整合各種Web開發需要的建置功能<br>Webpack：包裝模組化JavaScript的工具<br>Rollup：專注於ES6的模組包裝工具</p>
-<h3 id="Webpack為何物"><a href="#Webpack為何物" class="headerlink" title="Webpack為何物"></a>Webpack為何物</h3><p>在Webpack裡的所有檔案皆被視為模組，透過Loader轉換檔案，透過Plugin植入鉤子，最後輸出為一個由「多個模組合成的檔案」。所以一個專案中的所有檔案，包含JavaScript、CSS、SCSS、圖片、範本，在經過Webpack的處理，最後會輸出為瀏覽器可以使用的靜態資源。<br><img src="https://i.imgur.com/i508SSR.png" alt=""></p>
-<p>webpack幫我們做的事情很簡單，就是幫我們編譯我們的Preprocess成瀏覽器看得懂的內容然後打包成一包的完成檔案然後拿去server上傳上去。</p>
-<p>webpack 把「任何資源」都視成一個模組。圖片是模組，所以你可以 import Image from ‘./assets/banner.png’；CSS 是模組，你可以 import styles from’style.css’，只要是任何資源都可以 import 進來使用。</p>
-<ul>
-<li>使用模組化，避免載入順序引發錯誤的訊息</li>
-<li>如使用框架開發，如Vue、react，仍建議使用原框架的CLI</li>
-<li>相依性高才建議使用webpack模組化，例如在開發SPA就很適用，則js都是獨立時不太建議使用。</li>
-</ul>
-<h5 id="Webpack安裝方式"><a href="#Webpack安裝方式" class="headerlink" title="Webpack安裝方式"></a>Webpack安裝方式</h5><p>請參考<a href="https://www.youtube.com/watch?v=vyI-Ko6fvKU&t=6s" target="_blank" rel="noopener">Mike影片</a>有詳盡解說</p>
+        
 
+          
+          <div class="entry-summary">
+          介紹建置工具過去：早期前端工程師寫網頁，僅透過前端三大元素「JavaScript、CSS、HTML」開發web應用。
+現今：近年前端發展出許多新思維，出現了「模組化」的概念、「新框架」的出現、「新語言」的誕生，讓傳統的作法不再流行，各種可以加強開發效率的新工具出現。
+
+        
+          <p class="article-more-link">
+            <a href="../../2020/02/02/0202/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -653,24 +404,17 @@ new Vue({
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>vue 組件，會使用 props 來接受上層傳來的資料。props 是一個陣列，裡面包含多個字串。<br>將原本在底下新增的元件移置到新的vue頁面上，原本的執行方式是在html裡頭加上<name></name>的元件，就能顯示出新vue上的功能，而要顯示此功能就需要進行串接的動作，在新的vue元件裡，需要先命名一變數，當主頁面或其他頁面要使用此元件時，只需要完成變數間串接便可使用</p>
-<h4 id="Props用法"><a href="#Props用法" class="headerlink" title="Props用法"></a>Props用法</h4><p>命名上，假設在 component 中的 props 使用 camelCase、Pascalcase，在 html 模板中引用時，一律使用 kebab-case ，因為會需要先經過瀏覽器解析。</p>
-<p>前提是因為元件屬於內層，vue的主頁面是外層，當要從外層傳入內層需要使用Props語法，將元件裡的變數載入，再到html裡做指定的更換，才能將外層的元素(data內資料)載入到元件內，完成串接<br>props: [‘pageProps’],</p>
-<p>主頁面串接範例如下：</p>
-<pre><code class="bash">&lt;Pagination :pageprops=<span class="string">"pagination"</span> &gt;&lt;/Pagination&gt;</code></pre>
-<p>*pagination是data裡的變數</p>
-<p>總結：在元件內層裡的公式都需要一個變數x，而在主頁面裡取用需要執行的變數A，將此變數名稱A替換變數x的位置(串接完成)，A變數就會到元件內層進行功能渲染，將渲染的成果在主頁面裡自動呈現，以完成的元件的使用。</p>
-<h4 id="emit用法"><a href="#emit用法" class="headerlink" title="emit用法"></a>emit用法</h4><p>此用法則是內層去觸發外層的函式，例如在點擊時舊會使用到，當我們在內層進行元件的編寫時，不僅只使用v-model概念的變數props串接，也會有觸發事件產生(大部分)，因此就會使用emit去觸發主頁面的methods函式內容。</p>
-<pre><code class="bash">methods: {
-    pageEmit(page) {
-      this.<span class="variable">$emit</span>(<span class="string">"pagenum_emit"</span>, page);
-    } }</code></pre>
-<p>在元件內層同樣要在script寫上methods，並需要一個變數y，以上面的例子來看y等同於pageEmit代參數，執行emit語法再更換一組變數z，此變數z就會到主頁面去跟需觸發的事件做串接(更換對應的變數名稱)</p>
-<p>主頁面串接如下：</p>
-<pre><code class="bash">&lt;Pagination @pagenum_emit=<span class="string">"getProducts"</span>&gt;&lt;/Pagination&gt;
-</code></pre>
-<p>*getProducts是函式名稱<br>*注意在html裡要有大小駝峰的用法，建議使用get_products</p>
+        
 
+          
+          <div class="entry-summary">
+          vue 組件，會使用 props 來接受上層傳來的資料。props 是一個陣列，裡面包含多個字串。將原本在底下新增的元件移置到新的vue頁面上，原本的執行方式是在html裡頭加上的元件，就能顯示出新vue上的功能，而要顯示此功能就需要進行串接的動作，在新的vue元件裡，需要先命名一變數，當主頁面或其他頁面要使用此元件時，只需要完成變數間串接便可使用
+
+        
+          <p class="article-more-link">
+            <a href="../../2020/01/29/0129/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -714,30 +458,17 @@ new Vue({
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h4><p>Vue 應用程式的使用，主要是以 Vue component 元件 所組成，而最上層是以 Root 為主，下面包含 Header, Content 與 side （不同的 component ）。而每個 Component 當中的 data 都會是互相獨立的，使用前端框架的好處在於，很多時候同樣重複的事情，你只需要做一次，就能重複使用，並且在後面的維護上更為方便。</p>
-<ul>
-<li>首先用Vue.component()方法</li>
-<li>第一個參數是component的名字(component 命名用全小寫以 dash 分隔)</li>
-<li>第二個參數是一個物件，其中用 templete 的字串定義組件的視覺元素(直接定義html的內容)</li>
-<li>重點！ component的宣告必須在 vue 實例 new之前！</li>
-</ul>
-<h4 id="原寫法-無使用元件"><a href="#原寫法-無使用元件" class="headerlink" title="原寫法(無使用元件)"></a>原寫法(無使用元件)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"count++"</span>&gt;You clicked me &#123;&#123; count &#125;&#125; <span class="built_in">times</span>.&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var app = new Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    count: 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        
 
-<h4 id="元件寫法"><a href="#元件寫法" class="headerlink" title="元件寫法"></a>元件寫法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;button-counter&gt;&lt;/button-counter&gt;</span><br><span class="line">    &lt;button-counter&gt;&lt;/button-counter&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'button-counter'</span>, &#123;</span><br><span class="line">  data: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      count: 0</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template: <span class="string">'&lt;button v-on:click="count++"&gt;You clicked me &#123;&#123; count &#125;&#125; times.&lt;/button&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          
+          <div class="entry-summary">
+          定義Vue 應用程式的使用，主要是以 Vue component 元件 所組成，而最上層是以 Root 為主，下面包含 Header, Content 與 side （不同的 component ）。而每個 Component 當中的 data 都會是互相獨立的，使用前端框架的好處在於，很多時候同樣重複的事情，你只需要做一次，就能重複使用，並且在後面的維護上更為方便。
 
-<h4 id="x-template使用時機"><a href="#x-template使用時機" class="headerlink" title="x-template使用時機"></a>x-template使用時機</h4><p>若是 template 中的語法太過複雜，會使用 x-template 的方式來改善程式的可讀性。 x-template 的宣告必須在另一個 script元素中，並為其帶上 text/x-template 的類型，然後通過一個 id 將模板引用過去。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script  <span class="built_in">type</span>=<span class="string">"text/x-template"</span>  id=<span class="string">"rowCompTemp"</span>&gt;</span><br><span class="line"> &lt;tr&gt;</span><br><span class="line">  &lt;td&gt;&#123;‌&#123; person.name &#125;&#125;&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;&#123;‌&#123; person.cash &#125;&#125;&lt;/td&gt;</span><br><span class="line">  &lt;td&gt;&#123;‌&#123; person.icash &#125;&#125;&lt;/td&gt;</span><br><span class="line"> &lt;/tr&gt;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'row-comp'</span>, &#123;</span><br><span class="line">	props: [<span class="string">'person'</span>],</span><br><span class="line">	template: <span class="string">'#rowCompTemp'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="元件使用方式（全域、區域註冊）"><a href="#元件使用方式（全域、區域註冊）" class="headerlink" title="元件使用方式（全域、區域註冊）"></a>元件使用方式（全域、區域註冊）</h4><h5 id="Global-全域註冊"><a href="#Global-全域註冊" class="headerlink" title="Global 全域註冊"></a>Global 全域註冊</h5><p>如果有元件共用的需求，我們會使用Vue.component 語法來註冊一個元件，在註冊全域元件時要給予兩個參數，分別為「組件名稱」及「選項物件」，在下方範例中「組件名稱」為 component-layout ，「選項物件」則為其後的內容。</p>
-<p>不過使用全域註冊的缺點是，不管有沒有使用到這個元件，其元件就一定會載入，因此，使用全域註冊會將原本不需要的組件載入進來，整體而言，會拖慢網頁載入的時間。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div id=”app”&gt;</span><br><span class="line"> &lt;component-layout&gt;&lt;/component-layout&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">Vue.component(<span class="string">"component-layout"</span>, &#123;</span><br><span class="line">  template: `&lt;div&gt;&#123;&#123;text&#125;&#125;&lt;/div&gt;`,</span><br><span class="line">  <span class="function"><span class="title">data</span></span>()&#123;</span><br><span class="line">    <span class="built_in">return</span>&#123;</span><br><span class="line">      text:<span class="string">'我是全域註冊'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> vm = new Vue(&#123;</span><br><span class="line">  el: <span class="string">"#app"</span></span><br><span class="line">&#125;);</span><br><span class="line">&lt;script&gt;</span><br></pre></td></tr></table></figure>
-
-<h5 id="Local-局部註冊"><a href="#Local-局部註冊" class="headerlink" title="Local 局部註冊"></a>Local 局部註冊</h5><p>如同前面所提，考量全域註冊的缺點，某些特定元件就會用區域註冊的方式，註冊在需要使用它的元件之中，同時，它是一個選項物件，可以由 components 這個選項物件屬性載入 Vue 實例 使用。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div id=”app”&gt;</span><br><span class="line"> &lt;component-layout&gt;&lt;/component-layout&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">let</span> vm = new Vue(&#123;</span><br><span class="line">  el: <span class="string">"#app"</span>,</span><br><span class="line">  components:&#123;</span><br><span class="line">    <span class="string">'component-layout'</span> :&#123;</span><br><span class="line">       template: `&lt;div&gt;&#123;&#123;text&#125;&#125;&lt;/div&gt;`,</span><br><span class="line">       <span class="function"><span class="title">data</span></span>()&#123;</span><br><span class="line">         <span class="built_in">return</span> &#123;</span><br><span class="line">          text:<span class="string">'我是局部註冊'</span></span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;script&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-
+        
+          <p class="article-more-link">
+            <a href="../../2020/01/28/0128/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -781,29 +512,17 @@ new Vue({
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://i.imgur.com/x2H2LJN.png" alt=""></p>
-<h3 id="第一階段：Creation-初始建置"><a href="#第一階段：Creation-初始建置" class="headerlink" title="第一階段：Creation 初始建置"></a>第一階段：Creation 初始建置</h3><p>Creation 階段是組件中運行的第一個 Hook 函式，與其他階段不同，它是在伺服器端渲染期間運行。因此，若需要在客戶端渲染和伺服器渲染期間於元件當中設置事件，須於此階段進行設定。</p>
-<ul>
-<li>beforeCreate：Vue實例 初始化。</li>
-<li>created：Vue實例 建立完成。資料 $data 已可取得，但 $el 屬性尚未被建立。</li>
-</ul>
-<h3 id="第二階段：Mounting-資料掛載"><a href="#第二階段：Mounting-資料掛載" class="headerlink" title="第二階段：Mounting 資料掛載"></a>第二階段：Mounting 資料掛載</h3><p>接續上一個 Creation 階段，首先他會先判斷是否有無 $el 屬性，若沒有則會嘗試另一種掛載方式（使用$mount掛載el）。<br>再來會判斷是否有 $template 屬性 ，若有則直接使用 render function ，反之則使用 $el teamplate 進行模板編譯。</p>
-<ul>
-<li>beforeMount：執行元素掛載之前，代表 $el 尚未被建立。</li>
-<li>mounted：元素已掛載， $el 被建立，是最常使用的生命週期 hook </li>
-</ul>
-<p>補充：若要操作 AJAX，須於 created Hook階段後才能使用，但通常到 mounted Hook 階段，也就是現在才會被使用，屆時，也代表資料已掛載成功。</p>
-<h3 id="第三階段：Updating-重新渲染畫面"><a href="#第三階段：Updating-重新渲染畫面" class="headerlink" title="第三階段：Updating 重新渲染畫面"></a>第三階段：Updating 重新渲染畫面</h3><p>當元件的資料屬性發生變動，或其他因素導致畫面需要重新渲染時，則會調用 Updating 刷新網頁內容。</p>
-<ul>
-<li>beforeUpdate：當資料改變被呼叫使用，還不會渲染 View。</li>
-<li>updated：當資料更新完成，則驅動 DOM 元素重新渲染畫面 View。</li>
-</ul>
-<h3 id="第四階段：Destruction-銷毀"><a href="#第四階段：Destruction-銷毀" class="headerlink" title="第四階段：Destruction 銷毀"></a>第四階段：Destruction 銷毀</h3><p>當呼叫 destroy 函式時，則會執行銷毀的動作，將原始的元件從 DOM 元素中移除。</p>
-<ul>
-<li>beforeDestroy：Vue實例還可使用。</li>
-<li>destroyed：Vue實例銷毀，所有的DOM 元素綁定被解除、移除偵聽事件、Vue child 實例也被一併銷毀。</li>
-</ul>
+        
 
+          
+          <div class="entry-summary">
+          
+
+        
+          <p class="article-more-link">
+            <a href="../../2020/01/25/0125/#more">閱讀全文</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -811,6 +530,114 @@ new Vue({
       
   <span class="ico-tags"></span>
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Vue/" rel="tag">Vue</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-0116"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2020/01/24/0116/">Vue_ MVVM架構說明</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2020/01/24/0116/" class="article-date">
+	  <time datetime="2020-01-23T16:00:00.000Z" itemprop="datePublished">一月 24, 2020</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+          <div class="entry-summary">
+          MVVM 是Model-View-ViewModel 的縮寫，它是一種基於前端開發的架構模式，其核心是提供對View 和View Model 的雙向數據綁定，這使得View Model的狀態改變可以自動傳遞給View，這就是所謂的數據雙向綁定。注意Vue非MVVM框架，但MVVM概念影響Vue.js的運作。
+
+        
+          <p class="article-more-link">
+            <a href="../../2020/01/24/0116/#more">閱讀全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Vue/" rel="tag">Vue</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-0122"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="../../2020/01/22/0122/">Git_分支</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="../../2020/01/22/0122/" class="article-date">
+	  <time datetime="2020-01-21T16:00:00.000Z" itemprop="datePublished">一月 22, 2020</time>
+	</a>
+
+       
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+          <div class="entry-summary">
+          分支建立(git branch)分支的好處，就是每一條線都各司其職，做完事後，再將兩條線的功能合併，並部署上線。
+
+        
+          <p class="article-more-link">
+            <a href="../../2020/01/22/0122/#more">閱讀全文</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Git/" rel="tag">Git</a></li></ul>
 
       
     </footer>
@@ -934,30 +761,6 @@ new Vue({
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="../../2020/05/13/hello-world/">Hello World</a></h6>
-              <span>五月 13, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="../../2020/05/12/0513/">JS- scope chain</a></h6>
-              <span>五月 12, 2020</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
               <h6 style="margin: 0;"><a href="../../2020/03/15/0315/">Vue_過濾API資料(實作)</a></h6>
               <span>三月 15, 2020</span>
             </div>
@@ -1000,6 +803,30 @@ new Vue({
 
           </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2020/03/05/0305/">JavaScript- 陣列處理方式</a></h6>
+              <span>三月 5, 2020</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="../../2020/03/03/0303/">Vue_Vuex狀態管理</a></h6>
+              <span>三月 3, 2020</span>
+            </div>
+
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -1032,7 +859,7 @@ new Vue({
     <h3 class="widget-title">彙整</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">二月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">一月 2020</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">十二月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">十一月 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/02/">二月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2020/01/">一月 2020</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/12/">十二月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/11/">十一月 2019</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

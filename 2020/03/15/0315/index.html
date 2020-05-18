@@ -11,16 +11,16 @@
   
   
   
-  <meta name="description" content="＊過濾目標使用者經由選擇器篩選縣市後(如下圖)，跳出選定縣市的藥局資料。 第一步是先將raw data分類出select可以導入的縣市資料庫後，接下來就是進行基本的判定式(if&#x2F;else)再利用陣列語法(filter)匯入顯示頁面。韓式內容大致是新增一變數，如選擇區域欄位是空的，就回傳與city相同的值，如選擇區域是有資料的，那就回傳與區域相同的。 12345678const pharmacies">
+  <meta name="description" content="＊過濾目標使用者經由選擇器篩選縣市後(如下圖)，跳出選定縣市的藥局資料。 第一步是先將raw data分類出select可以導入的縣市資料庫後，接下來就是進行基本的判定式(if&#x2F;else)再利用陣列語法(filter)匯入顯示頁面。韓式內容大致是新增一變數，如選擇區域欄位是空的，就回傳與city相同的值，如選擇區域是有資料的，那就回傳與區域相同的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue_過濾API資料(實作)">
 <meta property="og:url" content="https://vince-chen-hao.github.io/KnowHao/2020/03/15/0315/index.html">
 <meta property="og:site_name" content="Vince Blog">
-<meta property="og:description" content="＊過濾目標使用者經由選擇器篩選縣市後(如下圖)，跳出選定縣市的藥局資料。 第一步是先將raw data分類出select可以導入的縣市資料庫後，接下來就是進行基本的判定式(if&#x2F;else)再利用陣列語法(filter)匯入顯示頁面。韓式內容大致是新增一變數，如選擇區域欄位是空的，就回傳與city相同的值，如選擇區域是有資料的，那就回傳與區域相同的。 12345678const pharmacies">
+<meta property="og:description" content="＊過濾目標使用者經由選擇器篩選縣市後(如下圖)，跳出選定縣市的藥局資料。 第一步是先將raw data分類出select可以導入的縣市資料庫後，接下來就是進行基本的判定式(if&#x2F;else)再利用陣列語法(filter)匯入顯示頁面。韓式內容大致是新增一變數，如選擇區域欄位是空的，就回傳與city相同的值，如選擇區域是有資料的，那就回傳與區域相同的。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://vince-chen-hao.github.io/images/select.png">
 <meta property="article:published_time" content="2020-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-15T15:19:55.732Z">
+<meta property="article:modified_time" content="2020-05-18T06:36:04.657Z">
 <meta property="article:author" content="Vince">
 <meta property="article:tag" content="Vue">
 <meta property="article:tag" content="JavaScript">
@@ -143,6 +143,9 @@
       
         <h3 id="＊過濾目標"><a href="#＊過濾目標" class="headerlink" title="＊過濾目標"></a>＊過濾目標</h3><p>使用者經由選擇器篩選縣市後(如下圖)，跳出選定縣市的藥局資料。<br><img src="/images/select.png" alt=""></p>
 <p>第一步是先將raw data分類出select可以導入的縣市資料庫後，接下來就是進行基本的判定式(if/else)再利用陣列語法(filter)匯入顯示頁面。韓式內容大致是新增一變數，如選擇區域欄位是空的，就回傳與city相同的值，如選擇區域是有資料的，那就回傳與區域相同的。</p>
+<a id="more"></a>
+
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const pharmacies = this.data.filter(pharmacy =&gt; &#123;</span><br><span class="line">    //data裡的area如沒有資訊，則找出與data裡的city相同的縣市</span><br><span class="line">    <span class="keyword">if</span> (!this.select.area) &#123;</span><br><span class="line">      <span class="built_in">return</span> pharmacy.properties.county === this.select.city;</span><br><span class="line">    &#125;</span><br><span class="line">    //顯示data裡area區域的資料</span><br><span class="line">    <span class="built_in">return</span> pharmacy.properties.town === this.select.area;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <hr>
 
@@ -213,15 +216,6 @@
   
     
 <nav id="article-nav">
-  
-    <a href="../../../05/12/0513/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          JS- scope chain
-        
-      </div>
-    </a>
   
   
     <a href="../../13/0313/" id="article-nav-older" class="article-nav-link-wrap">
